@@ -1,4 +1,9 @@
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![Open Source Love png2](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/arcaster42/rhymus)
+[![Build Status](https://travis-ci.org/Arcaster42/rhymus.svg?branch=master)](https://travis-ci.org/Arcaster42/rhymus)
+
 
 # Rhymus
 
@@ -33,5 +38,6 @@ When you contribute, please use the following guidelines:
 - Name your branch in a way that reflects what you plan on doing ('implement-card-scrolling')
 - Provide detailed information in your pull request regarding what you did and why it is done that way
 - In your pull request, reflect on your code and include comments as to whether it may need refactoring or if anything was particularly difficult
+- Include tests with your contribution if applicable
 
 This is an open-source project for developers of all experience levels. Please show common courtesy and provide constructive feedback where possible.

@@ -1,6 +1,14 @@
+sudo: false
 language: node_js
-# install:
-#   - npm install -g codecov
-# script:
-#   - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-#   - codecov
+node_js:
+  - '10'
+branches:
+  only:
+    - master
+cache:
+  directories:
+    - node_modules
+install:
+  - yarn install
+script:
+  - yarn mocha ./tests

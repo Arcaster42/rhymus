@@ -14,3 +14,5 @@ const puzzles = [
         answer: 'asleep'
     }
 ]
+
+module.exports = puzzles

@@ -1,3 +1,5 @@
+[![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
+
 # Rhymus
 An open-source rhyming game project designed for new developers and first-time contributors.
 

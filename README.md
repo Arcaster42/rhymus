@@ -1,5 +1,9 @@
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![Open Source Love png2](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/arcaster42/rhymus)
 [![Build Status](https://travis-ci.org/Arcaster42/rhymus.svg?branch=master)](https://travis-ci.org/Arcaster42/rhymus)
+
 
 # Rhymus
 

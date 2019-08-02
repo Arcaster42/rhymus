@@ -34,4 +34,4 @@ When you contribute, please use the following guidelines:
 - Provide detailed information in your pull request regarding what you did and why it is done that way
 - In your pull request, reflect on your code and include comments as to whether it may need refactoring or if anything was particularly difficult
 
-This is an open-source project for developer of all experience levels. Please show common courtesy and provide constructive feedback where possible.
+This is an open-source project for developers of all experience levels. Please show common courtesy and provide constructive feedback where possible.

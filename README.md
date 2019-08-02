@@ -1,4 +1,5 @@
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
+[![Build Status](https://travis-ci.org/Arcaster42/rhymus.svg?branch=master)](https://travis-ci.org/Arcaster42/rhymus)
 
 # Rhymus
 

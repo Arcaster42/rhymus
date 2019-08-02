@@ -38,5 +38,6 @@ When you contribute, please use the following guidelines:
 - Name your branch in a way that reflects what you plan on doing ('implement-card-scrolling')
 - Provide detailed information in your pull request regarding what you did and why it is done that way
 - In your pull request, reflect on your code and include comments as to whether it may need refactoring or if anything was particularly difficult
+- Include tests with your contribution if applicable
 
 This is an open-source project for developers of all experience levels. Please show common courtesy and provide constructive feedback where possible.

@@ -14,3 +14,5 @@ var puzzlesArray = [
         answer: 'asleep'
     }
 ]
+
+module.exports = puzzlesArray

@@ -1,4 +1,4 @@
-const puzzles = [
+var puzzlesArray = [
     {
         id: 1,
         sentence: 'I have to walk my log.',
@@ -15,4 +15,4 @@ const puzzles = [
     }
 ]
 
-module.exports = puzzles
+module.exports = puzzlesArray

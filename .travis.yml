@@ -1,12 +1,12 @@
-language: node_js
-node_js:
-    - "stable"
+# language: node_js
+# node_js:
+#     - "stable"
 cache:
   directories:
     - "node_modules"
 install:
-  - yarn
-  - yarn add -g codecov
+  - npm install
+  - npm install -g codecov
 script: >
   ./bin/mocha --opts /dev/null --reporter spec
   tests/spec.js

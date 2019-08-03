@@ -11,7 +11,7 @@ An open-source rhyming game project designed for new developers and first-time c
 
 ## Gameplay
 
-Rhymus is an open-source game that will display cards with sentences on them. Each sentence will have one word that doesn't quite make sense but rhymes with a word that does. For example, 'I want to buy a fog.' -> Answer: 'Dog'. A timer gives you 30 seconds to complete as many as possible.
+Rhymus is an open-source game that will display cards with sentences on them. Each sentence will have one word that doesn't quite make sense but rhymes with a word that does. For example, 'I have a pet fog.' -> Answer: 'Dog'. A timer gives you 30 seconds to complete as many as possible.
 
 ## Design
 

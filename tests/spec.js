@@ -1,7 +1,7 @@
 const mocha = require('mocha')
 const chai = require('chai')
 const expect = chai.expect
-const should = chai.should()
+// const should = chai.should()
 
 const puzzlesArray = require('../src/js/puzzles')
 

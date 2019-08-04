@@ -32,7 +32,7 @@ describe('Rhymus Test Suite', () => {
     })
 
     describe('Game Logic Tests', () => {
-        it('should eventually have tests', () => {
+        it('should be tested in spec.html in browser', () => {
             expect(1).to.equal(1)
         })
     })

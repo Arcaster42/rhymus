@@ -21,7 +21,7 @@ Once the first build is complete and feature-complete, a new branch will be crea
 
 ## Contributions
 
-This project is starting from scratch, so there are ample opportunities to contribute. Any of the following is a great way to contribute:
+This project is starting from scratch, so there are ample opportunities to contribute. The quickest way to contribute is to **check out the projects tab and see what priorities are there**. Otherwise, any of the following is a great way to contribute:
 
 - Editing the README
 - Creating new files for the project structure

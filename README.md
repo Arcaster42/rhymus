@@ -17,7 +17,7 @@ Rhymus is an open-source game that will display cards with sentences on them. Ea
 
 This project will go through **two phases**. The first will be an initial build using a Node back-end and HTML, CSS, and JS front-end. For the first build, there will be no React/Redux implementation.
 
-Once the first build is complete and feature-complete, a new branch will be created in which the project will be refactored using React.
+Once the first build is complete and feature-complete, **two new branches** will be created in which the project will be refactored using **React** and **Vue**.
 
 ## Contributions
 

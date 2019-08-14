@@ -41,3 +41,35 @@ When you contribute, please use the following guidelines:
 - Include tests with your contribution if applicable
 
 This is an open-source project for developers of all experience levels. Please show common courtesy and provide constructive feedback where possible.
+
+## Complete Guide for Beginners
+
+If you are entirely new to contributing to open-source projects or using Git, follow this little guide to make your first PR. Keep in mind there are many ways to complete this, but this is designed to be very basic and easy-to-follow. If it's not, please correct it!
+
+1) Click **Fork** in the top right to make a copy of this repository.
+2) Assuming you have GitBash installed, right-click your documents folder (where you store project folders) and open in GitBash.
+3) Type in `git clone https://username@github.com/username/rhymus`.
+4) Open this folder in your IDE (such as Visual Studio Code).
+5) In your terminal (open from the terminal drop-down up top in VS Code), type `git checkout -b add-puzzle`.
+6) On the left, open the **src** folder then the **js** folder and open **puzzles.js**.
+7) Follow the pattern you see there and create a new rhyming puzzle and save your changes.
+8) In your terminal, type in `git commit -m "added new puzzle"`.
+9) In your terminal, type in `git remote add origin https://username@github.com/username/rhymus`.
+10) In your terminal, type in `git push origin add-puzzle`.
+11) In GitHub, go to your repository and select the **add-puzzle** branch.
+12) Click on the **New Pull Request** button and fill that out.
+
+Done!
+
+But wait, what just happened?
+
+1) **Forking** created a copy of the repository under your GitHub account.
+2 - 3) Using GitBash, you put a copy of that repository onto your local machine where you can open and edit all the files. Cloning just makes an exact copy of the repository the URL points to.
+4 - 5) You opened the folder and created a new branch. **Checkout** moves to a new branch, and the -b means it will create the new branch.
+6 - 7) You added a new puzzle following the pattern, hopefully!
+8) You commited your save! This means you officially saved and got your changes ready to be pushed to your repository officially. The -m signifies a message attached to the commit so that you and others can see what the commit is about.
+9) You added a remote! This is a place you will push to regularly. You will only add a single remote one time, then you give it a nickname (usually origin) which you can use instead of typing the long URL every time.
+10) You pushed from your local save to your repository on the add-puzzle branch! Your commit is officially in your online repository!
+11 - 12) You made a pull request, which is a request for the original repository (this one) to accept your changes into the base!
+
+If you're feeling bold, make more changes, commits, pushes, and PR's!

@@ -72,4 +72,6 @@ But wait, what just happened?
 10) You pushed from your local save to your repository on the add-puzzle branch! Your commit is officially in your online repository!
 11 - 12) You made a pull request, which is a request for the original repository (this one) to accept your changes into the base!
 
+Maybe you're thinking, **"Wait, what if my code is terrible? Or broken? Or completely wrong?"** Doesn't matter! When you make a pull request, your code will be reviewed before being merged into the official repository. If it needs changes, you will receive comments explaining what, how, and why to change! Once you make changes, you can push again and it will automatically update your pull request (so don't close it if it isn't approved right away). Making those mistakes is exactly how you'll learn.
+
 If you're feeling bold, make more changes, commits, pushes, and PR's!

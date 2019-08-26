@@ -22,8 +22,8 @@ var puzzlesArray = [
     },
     {
         id: 4,
-        sentence: 'I like to play with my pat.',
-        word: 'pat',
+        sentence: 'I like to play with my set.',
+        word: 'set',
         hint: 'home animal',
         answer: 'pet',
     },

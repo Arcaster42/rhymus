@@ -36,25 +36,25 @@ var puzzlesArray = [
   },
   {
     id: 6,
-    sentence: 'I am on a float',
-    word: 'float',
-    hint: 'water',
-    answer: 'boat'
+    sentence: 'Let me take this fall',
+    word: 'fall',
+    hint: 'conversation',
+    answer: 'call'
   },
   {
     id: 7,
-    sentence: 'Here is my new hat',
+    sentence: 'I have to feed my new hat',
     word: 'hat',
     hint: 'house pet',
     answer: 'cat'
   },
   {
     id: 8,
-    sentence: 'I won the space',
+    sentence: 'I jogged every day and won the space',
     word: 'space',
     hint: 'competition',
     answer: 'race'
   }
-];
+]
 
-module.exports = puzzlesArray;
+module.exports = puzzlesArray

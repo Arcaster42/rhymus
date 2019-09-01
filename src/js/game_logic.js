@@ -1,5 +1,8 @@
 const puzzles = window.puzzlesArray
 
+//total number of wrong guesses
+let numOfincorrectanswers = 0
+
 //HTML elements
 const cardBlock = document.getElementById('rhyme_card')
 const countElement = document.getElementById('rhyme_count')
@@ -44,21 +47,32 @@ const correctAnswer = () => {
         countElement.className = 'rhyme_count'
         guessElement.className = ''
         if (Game.currentCard.id < puzzles.length) {
-                loadCard(puzzles[Game.currentCard.id])
+            loadCard(puzzles[Game.currentCard.id])
         }
         else gameOver()
     }, 800)
 }
 
 const incorrectAnswer = () => {
+
     cardBlock.className += ' incorrect'
     countElement.className += ' incorrect'
     guessElement.className += 'incorrect'
+    numOfincorrectanswers++
+
+
     setTimeout(() => {
         cardBlock.className = 'rhyme_card'
         countElement.className = 'rhyme_count'
         guessElement.className = ''
     }, 500)
+    const wronganswers = document.getElementById('incorrect')
+    console.log(Game.currentCard.hint)
+    wronganswers.textContent = 'Number of incorrect: ' + numOfincorrectanswers
+    if (numOfincorrectanswers >= 2) {
+        const hint = document.getElementById('hint')
+        hint.textContent = 'hint: ' + Game.currentCard.hint
+    }
 }
 
 const gameOver = () => {

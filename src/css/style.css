@@ -38,7 +38,7 @@ section#game_canvas {
 .rhyme_card {
   background-color: white;
   width: 35%;
-  height: 250px;
+  height: 275px;
   border-radius: 4px;
   display: flex;
   flex-direction: column;

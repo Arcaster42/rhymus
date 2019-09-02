@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Rhymus</title>
-  </head>
-  <body>
-    <header>
-      <ul>
-        <li>Start</li>
-        <li>Restart</li>
-      </ul>
-    </header>
 
-    <section id="game_canvas">
-      <div class="rhyme_card" id="rhyme_card">
-        <div class="rhyme_count" id="rhyme_count"> <span></span></div>
-        <p class="rhyme" id="rhyme"></p>
-        <input type="text" id="rhyme_guess" name="rhyme_guess"
-          placeholder="Write your guess here">
-      </div>
-    </section>
-    <script src="../js/puzzles.js"></script>
-    <script src="../js/game_logic.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Rhymus</title>
+</head>
+
+<body>
+  <header>
+    <ul>
+      <li>Start</li>
+      <li>Restart</li>
+    </ul>
+  </header>
+
+  <section id="game_canvas">
+    <div class="rhyme_card" id="rhyme_card">
+      <div class="rhyme_count" id="rhyme_count"> <span></span></div>
+      <p class="rhyme" id="rhyme"></p>
+      <input type="text" id="rhyme_guess" name="rhyme_guess" placeholder="Write your guess here">
+      <div id="incorrect"></div>
+      <div id="hint"></div>
+    </div>
+  </section>
+  <script src="../js/puzzles.js"></script>
+  <script src="../js/game_logic.js"></script>
+</body>
+
 </html>

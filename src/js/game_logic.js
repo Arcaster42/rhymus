@@ -1,7 +1,7 @@
 const puzzles = window.puzzlesArray
 
 //total number of wrong guesses
-let incorrectQuesses = 0
+let incorrectGuesses = 0
 
 
 //HTML elements
@@ -10,6 +10,7 @@ const countElement = document.getElementById('rhyme_count')
 const rhymeElement = document.getElementById('rhyme')
 const guessElement = document.getElementById('rhyme_guess')
 const wrongElement = document.getElementById('incorrect')
+const hint = document.getElementById('hint')
 
 class RhymusGame {
     constructor() {
@@ -71,7 +72,7 @@ const incorrectAnswer = () => {
     cardBlock.className += ' incorrect'
     countElement.className += ' incorrect'
     guessElement.className += 'incorrect'
-    incorrectQuesses++
+    incorrectGuesses++
 
 
     setTimeout(() => {
@@ -81,10 +82,8 @@ const incorrectAnswer = () => {
     }, 500)
 
 
-    wrongElement.textContent = 'Wrong Guesses: ' + incorrectQuesses
-    if (incorrectQuesses >= 2) {
-        const hint = document.getElementById('hint')
-
+    wrongElement.textContent = 'Wrong Guesses: ' + incorrectGuesses
+    if (incorrectGuesses >= 2) {
         hint.textContent = 'Hint: ' + capitalizeFirstLetter();
     }
 

@@ -86,7 +86,7 @@ const incorrectAnswer = () => {
 
     wrongElement.textContent = 'Wrong Guesses: ' + incorrectGuesses
     //if there are more than 4 incorrect guesses on a single card the player loses
-    if (incorrectGuesses >= 2 && incorrectGuesses <= 4) {
+    if (incorrectGuesses >= 2 && incorrectGuesses < 4) {
         hint.textContent = 'Hint: ' + capitalizeFirstLetter();
     } else {
         gameOver();
@@ -98,9 +98,6 @@ const gameOver = () => {
     if (incorrectGuesses > 4) {
         rhymeElement.textContent = 'Game Over!';
 
-    } else {
-        rhymeElement.textContent = 'You win!';
-        console.log('You win!');
     }
 
 }

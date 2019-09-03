@@ -75,7 +75,7 @@ section#game_canvas {
 }
 
 .rhyme {
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .rhyme_count {
@@ -107,6 +107,19 @@ section#game_canvas {
   border:none;
   outline: none;
   transition: all 1s;
+}
+#incorrect {
+  font-size: 15px;
+  text-align: center;
+  border:none;
+  outline: none;
+}
+
+#hint {
+  font-size: 15px;
+  text-align: center;
+  border:none;
+  outline: none;
 }
 
 #rhyme_guess.correct {

@@ -18,11 +18,11 @@ class RhymusGame {
     }
 }
 
-const assignListeners = () => {
-    guessElement.addEventListener("keydown", (e) => {
-        if (e.key === 'Enter') checkAnswer()
-    })
+const assignListeners = (e) => {
+    if (e.key === 'Enter') checkAnswer()
 }
+//add event listener 
+guessElement.addEventListener("keydown", assignListeners)
 
 const loadCard = (nextCard) => {
     Game.currentCard = nextCard
@@ -37,16 +37,16 @@ const updateDisplay = () => {
     hint.textContent = ''
     wrongElement.textContent = ''
     incorrectGuesses = 0
-
 }
 
 const checkAnswer = () => {
-    if (guessElement.value === Game.currentCard.answer)
-
+    if (guessElement.value === Game.currentCard.answer) {
         correctAnswer()
-
-    else incorrectAnswer()
+    } else {
+        incorrectAnswer()
+    }
 }
+
 
 const correctAnswer = () => {
     cardBlock.className += ' correct'
@@ -57,51 +57,65 @@ const correctAnswer = () => {
         cardBlock.className = 'rhyme_card'
         countElement.className = 'rhyme_count'
         guessElement.className = ''
-
         if (Game.currentCard.id < puzzles.length) {
-
             loadCard(puzzles[Game.currentCard.id])
         }
-        else gameOver()
+        else {
+            gameOver()
+        }
     }, 800)
 }
+
 const capitalizeFirstLetter = () => {
     return Game.currentCard.hint.charAt(0).toUpperCase() + Game.currentCard.hint.slice(1).toLowerCase();
 }
 
 const incorrectAnswer = () => {
-
     cardBlock.className += ' incorrect'
     countElement.className += ' incorrect'
     guessElement.className += 'incorrect'
     incorrectGuesses++
-
 
     setTimeout(() => {
         cardBlock.className = 'rhyme_card'
         countElement.className = 'rhyme_count'
         guessElement.className = ''
     }, 500)
-
-
     wrongElement.textContent = 'Wrong Guesses: ' + incorrectGuesses
     //if there are more than 4 incorrect guesses on a single card the player loses
-    if (incorrectGuesses >= 2 && incorrectGuesses < 4) {
-        hint.textContent = 'Hint: ' + capitalizeFirstLetter();
+    if (incorrectGuesses > 2 && incorrectGuesses < 4) {
+        hint.textContent = 'Hint: ' + capitalizeFirstLetter()
     } else {
-        gameOver();
+        gameOver()
     }
 
 }
 
 const gameOver = () => {
     if (incorrectGuesses > 4) {
-        rhymeElement.textContent = 'Game Over!';
+        rhymeElement.textContent = 'Game Over!'
+        guessElement.removeEventListener("keydown", assignListeners)
 
+        setTimeout(() => {
+            cardBlock.className = 'rhyme_card'
+            countElement.className = 'rhyme_count'
+            guessElement.className = ''
+        }, 3000)
+        restartGame()
     }
+}
+
+const restartGame = () => {
+    setTimeout(() => {
+        guessElement.addEventListener("keydown", assignListeners)
+        loadCard(puzzles[0])
+    }, 1500)
+
+
 
 }
 
 const Game = new RhymusGame()
-assignListeners()
+//assignListeners()
+
 loadCard(puzzles[0])

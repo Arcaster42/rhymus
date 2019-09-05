@@ -18,7 +18,6 @@ class RhymusGame {
     }
 }
 
-
 const assignListeners = (e) => {
     if (e.key === 'Enter') checkAnswer()
 }
@@ -48,6 +47,7 @@ const checkAnswer = () => {
     }
 }
 
+
 const correctAnswer = () => {
     cardBlock.className += ' correct'
     countElement.className += ' correct'
@@ -58,7 +58,6 @@ const correctAnswer = () => {
         countElement.className = 'rhyme_count'
         guessElement.className = ''
         if (Game.currentCard.id < puzzles.length) {
-
             loadCard(puzzles[Game.currentCard.id])
         }
         else {
@@ -66,6 +65,7 @@ const correctAnswer = () => {
         }
     }, 800)
 }
+
 const capitalizeFirstLetter = () => {
     return Game.currentCard.hint.charAt(0).toUpperCase() + Game.currentCard.hint.slice(1).toLowerCase();
 }
@@ -95,12 +95,22 @@ const gameOver = () => {
     if (incorrectGuesses > 4) {
         rhymeElement.textContent = 'Game Over!'
         guessElement.removeEventListener("keydown", assignListeners)
+
+        setTimeout(() => {
+            cardBlock.className = 'rhyme_card'
+            countElement.className = 'rhyme_count'
+            guessElement.className = ''
+        }, 3000)
+        restartGame()
     }
+}
+
+const restartGame = () => {
     setTimeout(() => {
-        cardBlock.className = 'rhyme_card'
-        countElement.className = 'rhyme_count'
-        guessElement.className = ''
-    }, 2000)
+        guessElement.addEventListener("keydown", assignListeners)
+        loadCard(puzzles[0])
+    }, 1500)
+
 
 
 }

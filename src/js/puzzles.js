@@ -54,6 +54,34 @@ var puzzlesArray = [
     word: 'space',
     hint: 'competition',
     answer: 'race'
+  },
+  {
+    id: 9,
+    sentence: 'I wrote on the paper with my ten',
+    word: 'ten',
+    hint: 'writing instrument',
+    answer: 'pen'
+  },
+  {
+    id: 10,
+    sentence: 'I drove into another star',
+    word: 'star',
+    hint: 'vehicle',
+    answer: 'car'
+  },
+  {
+    id: 11,
+    sentence: 'The doom was filled with chairs',
+    word: 'doom',
+    hint: 'inside a building',
+    answer: 'room'
+  },
+  {
+    id: 12,
+    sentence: 'The sawing was of a mountain',
+    word: 'sawing',
+    hint: 'art',
+    answer: 'drawing'
   }
 ]
 

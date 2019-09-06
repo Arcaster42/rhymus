@@ -12,7 +12,7 @@ const rhymeElement = document.getElementById('rhyme')
 const guessElement = document.getElementById('rhyme_guess')
 const wrongElement = document.getElementById('incorrect')
 const hint = document.getElementById('hint')
-const timer = document.getElementById('timer')
+const timerDisplay = document.getElementById('timer')
 
 class RhymusGame {
     constructor() {
@@ -28,17 +28,21 @@ guessElement.addEventListener("keydown", assignListeners)
 
 const loadCard = (nextCard) => {
     Game.currentCard = nextCard
-
     updateDisplay()
 }
 
+const countDown = () => {
+    timeRemaining === 0 ? incorrectAnswer() :
+    (timerDisplay.textContent = timeRemaining--)
+}
 
+// Created timer variable in outer scope so that resetTimer is always clearing the same timer interval that was created. 
+// This prevents intervals from stacking on top of each other.
+// It's initialized as null so that the interval doesn't start before resetTimer is invoked inside updateDisplay.
+let timer = null
 const resetTimer = () => {
-    timeRemaining = 5
-    setInterval(() => {
-        timeRemaining === 0 ? incorrectAnswer() :
-        (timer.textContent = timeRemaining--)
-    }, 1000)
+    clearInterval(timer)
+    timer = setInterval(countDown, 1000)
 }
 
 

@@ -57,8 +57,8 @@ var puzzlesArray = [
   },
   {
     id: 9,
-    sentence: 'I wrote on the paper with my men',
-    word: 'men',
+    sentence: 'I wrote on the paper with my ten',
+    word: 'ten',
     hint: 'writing instrument',
     answer: 'pen'
   },

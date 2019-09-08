@@ -33,7 +33,7 @@ const loadCard = (nextCard) => {
 
 const countDown = () => {
     timeRemaining === 0 ? incorrectAnswer() :
-    (timerDisplay.textContent = timeRemaining--)
+        (timerDisplay.textContent = timeRemaining--)
 }
 
 // Created timer variable in outer scope so that resetTimer is always clearing the same timer interval that was created. 
@@ -54,11 +54,15 @@ const updateDisplay = () => {
     hint.textContent = ''
     wrongElement.textContent = ''
     incorrectGuesses = 0
+    //resetting time between cards
+    timeRemaining = 5
 }
 
 const checkAnswer = () => {
     if (guessElement.value === Game.currentCard.answer) {
         correctAnswer()
+    } else if (guessElement.value === '' || undefined) {
+        alert('Please enter a guess!')
     } else {
         incorrectAnswer()
     }

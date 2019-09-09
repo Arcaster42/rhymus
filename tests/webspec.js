@@ -22,6 +22,18 @@ describe('Game Logic Tests', () => {
     it('should have a gameOver function', () => {
         expect(typeof gameOver).to.equal('function')
     })
+    it('should have a restartGame function', () => {
+        expect(typeof restartGame).to.equal('function')
+    })
+    it('should have a countDown function', () => {
+        expect(typeof countDown).to.equal('function')
+
+    })
+    it('should have a resetTimer function', () => {
+        expect(typeof resetTimer).to.equal('function')
+
+    })
+
     it('should have necessary elements set as constants', () => {
         expect(cardBlock).to.not.be.undefined
         expect(countElement).to.not.be.undefined

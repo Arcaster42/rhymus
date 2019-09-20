@@ -51,6 +51,7 @@ const resetTimer = () => {
 
 
 const updateDisplay = () => {
+
     resetTimer()
     countElement.textContent = `${Game.currentCard.id}/${puzzles.length}`
     rhymeElement.textContent = Game.currentCard.sentence
@@ -132,10 +133,9 @@ const gameOver = () => {
 }
 
 const restartGame = () => {
-    const card = randomizer()
     setTimeout(() => {
         guessElement.addEventListener("keydown", assignListeners)
-        loadCard(puzzles[card])
+        loadCard(puzzles[0])
     }, 1500)
 
 
@@ -146,6 +146,5 @@ const restartGame = () => {
 
 const Game = new RhymusGame()
 //assignListeners()
-const card = randomizer()
 
-loadCard(puzzles[card])
+loadCard(puzzles[0])

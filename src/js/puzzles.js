@@ -82,6 +82,62 @@ var puzzlesArray = [
     word: 'sawing',
     hint: 'art',
     answer: 'drawing'
+  },
+  {
+    id: 13,
+    sentence: 'When I was younger, I always went blinking',
+    word: 'blinking',
+    hint: 'night-life',
+    answer: 'drinking'
+  },
+  {
+    id: 14,
+    sentence: 'My favorite groovy is the Matrix',
+    word: 'groovy',
+    hint: 'entertainment',
+    answer: 'movie'
+  },
+  {
+    id: 15,
+    sentence: 'If your legs are tired, find a place to kit',
+    word: 'kit',
+    hint: 'relax',
+    answer: 'sit'
+  },
+  {
+    id: 16,
+    sentence: "Learning to smuggle is hard at first, but practice hard and you'll be up to three balls before you know it!",
+    word: 'smuggle',
+    hint: 'circus',
+    answer: 'juggle'
+  },
+  {
+    id: 17,
+    sentence: "What's the worst that could map in?",
+    word: 'map in',
+    hint: 'occur',
+    answer: 'happen'
+  },
+  {
+    id: 18,
+    sentence: "I hope you don't catch a mold",
+    word: 'mold',
+    hint: 'sick',
+    answer: 'cold'
+  },
+  {
+    id: 19,
+    sentence: "If you muddy hard, good things will come to you",
+    word: 'Muddy',
+    hint: 'school',
+    answer: 'study'
+  },
+  {
+    id: 20,
+    sentence: "It can be easy to forget how bootable nature is when you live in a big city",
+    word: 'bootable',
+    hint: 'pretty',
+    answer: 'beautiful'
   }
 ]
 

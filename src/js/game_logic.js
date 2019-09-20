@@ -20,6 +20,10 @@ class RhymusGame {
     }
 }
 
+const randomizer = () => {
+    return Math.floor(Math.random() * puzzles.length)
+}
+
 const assignListeners = (e) => {
     if (e.key === 'Enter') checkAnswer()
 }
@@ -128,9 +132,10 @@ const gameOver = () => {
 }
 
 const restartGame = () => {
+    const card = randomizer()
     setTimeout(() => {
         guessElement.addEventListener("keydown", assignListeners)
-        loadCard(puzzles[0])
+        loadCard(puzzles[card])
     }, 1500)
 
 
@@ -141,5 +146,6 @@ const restartGame = () => {
 
 const Game = new RhymusGame()
 //assignListeners()
+const card = randomizer()
 
-loadCard(puzzles[0])
+loadCard(puzzles[card])

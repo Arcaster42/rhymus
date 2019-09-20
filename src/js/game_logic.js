@@ -1,5 +1,18 @@
 const puzzles = window.puzzlesArray
 
+// function shuffleArray(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         let temp = array[i];
+//         array[i] = array[j];
+//         array[j] = temp;
+//     }
+// }
+
+// shuffleArray(puzzles)
+
+//Attempting to randomize cards with shuffleArray function
+
 //total number of wrong guesses
 let incorrectGuesses = 0
 let timeRemaining = 5
@@ -20,10 +33,6 @@ class RhymusGame {
     }
 }
 
-const randomizer = () => {
-    return Math.floor(Math.random() * puzzles.length)
-}
-
 const assignListeners = (e) => {
     if (e.key === 'Enter') checkAnswer()
 }
@@ -34,6 +43,8 @@ const loadCard = (nextCard) => {
     Game.currentCard = nextCard
     updateDisplay()
 }
+
+console.log(puzzles)
 
 const countDown = () => {
     timeRemaining === 0 ? incorrectAnswer() :
@@ -51,7 +62,7 @@ const resetTimer = () => {
 
 
 const updateDisplay = () => {
-
+    console.log(puzzles)
     resetTimer()
     countElement.textContent = `${Game.currentCard.id}/${puzzles.length}`
     rhymeElement.textContent = Game.currentCard.sentence

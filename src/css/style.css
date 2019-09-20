@@ -48,7 +48,7 @@ section#game_canvas {
 }
 
 .rhyme_card.correct {
-  animation: shake 0.72s cubic-bezier(.36,.07,.19,.97) both;
+  /* animation: shake 0.72s cubic-bezier(.36,.07,.19,.97) both; */
   transform: translate3d(0, 0, 0);
   background-color: lightgreen;
 }

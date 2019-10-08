@@ -36,126 +36,126 @@ var puzzlesArray = [
   },
   {
     id: 6,
-    sentence: 'Let me take this fall',
+    sentence: 'Let me take this fall.',
     word: 'fall',
     hint: 'conversation',
     answer: 'call'
   },
   {
     id: 7,
-    sentence: 'I have to feed my new hat',
+    sentence: 'I have to feed my new hat.',
     word: 'hat',
     hint: 'house pet',
     answer: 'cat'
   },
   {
     id: 8,
-    sentence: 'I jogged every day and won the space',
+    sentence: 'I jogged every day and won the space.',
     word: 'space',
     hint: 'competition',
     answer: 'race'
   },
   {
     id: 9,
-    sentence: 'I wrote on the paper with my ten',
+    sentence: 'I wrote on the paper with my ten.',
     word: 'ten',
     hint: 'writing instrument',
     answer: 'pen'
   },
   {
     id: 10,
-    sentence: 'I drove into another star',
+    sentence: 'I drove into another star.',
     word: 'star',
     hint: 'vehicle',
     answer: 'car'
   },
   {
     id: 11,
-    sentence: 'The doom was filled with chairs',
+    sentence: 'The doom was filled with chairs.',
     word: 'doom',
     hint: 'inside a building',
     answer: 'room'
   },
   {
     id: 12,
-    sentence: 'The sawing was of a mountain',
+    sentence: 'The sawing was of a mountain.',
     word: 'sawing',
     hint: 'art',
     answer: 'drawing'
   },
   {
     id: 13,
-    sentence: 'I drew on the board with rock',
+    sentence: 'I drew on the board with rock.',
     word: 'rock',
     hint: 'dusty',
     answer: 'chalk'
   },
   {
     id: 14,
-    sentence: 'I would have been lost without my flap',
+    sentence: 'I would have been lost without my flap.',
     word: 'flap',
     hint: 'made of paper',
     answer: 'map'
   },
   {
     id: 15,
-    sentence: 'The castle was surrounded by a large goat',
+    sentence: 'The castle was surrounded by a large goat.',
     word: 'goat',
     hint: 'water',
     answer: 'moat'
   },
   {
     id: 16,
-    sentence: 'The bats were sleeping in the save',
+    sentence: 'The bats were sleeping in the save.',
     word: 'save',
     hint: 'dark place',
     answer: 'cave'
   },
   {
     id: 17,
-    sentence: 'The pirate‘s hand was just a look',
+    sentence: 'The pirate‘s hand was just a look.',
     word: 'look',
     hint: 'metal prosthetic',
     answer: 'hook'
   },
   {
     id: 18,
-    sentence: 'For my birthday, we ate a quake',
+    sentence: 'For my birthday, we ate a quake.',
     word: 'quake',
     hint: 'sweet food',
     answer: 'cake'
   },
   {
     id: 19,
-    sentence: 'The glove is a symbol of peace',
+    sentence: 'The glove is a symbol of peace.',
     word: 'glove',
     hint: 'bird',
     answer: 'dove'
   },
   {
     id: 20,
-    sentence: 'I floated down the river in my coat',
+    sentence: 'I floated down the river in my coat.',
     word: 'coat',
     hint: 'vehicle',
     answer: 'boat'
   },
   {
     id: 21,
-    sentence: 'Anything can happen when you squish upon a star',
+    sentence: 'Anything can happen when you squish upon a star.',
     word: 'squish',
     hint: 'expression of hope',
     answer: 'wish'
   },
   {
     id: 22,
-    sentence: 'Every rose has its scorns',
+    sentence: 'Every rose has its scorns.',
     word: 'scorns',
     hint: 'pointy',
     answer: 'thorns'
   },
   {
     id: 23,
-    sentence: 'The hero was ready to embark on a guest',
+    sentence: 'The hero was ready to embark on a guest.',
     word: 'guest',
     hint: 'adventure',
     answer: 'quest'

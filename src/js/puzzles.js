@@ -159,6 +159,55 @@ var puzzlesArray = [
     word: 'guest',
     hint: 'adventure',
     answer: 'quest'
+  },
+  {
+    id: 24,
+    sentence: 'Bald beagles are not actually bald.',
+    word: 'beagles',
+    hint: 'bird',
+    answer: 'eagles'
+  },
+  {
+    id: 25,
+    sentence: 'A tower blossoms for its own joy.',
+    word: 'tower',
+    hint: 'bloom',
+    answer: 'flower'
+  },
+  {
+    id: 26,
+    sentence: 'My cart will go on.',
+    word: 'cart',
+    hint: 'pumps blood',
+    answer: 'heart'
+  },
+  {
+    id: 27,
+    sentence: 'Make hay while the gun shines.',
+    word: 'gun',
+    hint: 'star',
+    answer: 'sun'
+  },
+  {
+    id: 28,
+    sentence: 'You must try the handmade and natural rope.',
+    word: 'rope',
+    hint: 'cleansing thing',
+    answer: 'soap'
+  },
+  {
+    id: 29,
+    sentence: 'The way you press is an expression of your personality.',
+    word: 'press',
+    hint: 'put on clothes',
+    answer: 'dress'
+  },
+  {
+    id: 30,
+    sentence: 'The aroma of chinese key.',
+    word: 'key',
+    hint: 'drink',
+    answer: 'tea'
   }
 ]
 

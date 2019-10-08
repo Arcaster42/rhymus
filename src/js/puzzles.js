@@ -82,6 +82,83 @@ var puzzlesArray = [
     word: 'sawing',
     hint: 'art',
     answer: 'drawing'
+  },
+  {
+    id: 13,
+    sentence: 'I drew on the board with rock',
+    word: 'rock',
+    hint: 'dusty',
+    answer: 'chalk'
+  },
+  {
+    id: 14,
+    sentence: 'I would have been lost without my flap',
+    word: 'flap',
+    hint: 'made of paper',
+    answer: 'map'
+  },
+  {
+    id: 15,
+    sentence: 'The castle was surrounded by a large goat',
+    word: 'goat',
+    hint: 'water',
+    answer: 'moat'
+  },
+  {
+    id: 16,
+    sentence: 'The bats were sleeping in the save',
+    word: 'save',
+    hint: 'dark place',
+    answer: 'cave'
+  },
+  {
+    id: 17,
+    sentence: 'The pirate‘s hand was just a look',
+    word: 'look',
+    hint: 'metal prosthetic',
+    answer: 'hook'
+  },
+  {
+    id: 18,
+    sentence: 'For my birthday, we ate a quake',
+    word: 'quake',
+    hint: 'sweet food',
+    answer: 'cake'
+  },
+  {
+    id: 19,
+    sentence: 'The glove is a symbol of peace',
+    word: 'glove',
+    hint: 'bird',
+    answer: 'dove'
+  },
+  {
+    id: 20,
+    sentence: 'I floated down the river in my coat',
+    word: 'coat',
+    hint: 'vehicle',
+    answer: 'boat'
+  },
+  {
+    id: 21,
+    sentence: 'Anything can happen when you squish upon a star',
+    word: 'squish',
+    hint: 'expression of hope',
+    answer: 'wish'
+  },
+  {
+    id: 22,
+    sentence: 'Every rose has its scorns',
+    word: 'scorns',
+    hint: 'pointy',
+    answer: 'thorns'
+  },
+  {
+    id: 23,
+    sentence: 'The hero was ready to embark on a guest',
+    word: 'guest',
+    hint: 'adventure',
+    answer: 'quest'
   }
 ]
 

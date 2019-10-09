@@ -1,9 +1,11 @@
-const puzzles = window.puzzlesArray
-
+const randomNum = Math.floor(Math.random()*20 + 1)
+const puzzles = window.puzzlesArray.splice(randomNum,10)
+console.log(puzzles)
 //total number of wrong guesses
 let incorrectGuesses = 0
 let timeRemaining = 5
-
+let cardNumber = 1
+let correctQuesses = 0
 
 //HTML elements
 const cardBlock = document.getElementById('rhyme_card')
@@ -48,7 +50,7 @@ const resetTimer = () => {
 
 const updateDisplay = () => {
     resetTimer()
-    countElement.textContent = `${Game.currentCard.id}/${puzzles.length}`
+    countElement.textContent = `${cardNumber}/${puzzles.length}`
     rhymeElement.textContent = Game.currentCard.sentence
     guessElement.value = ''
     hint.textContent = ''
@@ -72,13 +74,14 @@ const correctAnswer = () => {
     cardBlock.className += ' correct'
     countElement.className += ' correct'
     guessElement.className += 'correct'
-
+    cardNumber ++
+    correctQuesses ++
     setTimeout(() => {
         cardBlock.className = 'rhyme_card'
         countElement.className = 'rhyme_count'
         guessElement.className = ''
-        if (Game.currentCard.id < puzzles.length) {
-            loadCard(puzzles[Game.currentCard.id])
+        if (cardNumber < puzzles.length) {
+            loadCard(puzzles[cardNumber])
         }
         else {
             gameOver()
@@ -114,9 +117,11 @@ const incorrectAnswer = () => {
 }
 
 const gameOver = () => {
-    if (incorrectGuesses > 4) {
+    if (incorrectGuesses > 4 || correctQuesses === puzzles.length) {
         rhymeElement.textContent = 'Game Over!'
         guessElement.removeEventListener("keydown", assignListeners)
+        cardNumber = 1
+        correctQuesses = 0
 
         setTimeout(() => {
             cardBlock.className = 'rhyme_card'

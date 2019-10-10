@@ -1,8 +1,25 @@
+const shufflePuzzles = (arr1) => {
+    let ctr = arr1.length
+    let index
+    let array
+    while(ctr > 0) {
+        index = Math.floor(Math.random() * ctr)
+        ctr --,
+        array = [arr1[index], arr1[ctr]] = [arr1[ctr], arr1[index]] 
+    }
+    return array
+}
+
 const puzzles = window.puzzlesArray
+
+// Randomize order of puzzles
+shufflePuzzles(puzzles)
 
 //total number of wrong guesses
 let incorrectGuesses = 0
 let timeRemaining = 5
+let cardNumber = 1
+let correctGuesses = 0
 
 
 //HTML elements
@@ -48,7 +65,7 @@ const resetTimer = () => {
 
 const updateDisplay = () => {
     resetTimer()
-    countElement.textContent = `${Game.currentCard.id}/${puzzles.length}`
+    countElement.textContent = `${cardNumber}/${puzzles.length}`
     rhymeElement.textContent = Game.currentCard.sentence
     guessElement.value = ''
     hint.textContent = ''
@@ -72,13 +89,14 @@ const correctAnswer = () => {
     cardBlock.className += ' correct'
     countElement.className += ' correct'
     guessElement.className += 'correct'
-
+    cardNumber ++
+    correctGuesses ++
     setTimeout(() => {
         cardBlock.className = 'rhyme_card'
         countElement.className = 'rhyme_count'
         guessElement.className = ''
-        if (Game.currentCard.id < puzzles.length) {
-            loadCard(puzzles[Game.currentCard.id])
+        if (cardNumber < puzzles.length) {
+            loadCard(puzzles[cardNumber])
         }
         else {
             gameOver()
@@ -114,10 +132,12 @@ const incorrectAnswer = () => {
 }
 
 const gameOver = () => {
-    if (incorrectGuesses > 4) {
+    // Accounts for array starting at 0
+    if (incorrectGuesses > 4 || correctGuesses + 1 === puzzles.length ) {
         rhymeElement.textContent = 'Game Over!'
         guessElement.removeEventListener("keydown", assignListeners)
-
+        cardNumber = 1
+        correctGuesses = 0
         setTimeout(() => {
             cardBlock.className = 'rhyme_card'
             countElement.className = 'rhyme_count'
@@ -130,16 +150,12 @@ const gameOver = () => {
 const restartGame = () => {
     setTimeout(() => {
         guessElement.addEventListener("keydown", assignListeners)
+        shufflePuzzles(puzzles)
         loadCard(puzzles[0])
     }, 1500)
-
-
-
 }
-
-
 
 const Game = new RhymusGame()
 //assignListeners()
-
+// Shuffle cards every time
 loadCard(puzzles[0])

@@ -282,7 +282,7 @@ var puzzlesArray = [
 },
 {
   id: 41,
-  sentence: 'Lets shop at the tall.',
+  sentence: "Let's shop at the tall.",
   word: 'tall',
   hint: 'multiple stores inside one building',
   answer: 'mall'
@@ -296,24 +296,24 @@ var puzzlesArray = [
 },
 {
   id: 43,
-  sentence: 'It is better to practice with in utensil',
+  sentence: 'It is better to practice with a utensil',
   word: 'utensil',
   hint: 'erasable',
   answer: 'pencil'
 },
 {
   id: 44,
-  sentence: 'Pursuit of handiness.',
+  sentence: 'Pursuit of sappiness.',
   word: 'hadniness',
   hint: 'prosperity',
   answer: 'happiness'
 },
 {
   id: 45,
-  sentence: 'You can score many joints.',
-  word: 'joints',
-  hint: 'unit for score',
-  answer: 'points'
+  sentence: 'A football field is 100 cards long.',
+  word: 'cards',
+  hint: 'unit of distance',
+  answer: 'yards'
 }
 
 

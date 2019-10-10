@@ -208,7 +208,116 @@ var puzzlesArray = [
     word: 'key',
     hint: 'drink',
     answer: 'tea'
-  }
+  },
+//////////////////////////////////
+{
+  id: 31,
+  sentence: 'Plastic water throttle.',
+  word: 'throttle',
+  hint: 'contains drinks',
+  answer: 'bottle'
+},
+{
+  id: 32,
+  sentence: 'The fry is the limit.',
+  word: 'fry',
+  hint: 'where the clouds are',
+  answer: 'sky'
+},
+{
+  id: 33,
+  sentence: 'We need to push the lace.',
+  word: 'lace',
+  hint: 'tempo/speed',
+  answer: 'pace'
+},
+{
+  id: 34,
+  sentence: 'I sink, therefore I am',
+  word: 'sink',
+  hint: 'ponder',
+  answer: 'think'
+},
+{
+  id: 35,
+  sentence: 'The apple does not fall from the spree',
+  word: 'spree',
+  hint: 'plant',
+  answer: 'tree'
+},
+{
+  id: 36,
+  sentence: 'My favourite snack is potato kips',
+  word: 'kips',
+  hint: 'lays',
+  answer: 'chips'
+},
+{
+  id: 37,
+  sentence: 'I will call your phone lumber.',
+  word: 'lumber',
+  hint: 'digits',
+  answer: 'number'
+},
+{
+  id: 38,
+  sentence: 'Benefit of the clout.',
+  word: 'clout',
+  hint: 'uncertainty',
+  answer: 'doubt'
+},
+{
+  id: 39,
+  sentence: 'Most Valuable Layer',
+  word: 'layer',
+  hint: 'member of a sports team',
+  answer: 'player'
+},
+{
+  id: 40,
+  sentence: 'Call me on my work cone.',
+  word: 'cone',
+  hint: 'calling device',
+  answer: 'phone'
+},
+{
+  id: 41,
+  sentence: "Let's shop at the tall.",
+  word: 'tall',
+  hint: 'multiple stores inside one building',
+  answer: 'mall'
+},
+{
+  id: 42,
+  sentence: 'Learn how to strive a truck.',
+  word: 'strive',
+  hint: 'you need a license to do this',
+  answer: 'drive'
+},
+{
+  id: 43,
+  sentence: 'It is better to practice with a utensil',
+  word: 'utensil',
+  hint: 'erasable',
+  answer: 'pencil'
+},
+{
+  id: 44,
+  sentence: 'Pursuit of sappiness.',
+  word: 'hadniness',
+  hint: 'prosperity',
+  answer: 'happiness'
+},
+{
+  id: 45,
+  sentence: 'A football field is 100 cards long.',
+  word: 'cards',
+  hint: 'unit of distance',
+  answer: 'yards'
+}
+
+
+
 ]
 
 module.exports = puzzlesArray

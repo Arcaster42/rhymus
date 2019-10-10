@@ -314,7 +314,7 @@ var puzzlesArray = [
   word: 'joints',
   hint: 'unit for score',
   answer: 'points'
-},
+}
 
 
 

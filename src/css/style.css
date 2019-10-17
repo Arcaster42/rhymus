@@ -7,8 +7,11 @@ body {
   height: 100vh;
 }
 
+
+
 header {
   background-color: #2a6592;
+  background-image: linear-gradient(to bottom right, white, blue); 
   width: 100%;
   flex-grow: 1;
   display: flex;
@@ -29,6 +32,7 @@ li {
   font-size: 20px;
   border: 1px solid white;
   padding: 15px;
+  padding-right: 18px;  
   width: 50px;
   text-align: center;
   margin-right: 15px;
@@ -37,7 +41,7 @@ li {
 
 li:hover {
   cursor: pointer;
-  background-color: #28608a;
+  background-color: #00ac81;
 }
 
 li:active {
@@ -46,6 +50,8 @@ li:active {
 
 section#game_canvas {
   background-color: #347bb2;
+  background-image: linear-gradient(to bottom left, blue, white);
+  
   flex-grow: 9;
   display: flex;
   justify-content: center;
@@ -56,7 +62,7 @@ section#game_canvas {
   background-color: white;
   width: 35%;
   height: 275px;
-  border-radius: 4px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -102,12 +108,16 @@ section#game_canvas {
 
 .rhyme_count {
   display: flex;
+  border-radius: 3px;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
   height: 40px;
   background-color: lightgray;
   transition: all 1s;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 18px;
 }
 
 .rhyme_count.correct {
@@ -127,14 +137,22 @@ section#game_canvas {
   margin-bottom: 50px;
   text-align: center;
   border: none;
+  border-radius: 3px;
   outline: none;
   transition: all 1s;
+  background-color: rgb(224, 222, 222);
 }
 #incorrect {
   font-size: 15px;
   text-align: center;
   border: none;
   outline: none;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 18px;
+  color: rgb(204, 0, 0)
+  
 }
 
 #hint {
@@ -142,6 +160,9 @@ section#game_canvas {
   text-align: center;
   border: none;
   outline: none;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+  font-size: 18px;
 }
 
 #rhyme_guess.correct {
@@ -150,4 +171,15 @@ section#game_canvas {
 
 #rhyme_guess.incorrect {
   background-color: red;
+}
+
+#rhyme_number{
+  padding-left: 10px;
+}
+
+.title{
+  padding-right: 65%;
+  font-weight: bold;
+  font-size: 52px;
+  font-family: sans-serif;
 }

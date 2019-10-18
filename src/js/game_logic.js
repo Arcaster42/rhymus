@@ -1,4 +1,4 @@
-const PLAY_TIME_SECONDS = 5
+const playTimeSeconds = 30
 
 const shufflePuzzles = (arr1) => {
     let ctr = arr1.length
@@ -19,7 +19,7 @@ shufflePuzzles(puzzles)
 
 //total number of wrong guesses
 let incorrectGuesses = 0
-let timeRemaining = PLAY_TIME_SECONDS
+let timeRemaining = playTimeSeconds
 let cardNumber = 1
 let correctGuesses = 0
 
@@ -157,7 +157,7 @@ const gameOver = () => {
 
 const restartGame = () => {
     if (!timerDisplay.classList.contains('running')) {
-        timeRemaining = PLAY_TIME_SECONDS
+        timeRemaining = playTimeSeconds
         timerDisplay.classList.remove('gameover')
         setTimeout(() => {
             guessElement.addEventListener("keydown", assignListeners)

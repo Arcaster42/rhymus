@@ -1,3 +1,5 @@
+const PLAY_TIME_SECONDS = 5
+
 const shufflePuzzles = (arr1) => {
     let ctr = arr1.length
     let index
@@ -17,7 +19,7 @@ shufflePuzzles(puzzles)
 
 //total number of wrong guesses
 let incorrectGuesses = 0
-let timeRemaining = 5
+let timeRemaining = PLAY_TIME_SECONDS
 let cardNumber = 1
 let correctGuesses = 0
 
@@ -30,10 +32,13 @@ const guessElement = document.getElementById('rhyme_guess')
 const wrongElement = document.getElementById('incorrect')
 const hint = document.getElementById('hint')
 const timerDisplay = document.getElementById('timer')
+const startButton = document.getElementById('start')
+const restartButton = document.getElementById('restart')
 
 class RhymusGame {
     constructor() {
         this.currentCard = undefined
+        timerDisplay.textContent = getTimerString(timeRemaining)
     }
 }
 
@@ -49,8 +54,12 @@ const loadCard = (nextCard) => {
 }
 
 const countDown = () => {
-    timeRemaining === 0 ? incorrectAnswer() :
-        (timerDisplay.textContent = timeRemaining--)
+    timeRemaining === 0 ? gameOver() :
+        (timerDisplay.textContent = getTimerString(timeRemaining--))
+}
+
+const getTimerString = (timeRemaining) => {
+    return `00:${timeRemaining.toString().padStart(2, '0')}`
 }
 
 // Created timer variable in outer scope so that resetTimer is always clearing the same timer interval that was created. 
@@ -60,6 +69,7 @@ let timer = null
 const resetTimer = () => {
     clearInterval(timer)
     timer = setInterval(countDown, 1000)
+    timerDisplay.classList.add('running')
 }
 
 
@@ -71,8 +81,6 @@ const updateDisplay = () => {
     hint.textContent = ''
     wrongElement.textContent = ''
     incorrectGuesses = 0
-    //resetting time between cards
-    timeRemaining = 5
 }
 
 const checkAnswer = () => {
@@ -113,8 +121,6 @@ const incorrectAnswer = () => {
     countElement.className += ' incorrect'
     guessElement.className += 'incorrect'
     incorrectGuesses++
-    timer.textContent = timeRemaining
-    timeRemaining = 5
 
     setTimeout(() => {
         cardBlock.className = 'rhyme_card'
@@ -133,7 +139,10 @@ const incorrectAnswer = () => {
 
 const gameOver = () => {
     // Accounts for array starting at 0
-    if (incorrectGuesses > 4 || correctGuesses + 1 === puzzles.length ) {
+    if (timeRemaining === 0 || correctGuesses + 1 === puzzles.length ) {
+        timerDisplay.textContent = getTimerString(timeRemaining)
+        timerDisplay.classList.remove('running')
+        timerDisplay.classList.add('gameover')
         rhymeElement.textContent = 'Game Over!'
         guessElement.removeEventListener("keydown", assignListeners)
         cardNumber = 1
@@ -143,19 +152,26 @@ const gameOver = () => {
             countElement.className = 'rhyme_count'
             guessElement.className = ''
         }, 3000)
-        restartGame()
     }
 }
 
 const restartGame = () => {
-    setTimeout(() => {
-        guessElement.addEventListener("keydown", assignListeners)
-        shufflePuzzles(puzzles)
-        loadCard(puzzles[0])
-    }, 1500)
+    if (!timerDisplay.classList.contains('running')) {
+        timeRemaining = PLAY_TIME_SECONDS
+        timerDisplay.classList.remove('gameover')
+        setTimeout(() => {
+            guessElement.addEventListener("keydown", assignListeners)
+            shufflePuzzles(puzzles)
+            loadCard(puzzles[0])
+        }, 1500)
+        guessElement.focus()
+    }
 }
+
+startButton.addEventListener('click', restartGame)
+restartButton.addEventListener('click', restartGame)
 
 const Game = new RhymusGame()
 //assignListeners()
 // Shuffle cards every time
-loadCard(puzzles[0])
+restartGame()

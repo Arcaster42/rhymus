@@ -9,40 +9,37 @@
     <title>Rhymus</title>
   </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="../css/style.css">
-  <title>Rhymus</title>
-</head>
-
-<body>
-
-  <section id="game_canvas">
-    <header>
-      <ul>
-        <li class="header_button">Start</li>
-        <li class="header_button header_button--danger">Restart</li>
-      </ul>
-    </header>
-    <div class="rhyme_card" id="rhyme_card">
-      <div class='rhyme_count_contianer center'>
-        <div class="rhyme_count" id="rhyme_count"> <span></span></div>
-      </div>
-      <p class="rhyme" id="rhyme"></p>
-      <div class='card_info'>
-        <div id="hint"></div>
-        <div id="incorrect"></div>
-        <div class='card_info_input center'>
-          <input type="text" id="rhyme_guess" name="rhyme_guess" placeholder="Write your guess here">
-          <div id="timer"></div>
+  <body>
+    <section id="game_canvas">
+      <header>
+        <ul>
+          <li class="header_button">Start</li>
+          <li class="header_button header_button--danger">Restart</li>
+        </ul>
+      </header>
+      <div class="rhyme_card" id="rhyme_card">
+        <div class="rhyme_count_container center">
+          <div class="rhyme_count" id="rhyme_count"><span></span></div>
+        </div>
+        <p class="rhyme" id="rhyme"></p>
+        <div class="card_info_outer center">
+          <div id="hint" class="center"></div>
+          <div class="card_info center">
+            <div id="incorrect"></div>
+            <div class="card_info_input center">
+              <input
+                type="text"
+                id="rhyme_guess"
+                name="rhyme_guess"
+                placeholder="Write your guess here"
+              />
+              <div id="timer" class="center"></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <script src="../js/puzzles.js"></script>
-  <script src="../js/game_logic.js"></script>
-</body>
-
+    </section>
+    <script src="../js/puzzles.js"></script>
+    <script src="../js/game_logic.js"></script>
+  </body>
 </html>

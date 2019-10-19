@@ -7,7 +7,7 @@ const shufflePuzzles = (arr1) => {
     while(ctr > 0) {
         index = Math.floor(Math.random() * ctr)
         ctr --,
-        array = [arr1[index], arr1[ctr]] = [arr1[ctr], arr1[index]] 
+        array = [arr1[index], arr1[ctr]] = [arr1[ctr], arr1[index]]
     }
     return array
 }
@@ -45,7 +45,7 @@ class RhymusGame {
 const assignListeners = (e) => {
     if (e.key === 'Enter') checkAnswer()
 }
-//add event listener 
+//add event listener
 guessElement.addEventListener("keydown", assignListeners)
 
 const loadCard = (nextCard) => {
@@ -62,7 +62,7 @@ const getTimerString = (timeRemaining) => {
     return `00:${timeRemaining.toString().padStart(2, '0')}`
 }
 
-// Created timer variable in outer scope so that resetTimer is always clearing the same timer interval that was created. 
+// Created timer variable in outer scope so that resetTimer is always clearing the same timer interval that was created.
 // This prevents intervals from stacking on top of each other.
 // It's initialized as null so that the interval doesn't start before resetTimer is invoked inside updateDisplay.
 let timer = null
@@ -75,7 +75,7 @@ const resetTimer = () => {
 
 const updateDisplay = () => {
     resetTimer()
-    countElement.textContent = `${cardNumber}/${puzzles.length}`
+    countElement.textContent = `${cardNumber} of ${puzzles.length}`
     rhymeElement.textContent = Game.currentCard.sentence
     guessElement.value = ''
     hint.textContent = ''
@@ -127,7 +127,7 @@ const incorrectAnswer = () => {
         countElement.className = 'rhyme_count'
         guessElement.className = ''
     }, 500)
-    wrongElement.textContent = 'Wrong Guesses: ' + incorrectGuesses
+    wrongElement.textContent = 'incorrect guesses: ' + incorrectGuesses
     //if there are more than 4 incorrect guesses on a single card the player loses
     if (incorrectGuesses > 2 && incorrectGuesses < 4) {
         hint.textContent = 'Hint: ' + capitalizeFirstLetter()

@@ -1,19 +1,43 @@
 /* FEEL FREE TO ADD STYLING */
+:root {
+  --bg: #dfdfdf;
+  --primary: #3182a6;
+  --danger: #ef5350;
+  --white: #fff;
+  --light-grey: #B0B0B0;
+  --hint-grey: #EFEFEF;
+  --primary-gradient: linear-gradient(166.21deg, #2a8c92 2.56%, #347bb2 122.3%);
+  --s-border-radius: 3px;
+  --l-border-radius: 8px;
+  --base-font: 16px;
+  --font: 'Roboto', sans-serif;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
 
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+  font-family: var(--font);
 }
 
-header {
-  background-color: #2a6592;
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+section#game_canvas {
+  width: 300px;
 }
 
 header #timer {
@@ -33,43 +57,45 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: space-around;
 }
 
-li {
-  display: inline-block;
+header {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.header_button {
+  background: var(--primary-gradient);
+  height: 30px;
+  width: 110px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--s-border-radius);
   color: white;
-  opacity: 0.9;
-  font-size: 20px;
-  border: 1px solid white;
-  padding: 15px;
-  width: 50px;
-  text-align: center;
-  margin-right: 15px;
-  border-radius: 6px;
 }
 
-li:hover {
+.header_button:hover {
   cursor: pointer;
   background-color: #28608a;
 }
 
-li:active {
+.header_button:active {
   background-color: #225277;
 }
 
-section#game_canvas {
-  background-color: #347bb2;
-  flex-grow: 9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.header_button--danger {
+  color: var(--danger);
+  background: none;
 }
 
 .rhyme_card {
-  background-color: white;
-  width: 35%;
-  height: 275px;
-  border-radius: 4px;
+  background: var(--primary-gradient);
+  height: 350px;
+  border-radius: var(--l-border-radius);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -87,6 +113,113 @@ section#game_canvas {
   animation: shake 0.52s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   background-color: red;
+}
+
+.rhyme {
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0 20px;
+  color: var(--white)
+}
+
+.rhyme_count_container {
+  width: 100%;
+  transition: all 1s;
+  justify-content: flex-end;
+}
+
+.rhyme_count {
+  padding: 10px 20px;
+  background-color: var(--white);
+  border-top-right-radius: var(--l-border-radius);
+  border-bottom-left-radius: var(--l-border-radius);
+  color: var(--primary);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.rhyme_count.correct {
+  background-color: green;
+}
+
+.rhyme_count.incorrect {
+  background-color: maroon;
+}
+
+.rhyme_count span {
+  margin-left: 10px;
+}
+
+#rhyme_guess {
+  font-size: .9rem;
+  text-align: center;
+  border: none;
+  outline: none;
+  transition: all 1s;
+}
+
+#rhyme_guess.correct {
+  background-color: lightgreen;
+}
+
+#rhyme_guess.incorrect {
+  background-color: red;
+}
+
+.card_info_outer {
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: unset;
+}
+
+.card_info {
+  background: var(--white);
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 67px;
+  position: relative;
+  border-bottom-right-radius: var(--l-border-radius);
+  border-bottom-left-radius: var(--l-border-radius);
+}
+
+.card_info_input {
+  width: 100%;
+  justify-content: space-around;
+}
+
+#incorrect {
+  font-size: 15px;
+  text-align: center;
+  border: none;
+  outline: none;
+  color: var(--light-grey);
+}
+
+#hint {
+  height: 25px;
+  color: var(--primary);
+  background-color: var(--hint-grey);
+  font-size: 15px;
+  text-align: center;
+  border: none;
+  outline: none;
+}
+
+#timer {
+  width: 40px;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--primary);
+  color: var(--white);
+  border-top-left-radius: var(--l-border-radius);
+  border-bottom-right-radius: var(--l-border-radius);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 12px;
 }
 
 @keyframes shake {
@@ -107,60 +240,4 @@ section#game_canvas {
   60% {
     transform: translate3d(4px, 3px, 0);
   }
-}
-
-.rhyme {
-  font-size: 30px;
-}
-
-.rhyme_count {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  height: 40px;
-  background-color: lightgray;
-  transition: all 1s;
-}
-
-.rhyme_count.correct {
-  background-color: green;
-}
-
-.rhyme_count.incorrect {
-  background-color: maroon;
-}
-
-.rhyme_count span {
-  margin-left: 10px;
-}
-
-#rhyme_guess {
-  font-size: 30px;
-  margin-bottom: 50px;
-  text-align: center;
-  border: none;
-  outline: none;
-  transition: all 1s;
-}
-#incorrect {
-  font-size: 15px;
-  text-align: center;
-  border: none;
-  outline: none;
-}
-
-#hint {
-  font-size: 15px;
-  text-align: center;
-  border: none;
-  outline: none;
-}
-
-#rhyme_guess.correct {
-  background-color: lightgreen;
-}
-
-#rhyme_guess.incorrect {
-  background-color: red;
 }

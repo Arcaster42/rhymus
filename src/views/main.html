@@ -10,21 +10,27 @@
 </head>
 
 <body>
-  <header>
-    <div id="timer"></div>
-    <ul>
-      <li id="start" class="header_button">Start</li>
-      <li id="restart" class="header_button">Restart</li>
-    </ul>
-  </header>
 
   <section id="game_canvas">
+    <header>
+      <ul>
+        <li class="header_button">Start</li>
+        <li class="header_button header_button--danger">Restart</li>
+      </ul>
+    </header>
     <div class="rhyme_card" id="rhyme_card">
-      <div class="rhyme_count" id="rhyme_count"> <span></span></div>
+      <div class='rhyme_count_contianer center'>
+        <div class="rhyme_count" id="rhyme_count"> <span></span></div>
+      </div>
       <p class="rhyme" id="rhyme"></p>
-      <input type="text" id="rhyme_guess" name="rhyme_guess" placeholder="Write your guess here">
-      <div id="incorrect"></div>
-      <div id="hint"></div>
+      <div class='card_info'>
+        <div id="hint"></div>
+        <div id="incorrect"></div>
+        <div class='card_info_input center'>
+          <input type="text" id="rhyme_guess" name="rhyme_guess" placeholder="Write your guess here">
+          <div id="timer"></div>
+        </div>
+      </div>
     </div>
   </section>
   <script src="../js/puzzles.js"></script>

@@ -79,6 +79,10 @@ header {
   color: white;
 }
 
+.header_button_start {
+  box-shadow: var(--drop-shadow);
+}
+
 .header_button:hover {
   cursor: pointer;
   background-color: #28608a;

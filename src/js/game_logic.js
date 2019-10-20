@@ -32,8 +32,8 @@ const guessElement = document.getElementById('rhyme_guess')
 const wrongElement = document.getElementById('incorrect')
 const hint = document.getElementById('hint')
 const timerDisplay = document.getElementById('timer')
-const startButton = document.getElementById('start')
-const restartButton = document.getElementById('restart')
+const startButton = document.querySelector('.header_button_start')
+const restartButton = document.querySelector('.header_button_restart')
 
 class RhymusGame {
     constructor() {

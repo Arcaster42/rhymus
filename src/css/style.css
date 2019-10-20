@@ -85,7 +85,7 @@ header {
 
 .header_button:hover {
   cursor: pointer;
-  background-color: #28608a;
+  background-color: var(--light-grey);
 }
 
 .header_button:active {

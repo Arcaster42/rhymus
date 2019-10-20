@@ -11,6 +11,7 @@
   --l-border-radius: 8px;
   --base-font: 16px;
   --font: 'Roboto', sans-serif;
+  --drop-shadow: 0px 4px 12px rgba(42, 101, 146, 0.4);
 }
 
 .center {
@@ -101,6 +102,7 @@ header {
   justify-content: space-between;
   align-items: center;
   transition: all 1s;
+  box-shadow: var(--drop-shadow);
 }
 
 .rhyme_card.correct {

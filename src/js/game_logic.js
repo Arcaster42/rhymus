@@ -59,7 +59,7 @@ const countDown = () => {
 }
 
 const getTimerString = (timeRemaining) => {
-    return `00:${timeRemaining.toString().padStart(2, '0')}`
+    return `${timeRemaining.toString().padStart(2, '0')}`
 }
 
 // Created timer variable in outer scope so that resetTimer is always clearing the same timer interval that was created.

@@ -51,7 +51,7 @@ header #timer.running {
   color: lightgreen;
 }
 header #timer.gameover {
-  color: red;
+  color: var(--danger);
 }
 
 ul {
@@ -89,7 +89,7 @@ header {
 }
 
 .header_button:active {
-  background-color: #225277;
+  background-color: var(--primary);
 }
 
 .header_button--danger {
@@ -118,7 +118,7 @@ header {
 .rhyme_card.incorrect {
   animation: shake 0.52s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
-  background-color: red;
+  background-color: var(--danger);
 }
 
 .rhyme {
@@ -150,7 +150,8 @@ header {
 }
 
 .rhyme_count.incorrect {
-  background-color: maroon;
+  background-color: var(--danger);
+  color: var(--white);
 }
 
 .rhyme_count span {
@@ -170,7 +171,8 @@ header {
 }
 
 #rhyme_guess.incorrect {
-  background-color: red;
+  background-color: var(--danger);
+  color: var(--white);
 }
 
 .card_info_outer {

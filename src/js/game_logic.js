@@ -126,6 +126,7 @@ const incorrectAnswer = () => {
     wrongElement.textContent = 'incorrect guesses: ' + incorrectGuesses
     //if there are more than 4 incorrect guesses on a single card the player loses
     if (incorrectGuesses > 2 && incorrectGuesses < 4) {
+        hint.style.display = 'flex';
         hint.textContent = 'Hint: ' + capitalizeFirstLetter()
     } else {
         gameOver()

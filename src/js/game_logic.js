@@ -144,6 +144,8 @@ const gameOver = () => {
         timerDisplay.classList.remove('running')
         timerDisplay.classList.add('gameover')
         rhymeElement.textContent = 'Game Over!'
+        timerDisplay.style.setProperty('background', 'var(--danger)');
+        cardBlock.style.setProperty('background', 'var(--danger)');
         guessElement.removeEventListener("keydown", assignListeners)
         cardNumber = 1
         correctGuesses = 0
@@ -163,6 +165,7 @@ const restartGame = () => {
             guessElement.addEventListener("keydown", assignListeners)
             shufflePuzzles(puzzles)
             loadCard(puzzles[0])
+            startButton.disabled = true;
         }, 1500)
         guessElement.focus()
     }

@@ -69,7 +69,6 @@ header {
 
 .header_button {
   background: var(--primary-gradient);
-  height: 30px;
   width: 110px;
   padding: 10px;
   display: flex;
@@ -77,6 +76,8 @@ header {
   align-items: center;
   border-radius: var(--s-border-radius);
   color: white;
+  border: 0;
+  font-size: 0.9rem;
 }
 
 .header_button_start {
@@ -95,6 +96,17 @@ header {
 .header_button--danger {
   color: var(--danger);
   background: none;
+}
+
+.header_button--danger:hover {
+  background: var(--danger);
+  color: var(--white);
+}
+
+.header_button:disabled {
+  background: var(--light-grey);
+  box-shadow: none;
+  transition: all 1s;
 }
 
 .rhyme_card {

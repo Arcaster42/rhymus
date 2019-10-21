@@ -118,6 +118,7 @@ const incorrectAnswer = () => {
     cardBlock.className += ' incorrect'
     guessElement.className += 'incorrect'
     incorrectGuesses++
+    guessElement.value = ''
 
     setTimeout(() => {
         cardBlock.className = 'rhyme_card'

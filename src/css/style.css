@@ -122,7 +122,6 @@ header {
 }
 
 .rhyme_card.correct {
-  animation: shake 0.72s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   background-color: lightgreen;
 }
@@ -225,6 +224,7 @@ header {
   text-align: center;
   border: none;
   outline: none;
+  display: none;
 }
 
 #timer {

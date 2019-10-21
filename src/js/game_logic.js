@@ -7,7 +7,7 @@ const shufflePuzzles = (arr1) => {
     while(ctr > 0) {
         index = Math.floor(Math.random() * ctr)
         ctr --,
-        array = [arr1[index], arr1[ctr]] = [arr1[ctr], arr1[index]] 
+        array = [arr1[index], arr1[ctr]] = [arr1[ctr], arr1[index]]
     }
     return array
 }
@@ -32,8 +32,8 @@ const guessElement = document.getElementById('rhyme_guess')
 const wrongElement = document.getElementById('incorrect')
 const hint = document.getElementById('hint')
 const timerDisplay = document.getElementById('timer')
-const startButton = document.getElementById('start')
-const restartButton = document.getElementById('restart')
+const startButton = document.querySelector('.header_button_start')
+const restartButton = document.querySelector('.header_button_restart')
 
 class RhymusGame {
     constructor() {
@@ -45,7 +45,7 @@ class RhymusGame {
 const assignListeners = (e) => {
     if (e.key === 'Enter') checkAnswer()
 }
-//add event listener 
+//add event listener
 guessElement.addEventListener("keydown", assignListeners)
 
 const loadCard = (nextCard) => {
@@ -59,10 +59,10 @@ const countDown = () => {
 }
 
 const getTimerString = (timeRemaining) => {
-    return `00:${timeRemaining.toString().padStart(2, '0')}`
+    return `${timeRemaining.toString().padStart(2, '0')}`
 }
 
-// Created timer variable in outer scope so that resetTimer is always clearing the same timer interval that was created. 
+// Created timer variable in outer scope so that resetTimer is always clearing the same timer interval that was created.
 // This prevents intervals from stacking on top of each other.
 // It's initialized as null so that the interval doesn't start before resetTimer is invoked inside updateDisplay.
 let timer = null
@@ -75,7 +75,7 @@ const resetTimer = () => {
 
 const updateDisplay = () => {
     resetTimer()
-    countElement.textContent = `${cardNumber}/${puzzles.length}`
+    countElement.textContent = `${cardNumber} of ${puzzles.length}`
     rhymeElement.textContent = Game.currentCard.sentence
     guessElement.value = ''
     hint.textContent = ''
@@ -95,13 +95,11 @@ const checkAnswer = () => {
 
 const correctAnswer = () => {
     cardBlock.className += ' correct'
-    countElement.className += ' correct'
     guessElement.className += 'correct'
     cardNumber ++
     correctGuesses ++
     setTimeout(() => {
         cardBlock.className = 'rhyme_card'
-        countElement.className = 'rhyme_count'
         guessElement.className = ''
         if (cardNumber < puzzles.length) {
             loadCard(puzzles[cardNumber])
@@ -118,18 +116,18 @@ const capitalizeFirstLetter = () => {
 
 const incorrectAnswer = () => {
     cardBlock.className += ' incorrect'
-    countElement.className += ' incorrect'
     guessElement.className += 'incorrect'
     incorrectGuesses++
+    guessElement.value = ''
 
     setTimeout(() => {
         cardBlock.className = 'rhyme_card'
-        countElement.className = 'rhyme_count'
         guessElement.className = ''
     }, 500)
-    wrongElement.textContent = 'Wrong Guesses: ' + incorrectGuesses
+    wrongElement.textContent = 'incorrect guesses: ' + incorrectGuesses
     //if there are more than 4 incorrect guesses on a single card the player loses
     if (incorrectGuesses > 2 && incorrectGuesses < 4) {
+        hint.style.display = 'flex';
         hint.textContent = 'Hint: ' + capitalizeFirstLetter()
     } else {
         gameOver()
@@ -144,6 +142,9 @@ const gameOver = () => {
         timerDisplay.classList.remove('running')
         timerDisplay.classList.add('gameover')
         rhymeElement.textContent = 'Game Over!'
+        timerDisplay.style.setProperty('background', 'var(--danger)');
+        cardBlock.style.setProperty('background', 'var(--danger)');
+        hint.style.display = 'none';
         guessElement.removeEventListener("keydown", assignListeners)
         cardNumber = 1
         correctGuesses = 0
@@ -159,10 +160,13 @@ const restartGame = () => {
     if (!timerDisplay.classList.contains('running')) {
         timeRemaining = playTimeSeconds
         timerDisplay.classList.remove('gameover')
+        timerDisplay.style.setProperty('background', 'var(--primary-gradient)');
+        cardBlock.style.setProperty('background', 'var(--primary-gradient)');
         setTimeout(() => {
             guessElement.addEventListener("keydown", assignListeners)
             shufflePuzzles(puzzles)
             loadCard(puzzles[0])
+            startButton.disabled = true;
         }, 1500)
         guessElement.focus()
     }

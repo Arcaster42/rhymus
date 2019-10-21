@@ -177,6 +177,10 @@ header {
   transition: all 1s;
 }
 
+#rhyme_guess::placeholder {
+  color: var(--light-grey);
+}
+
 #rhyme_guess.correct {
   background-color: lightgreen;
 }

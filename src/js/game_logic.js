@@ -95,13 +95,11 @@ const checkAnswer = () => {
 
 const correctAnswer = () => {
     cardBlock.className += ' correct'
-    countElement.className += ' correct'
     guessElement.className += 'correct'
     cardNumber ++
     correctGuesses ++
     setTimeout(() => {
         cardBlock.className = 'rhyme_card'
-        countElement.className = 'rhyme_count'
         guessElement.className = ''
         if (cardNumber < puzzles.length) {
             loadCard(puzzles[cardNumber])
@@ -118,13 +116,11 @@ const capitalizeFirstLetter = () => {
 
 const incorrectAnswer = () => {
     cardBlock.className += ' incorrect'
-    countElement.className += ' incorrect'
     guessElement.className += 'incorrect'
     incorrectGuesses++
 
     setTimeout(() => {
         cardBlock.className = 'rhyme_card'
-        countElement.className = 'rhyme_count'
         guessElement.className = ''
     }, 500)
     wrongElement.textContent = 'incorrect guesses: ' + incorrectGuesses

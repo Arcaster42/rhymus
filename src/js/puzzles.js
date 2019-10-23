@@ -314,9 +314,28 @@ var puzzlesArray = [
   word: 'cards',
   hint: 'unit of distance',
   answer: 'yards'
+},
+{
+  id: 46,
+  sentence: 'I left my boat at the rock',
+  word: 'rock',
+  hint: 'building on water',
+  answer: 'dock'
+},
+{
+  id: 47,
+  sentence: 'Everytime it gains, it pours',
+  word: 'gains',
+  hint: 'weather',
+  answer: 'rains'
+},
+{
+  id: 48,
+  sentence: 'Are you sure this will be sun?',
+  word: 'sun',
+  hint: 'Time of my life',
+  answer: 'fun'
 }
-
-
 
 ]
 

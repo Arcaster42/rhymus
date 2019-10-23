@@ -9,7 +9,7 @@ var puzzlesArray = [
   {
     id: 2,
     sentence: 'I did not hear the phone because I was a sheep.',
-    word: 'a sheep',
+    word: 'sheep',
     hint: 'tired',
     answer: 'asleep'
   },
@@ -141,8 +141,8 @@ var puzzlesArray = [
   },
   {
     id: 21,
-    sentence: 'Anything can happen when you squish upon a star.',
-    word: 'squish',
+    sentence: 'Anything can happen when you swish upon a star.',
+    word: 'swish',
     hint: 'expression of hope',
     answer: 'wish'
   },
@@ -247,8 +247,8 @@ var puzzlesArray = [
 },
 {
   id: 36,
-  sentence: 'My favourite snack is potato kips.',
-  word: 'kips',
+  sentence: 'My favourite snack is potato clips',
+  word: 'clips',
   hint: 'lays',
   answer: 'chips'
 },
@@ -296,15 +296,15 @@ var puzzlesArray = [
 },
 {
   id: 43,
-  sentence: 'It is better to practice with a utensil.',
-  word: 'utensil',
+  sentence: 'It is better to practice with a council',
+  word: 'council',
   hint: 'erasable',
   answer: 'pencil'
 },
 {
   id: 44,
-  sentence: 'Pursuit of sappiness.',
-  word: 'hadniness',
+  sentence: 'Pursuit of witness.',
+  word: 'witness',
   hint: 'prosperity',
   answer: 'happiness'
 },

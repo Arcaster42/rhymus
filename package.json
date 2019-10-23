@@ -6,11 +6,13 @@
     "mocha-jsdom": "^2.0.0"
   },
   "scripts": {
-    "test": "concurrently \" npm run test-unit\" \" npm run test-browser\"",
+    "test": "npm run fetch-rhyme-dictionary && concurrently \" npm run test-unit\" \" npm run test-browser\"",
     "test-unit": "mocha ./tests/**/*-spec.js",
-    "test-browser": "mocha-chrome ./tests/spec.html --reporter=Spec --ignore-exceptions"
+    "test-browser": "mocha-chrome ./tests/spec.html --reporter=Spec --ignore-exceptions",
+    "fetch-rhyme-dictionary": "[ -f cmudict.0.7a ] || node_modules/rhyme-plus/data/fetch.sh"
   },
   "devDependencies": {
-    "mocha-chrome": "^2.2.0"
+    "mocha-chrome": "^2.2.0",
+    "rhyme-plus": "^0.0.7"
   }
 }

@@ -38,7 +38,7 @@ var puzzlesArray = [
     id: 6,
     sentence: 'Let me take this fall.',
     word: 'fall',
-    hint: 'conversation',
+    hint: 'phone conversation',
     answer: 'call'
   },
   {
@@ -148,7 +148,7 @@ var puzzlesArray = [
   },
   {
     id: 22,
-    sentence: 'Every rose has its scorns.',
+    sentence: 'Every rose has it‘s scorns.',
     word: 'scorns',
     hint: 'pointy',
     answer: 'thorns'
@@ -169,7 +169,7 @@ var puzzlesArray = [
   },
   {
     id: 25,
-    sentence: 'A tower blossoms for its own joy.',
+    sentence: 'A tower blossoms for it‘s own joy.',
     word: 'tower',
     hint: 'bloom',
     answer: 'flower'
@@ -291,12 +291,12 @@ var puzzlesArray = [
   id: 42,
   sentence: 'Learn how to strive a truck.',
   word: 'strive',
-  hint: 'you need a license to do this',
+  hint: 'operate or control the truck‘s movement',
   answer: 'drive'
 },
 {
   id: 43,
-  sentence: 'It is better to practice with a utensil',
+  sentence: 'It‘s better to practice with a utensil',
   word: 'utensil',
   hint: 'erasable',
   answer: 'pencil'
@@ -304,7 +304,7 @@ var puzzlesArray = [
 {
   id: 44,
   sentence: 'Pursuit of sappiness.',
-  word: 'hadniness',
+  word: 'sappiness',
   hint: 'prosperity',
   answer: 'happiness'
 },
@@ -333,7 +333,7 @@ var puzzlesArray = [
   id: 48,
   sentence: 'Are you sure this will be sun?',
   word: 'sun',
-  hint: 'Time of my life',
+  hint: 'enjoyment',
   answer: 'fun'
 }
 

@@ -319,7 +319,7 @@ var puzzlesArray = [
   id: 46,
   sentence: 'I left my boat at the rock',
   word: 'rock',
-  hint: 'on water',
+  hint: 'building on water',
   answer: 'dock'
 },
 {
@@ -331,9 +331,9 @@ var puzzlesArray = [
 },
 {
   id: 48,
-  sentence: 'Are you sure, this will be sun?',
+  sentence: 'Are you sure this will be sun?',
   word: 'sun',
-  hint: 'Having the best time of my life',
+  hint: 'Time of my life',
   answer: 'fun'
 }
 

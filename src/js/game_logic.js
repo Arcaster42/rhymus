@@ -1,3 +1,5 @@
+import puzzles from './puzzles'
+
 const playTimeSeconds = 30
 
 const shufflePuzzles = (arr1) => {
@@ -12,7 +14,6 @@ const shufflePuzzles = (arr1) => {
     return array
 }
 
-const puzzles = window.puzzlesArray
 
 // Randomize order of puzzles
 shufflePuzzles(puzzles)

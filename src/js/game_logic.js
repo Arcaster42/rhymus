@@ -142,8 +142,8 @@ const gameOver = () => {
         timerDisplay.classList.remove('running')
         timerDisplay.classList.add('gameover')
         rhymeElement.textContent = 'Game Over!'
-        timerDisplay.style.setProperty('background', 'var(--danger)');
-        cardBlock.style.setProperty('background', 'var(--danger)');
+        timerDisplay.style.setProperty('background', 'var(--danger)')
+        cardBlock.style.setProperty('background', 'var(--danger)')
         hint.style.display = 'none';
         guessElement.removeEventListener("keydown", assignListeners)
         cardNumber = 1
@@ -157,20 +157,18 @@ const gameOver = () => {
 }
 
 const restartGame = () => {
-    if (!timerDisplay.classList.contains('running')) {
-        timeRemaining = playTimeSeconds
-        timerDisplay.classList.remove('gameover')
-        timerDisplay.style.setProperty('background', 'var(--primary-gradient)');
-        cardBlock.style.setProperty('background', 'var(--primary-gradient)');
-        setTimeout(() => {
-            guessElement.addEventListener("keydown", assignListeners)
-            shufflePuzzles(puzzles)
-            loadCard(puzzles[0])
-            startButton.disabled = true;
-        }, 1500)
-        guessElement.focus()
-    }
-}
+  timeRemaining = playTimeSeconds;
+  timerDisplay.classList.remove('gameover')
+  timerDisplay.style.setProperty('background', 'var(--primary-gradient)')
+  cardBlock.style.setProperty('background', 'var(--primary-gradient)')
+
+  guessElement.addEventListener('keydown', assignListeners)
+  shufflePuzzles(puzzles)
+  loadCard(puzzles[0])
+  startButton.disabled = true;
+  guessElement.focus()
+  timerDisplay.textContent = getTimerString(timeRemaining)
+};
 
 startButton.addEventListener('click', restartGame)
 restartButton.addEventListener('click', restartGame)

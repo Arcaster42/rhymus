@@ -4,10 +4,13 @@
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/arcaster42/rhymus)
 [![Build Status](https://travis-ci.org/Arcaster42/rhymus.svg?branch=master)](https://travis-ci.org/Arcaster42/rhymus)
 
-
 # Rhymus
 
 An open-source rhyming game project designed for new developers and first-time contributors.
+
+## News
+
+As of October 29th, the project is nearly feature complete. With just a few more editions, **Rhymus will be finalized for the vanilla JavaScript edition**. Once that is set, **React and Vue branches will be opened**. I'd like to open them up some time in mid-November and by the end of November at the latest, so please help get the last pieces in! This has been a great project built entirely by the community, and I am incredibly grateful for everyone putting their time and effort into this. I look forward to see your work in the near future!
 
 ## Gameplay
 
@@ -75,3 +78,6 @@ But wait, what just happened?
 Maybe you're thinking, **"Wait, what if my code is terrible? Or broken? Or completely wrong?"** Doesn't matter! When you make a pull request, your code will be reviewed before being merged into the official repository. If it needs changes, you will receive comments explaining what, how, and why to change! Once you make changes, you can push again and it will automatically update your pull request (so don't close it if it isn't approved right away). Making those mistakes is exactly how you'll learn.
 
 If you're feeling bold, make more changes, commits, pushes, and PR's!
+
+## About the Author
+I'm a full-stack software developer currently working in Tokyo, Japan. I put this project together to both solidify and share my knowledge of programming. I also offer methorship programs to budding programmers in three-month blocks, so feel free to check me out on LinkedIn and contact me if you're interested in finding a mentor.

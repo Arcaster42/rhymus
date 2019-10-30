@@ -335,6 +335,27 @@ var puzzlesArray = [
   word: 'sun',
   hint: 'Time of my life',
   answer: 'fun'
+},
+{
+  id: 49,
+  sentence: 'The star is out of my peach.',
+  word: 'peach',
+  hint: 'Within arms-length',
+  answer: 'reach'
+},
+{
+  id: 50,
+  sentence: 'Ferry pie makes for an amazing treat.',
+  word: 'ferry',
+  hint: 'small, red fruit',
+  answer: 'cherry'
+},
+{
+  id: 51,
+  sentence: 'I beam to take over the world.',
+  word: 'beam',
+  hint: 'aspiration, hope',
+  answer: 'dream'
 }
 
 ]

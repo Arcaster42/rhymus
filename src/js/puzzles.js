@@ -340,7 +340,7 @@ var puzzlesArray = [
   id: 49,
   sentence: 'The star is out of my peach.',
   word: 'peach',
-  hint: 'beyond the limit',
+  hint: 'Within arms-length',
   answer: 'reach'
 },
 {
@@ -352,8 +352,8 @@ var puzzlesArray = [
 },
 {
   id: 51,
-  sentence: 'I scheme to take over the world.',
-  word: 'scheme',
+  sentence: 'I beam to take over the world.',
+  word: 'beam',
   hint: 'aspiration, hope',
   answer: 'dream'
 }

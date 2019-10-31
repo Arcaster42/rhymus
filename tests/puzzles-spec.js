@@ -5,7 +5,6 @@ global.expect = require('chai').expect
 
 const puzzlesArray = require('../src/js/puzzles')
 
-
 describe('Rhymus Test Suite', () => {
     describe('Puzzles Tests', () => {
         beforeEach(function(){

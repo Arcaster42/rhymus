@@ -35,7 +35,6 @@ const timerDisplay = document.getElementById('timer')
 const startButton = document.querySelector('.header_button_start')
 const restartButton = document.querySelector('.header_button_restart')
 
-
 class RhymusGame {
     constructor() {
         this.currentCard = undefined

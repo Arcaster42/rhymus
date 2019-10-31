@@ -22,12 +22,16 @@ let incorrectGuesses = 0
 let timeRemaining = playTimeSeconds
 let cardNumber = 1
 let correctGuesses = 0
+let totalCorrect = 0
+let totalWrong = 0
 
 
 //HTML elements
 const cardBlock = document.getElementById('rhyme_card')
 const countElement = document.getElementById('rhyme_count')
 const rhymeElement = document.getElementById('rhyme')
+const correctElement = document.getElementById('correct')
+const incorrectElement = document.getElementById('wrong')
 const guessElement = document.getElementById('rhyme_guess')
 const wrongElement = document.getElementById('incorrect')
 const hint = document.getElementById('hint')
@@ -86,10 +90,12 @@ const updateDisplay = () => {
 const checkAnswer = () => {
     if (guessElement.value === Game.currentCard.answer) {
         correctAnswer()
+        totalCorrect++
     } else if (guessElement.value === '' || undefined) {
         alert('Please enter a guess!')
     } else {
         incorrectAnswer()
+        totalWrong++
     }
 }
 
@@ -142,6 +148,8 @@ const gameOver = () => {
         timerDisplay.classList.remove('running')
         timerDisplay.classList.add('gameover')
         rhymeElement.textContent = 'Game Over!'
+        correctElement.textContent = 'Correct guesses: ' + totalCorrect
+        incorrectElement.textContent = 'Incorrect guesses: ' + totalWrong
         timerDisplay.style.setProperty('background', 'var(--danger)')
         cardBlock.style.setProperty('background', 'var(--danger)')
         hint.style.display = 'none';
@@ -161,7 +169,8 @@ const restartGame = () => {
   timerDisplay.classList.remove('gameover')
   timerDisplay.style.setProperty('background', 'var(--primary-gradient)')
   cardBlock.style.setProperty('background', 'var(--primary-gradient)')
-
+  correctElement.textContent = ''
+  incorrectElement.textContent = ''
   guessElement.addEventListener('keydown', assignListeners)
   shufflePuzzles(puzzles)
   loadCard(puzzles[0])

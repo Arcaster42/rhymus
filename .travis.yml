@@ -11,4 +11,4 @@ cache:
 install:
   - yarn install
 script:
-  - yarn mocha ./tests/spec.js
+  - yarn mocha ./tests/**/*-spec.js

@@ -10,7 +10,7 @@ An open-source rhyming game project designed for new developers and first-time c
 
 ## News
 
-As of October 29th, the project is nearly feature complete. With just a few more editions, **Rhymus will be finalized for the vanilla JavaScript edition**. Once that is set, **React and Vue branches will be opened**. I'd like to open them up some time in mid-November and by the end of November at the latest, so please help get the last pieces in! This has been a great project built entirely by the community, and I am incredibly grateful for everyone putting their time and effort into this. I look forward to see your work in the near future!
+As of October 29th, the project is nearly feature complete. With just a few more additions, **Rhymus will be finalized for the vanilla JavaScript edition**. Once that is set, **React and Vue branches will be opened**. I'd like to open them up some time in mid-November and by the end of November at the latest, so please help get the last pieces in! This has been a great project built entirely by the community, and I am incredibly grateful for everyone putting their time and effort into this. I look forward to see your work in the near future!
 
 ## Gameplay
 

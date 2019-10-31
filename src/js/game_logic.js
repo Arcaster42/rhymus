@@ -35,9 +35,6 @@ const timerDisplay = document.getElementById('timer')
 const startButton = document.querySelector('.header_button_start')
 const restartButton = document.querySelector('.header_button_restart')
 
-const getTimerString = (timeRemaining) => {
-    return `${timeRemaining.toString().padStart(2, '0')}`
-}
 
 class RhymusGame {
     constructor() {
@@ -60,6 +57,10 @@ const loadCard = (nextCard) => {
 const countDown = () => {
     timeRemaining === 0 ? gameOver() :
         (timerDisplay.textContent = getTimerString(timeRemaining--))
+}
+
+const getTimerString = (timeRemaining) => {
+    return `${timeRemaining.toString().padStart(2, '0')}`
 }
 
 // Created timer variable in outer scope so that resetTimer is always clearing the same timer interval that was created.

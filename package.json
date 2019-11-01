@@ -5,6 +5,6 @@
     "mocha-jsdom": "^2.0.0"
   },
   "scripts": {
-    "test": "mocha ./tests/spec.js"
+    "test": "mocha ./tests/**/*-spec.js"
   }
 }

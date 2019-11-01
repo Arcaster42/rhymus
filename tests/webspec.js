@@ -1,4 +1,6 @@
-describe('Game Logic Tests', () => {
+const expect = chai.expect;
+
+describe('Game Function Tests', () => {
     it('should contain a RhymusGame class', () => {
         expect(typeof RhymusGame).to.equal('function')
         const Game = new RhymusGame()
@@ -27,11 +29,13 @@ describe('Game Logic Tests', () => {
     })
     it('should have a countDown function', () => {
         expect(typeof countDown).to.equal('function')
-
     })
     it('should have a resetTimer function', () => {
         expect(typeof resetTimer).to.equal('function')
+    })
 
+    it('should have a gettimerString function', () => {
+        expect(typeof getTimerString).to.equal('function')
     })
 
     it('should have necessary elements set as constants', () => {

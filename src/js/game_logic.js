@@ -15,7 +15,6 @@ const shufflePuzzles = (arr1) => {
 const puzzles = window.puzzlesArray
 
 //total number of wrong guesses
-let incorrectGuesses = 0
 let timeRemaining = playTimeSeconds
 let cardNumber = 1
 let correctGuesses = 0
@@ -36,10 +35,9 @@ class RhymusGame {
         this.currentCard = undefined
         timerDisplay.textContent = getTimerString(timeRemaining)
         rhymeElement.textContent = 'Press start to Play!'
+        restartButton.disabled = true
     }
 }
-
-restartButton.disabled = true
 
 const assignListeners = (e) => {
     if (e.key === 'Enter') checkAnswer()
@@ -135,7 +133,7 @@ const incorrectAnswer = () => {
 
 const gameOver = () => {
     // Accounts for array starting at 0
-    if (timeRemaining === 0 || correctGuesses + 1 === puzzles.length ) {
+    if (timeRemaining === 0 || correctGuesses + 1 === puzzles.length || incorrectGuesses >= 4) {
         timerDisplay.textContent = getTimerString(timeRemaining)
         timerDisplay.classList.remove('running')
         timerDisplay.classList.add('gameover')
@@ -151,7 +149,6 @@ const gameOver = () => {
             countElement.className = 'rhyme_count'
             guessElement.className = ''
         }, 3000)
-        restartGame()
     }
 }
 
@@ -163,7 +160,6 @@ const restartGame = () => {
 
   guessElement.addEventListener('keydown', assignListeners)
   loadCard(puzzles[0])
-  startButton.disabled = false;
   guessElement.focus()
   timerDisplay.textContent = getTimerString(timeRemaining)
 };

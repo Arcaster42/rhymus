@@ -14,9 +14,6 @@ const shufflePuzzles = (arr1) => {
 
 const puzzles = window.puzzlesArray
 
-// Randomize order of puzzles
-shufflePuzzles(puzzles)
-
 //total number of wrong guesses
 let incorrectGuesses = 0
 let timeRemaining = playTimeSeconds
@@ -33,7 +30,6 @@ const hint = document.getElementById('hint')
 const timerDisplay = document.getElementById('timer')
 const startButton = document.querySelector('.header_button_start')
 const restartButton = document.querySelector('.header_button_restart')
-
 
 class RhymusGame {
     constructor() {
@@ -64,7 +60,6 @@ const countDown = () => {
 const getTimerString = (timeRemaining) => {
     return `${timeRemaining.toString().padStart(2, '0')}`
 }
-   
 
 // Created timer variable in outer scope so that resetTimer is always clearing the same timer interval that was created.
 // This prevents intervals from stacking on top of each other.
@@ -75,7 +70,6 @@ const resetTimer = () => {
     timer = setInterval(countDown, 1000)
     timerDisplay.classList.add('running')
 }
-
 
 const updateDisplay = () => {
     resetTimer()

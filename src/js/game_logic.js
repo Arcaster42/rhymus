@@ -23,7 +23,6 @@ let timeRemaining = playTimeSeconds
 let cardNumber = 1
 let correctGuesses = 0
 
-
 //HTML elements
 const cardBlock = document.getElementById('rhyme_card')
 const countElement = document.getElementById('rhyme_count')
@@ -35,12 +34,16 @@ const timerDisplay = document.getElementById('timer')
 const startButton = document.querySelector('.header_button_start')
 const restartButton = document.querySelector('.header_button_restart')
 
+
 class RhymusGame {
     constructor() {
         this.currentCard = undefined
         timerDisplay.textContent = getTimerString(timeRemaining)
+        rhymeElement.textContent = 'Press start to Play!'
     }
 }
+
+restartButton.disabled = true
 
 const assignListeners = (e) => {
     if (e.key === 'Enter') checkAnswer()
@@ -61,6 +64,7 @@ const countDown = () => {
 const getTimerString = (timeRemaining) => {
     return `${timeRemaining.toString().padStart(2, '0')}`
 }
+   
 
 // Created timer variable in outer scope so that resetTimer is always clearing the same timer interval that was created.
 // This prevents intervals from stacking on top of each other.
@@ -153,6 +157,7 @@ const gameOver = () => {
             countElement.className = 'rhyme_count'
             guessElement.className = ''
         }, 3000)
+        restartGame()
     }
 }
 
@@ -163,17 +168,30 @@ const restartGame = () => {
   cardBlock.style.setProperty('background', 'var(--primary-gradient)')
 
   guessElement.addEventListener('keydown', assignListeners)
-  shufflePuzzles(puzzles)
   loadCard(puzzles[0])
-  startButton.disabled = true;
+  startButton.disabled = false;
   guessElement.focus()
   timerDisplay.textContent = getTimerString(timeRemaining)
 };
 
-startButton.addEventListener('click', restartGame)
+
 restartButton.addEventListener('click', restartGame)
 
 const Game = new RhymusGame()
 //assignListeners()
 // Shuffle cards every time
-restartGame()
+
+const startGame = () => {
+  timeRemaining = playTimeSeconds;
+  timerDisplay.style.setProperty('background', 'var(--primary-gradient)')
+  cardBlock.style.setProperty('background', 'var(--primary-gradient)')
+
+  guessElement.addEventListener('keydown', assignListeners)
+  loadCard(puzzles[0])
+  shufflePuzzles(puzzles)
+  restartButton.disabled = false
+  guessElement.focus()
+  timerDisplay.textContent = getTimerString(timeRemaining)
+}
+
+startButton.addEventListener('click', startGame)

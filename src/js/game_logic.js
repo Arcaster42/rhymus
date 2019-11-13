@@ -14,17 +14,12 @@ const shufflePuzzles = (arr1) => {
 
 const puzzles = window.puzzlesArray
 
-// Randomize order of puzzles
-shufflePuzzles(puzzles)
-
 //total number of wrong guesses
-let incorrectGuesses = 0
 let timeRemaining = playTimeSeconds
 let cardNumber = 1
 let correctGuesses = 0
 let totalCorrect = 0
 let totalWrong = 0
-
 
 //HTML elements
 const cardBlock = document.getElementById('rhyme_card')
@@ -43,6 +38,8 @@ class RhymusGame {
     constructor() {
         this.currentCard = undefined
         timerDisplay.textContent = getTimerString(timeRemaining)
+        rhymeElement.textContent = 'Press start to play!'
+        restartButton.disabled = true
     }
 }
 
@@ -75,7 +72,6 @@ const resetTimer = () => {
     timer = setInterval(countDown, 1000)
     timerDisplay.classList.add('running')
 }
-
 
 const updateDisplay = () => {
     resetTimer()
@@ -117,7 +113,7 @@ const correctAnswer = () => {
 }
 
 const capitalizeFirstLetter = () => {
-    return Game.currentCard.hint.charAt(0).toUpperCase() + Game.currentCard.hint.slice(1).toLowerCase();
+    return Game.currentCard.hint.charAt(0).toUpperCase() + Game.currentCard.hint.slice(1).toLowerCase()
 }
 
 const incorrectAnswer = () => {
@@ -132,8 +128,8 @@ const incorrectAnswer = () => {
     }, 500)
     wrongElement.textContent = 'incorrect guesses: ' + incorrectGuesses
     //if there are more than 4 incorrect guesses on a single card the player loses
-    if (incorrectGuesses > 2 && incorrectGuesses < 4) {
-        hint.style.display = 'flex';
+    if (incorrectGuesses > 1 && incorrectGuesses < 4) {
+        hint.style.display = 'flex'
         hint.textContent = 'Hint: ' + capitalizeFirstLetter()
     } else {
         gameOver()
@@ -143,7 +139,7 @@ const incorrectAnswer = () => {
 
 const gameOver = () => {
     // Accounts for array starting at 0
-    if (timeRemaining === 0 || correctGuesses + 1 === puzzles.length ) {
+    if (timeRemaining === 0 || correctGuesses + 1 === puzzles.length || incorrectGuesses >= 4) {
         timerDisplay.textContent = getTimerString(timeRemaining)
         timerDisplay.classList.remove('running')
         timerDisplay.classList.add('gameover')
@@ -152,7 +148,7 @@ const gameOver = () => {
         incorrectElement.textContent = 'Incorrect guesses: ' + totalWrong
         timerDisplay.style.setProperty('background', 'var(--danger)')
         cardBlock.style.setProperty('background', 'var(--danger)')
-        hint.style.display = 'none';
+        hint.style.display = 'none'
         guessElement.removeEventListener("keydown", assignListeners)
         cardNumber = 1
         correctGuesses = 0
@@ -165,24 +161,36 @@ const gameOver = () => {
 }
 
 const restartGame = () => {
-  timeRemaining = playTimeSeconds;
+  timeRemaining = playTimeSeconds
   timerDisplay.classList.remove('gameover')
   timerDisplay.style.setProperty('background', 'var(--primary-gradient)')
   cardBlock.style.setProperty('background', 'var(--primary-gradient)')
   correctElement.textContent = ''
   incorrectElement.textContent = ''
   guessElement.addEventListener('keydown', assignListeners)
-  shufflePuzzles(puzzles)
   loadCard(puzzles[0])
-  startButton.disabled = true;
   guessElement.focus()
   timerDisplay.textContent = getTimerString(timeRemaining)
-};
+}
 
-startButton.addEventListener('click', restartGame)
+
 restartButton.addEventListener('click', restartGame)
 
 const Game = new RhymusGame()
 //assignListeners()
 // Shuffle cards every time
-restartGame()
+
+const startGame = () => {
+  timeRemaining = playTimeSeconds
+  timerDisplay.style.setProperty('background', 'var(--primary-gradient)')
+  cardBlock.style.setProperty('background', 'var(--primary-gradient)')
+
+  guessElement.addEventListener('keydown', assignListeners)
+  loadCard(puzzles[0])
+  shufflePuzzles(puzzles)
+  restartButton.disabled = false
+  guessElement.focus()
+  timerDisplay.textContent = getTimerString(timeRemaining)
+}
+
+startButton.addEventListener('click', startGame)

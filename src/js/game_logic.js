@@ -34,7 +34,7 @@ class RhymusGame {
     constructor() {
         this.currentCard = undefined
         timerDisplay.textContent = getTimerString(timeRemaining)
-        rhymeElement.textContent = 'Press start to Play!'
+        rhymeElement.textContent = 'Press start to play!'
         restartButton.disabled = true
     }
 }
@@ -107,7 +107,7 @@ const correctAnswer = () => {
 }
 
 const capitalizeFirstLetter = () => {
-    return Game.currentCard.hint.charAt(0).toUpperCase() + Game.currentCard.hint.slice(1).toLowerCase();
+    return Game.currentCard.hint.charAt(0).toUpperCase() + Game.currentCard.hint.slice(1).toLowerCase()
 }
 
 const incorrectAnswer = () => {
@@ -123,7 +123,7 @@ const incorrectAnswer = () => {
     wrongElement.textContent = 'incorrect guesses: ' + incorrectGuesses
     //if there are more than 4 incorrect guesses on a single card the player loses
     if (incorrectGuesses > 2 && incorrectGuesses < 4) {
-        hint.style.display = 'flex';
+        hint.style.display = 'flex'
         hint.textContent = 'Hint: ' + capitalizeFirstLetter()
     } else {
         gameOver()
@@ -140,7 +140,7 @@ const gameOver = () => {
         rhymeElement.textContent = 'Game Over!'
         timerDisplay.style.setProperty('background', 'var(--danger)')
         cardBlock.style.setProperty('background', 'var(--danger)')
-        hint.style.display = 'none';
+        hint.style.display = 'none'
         guessElement.removeEventListener("keydown", assignListeners)
         cardNumber = 1
         correctGuesses = 0
@@ -153,7 +153,7 @@ const gameOver = () => {
 }
 
 const restartGame = () => {
-  timeRemaining = playTimeSeconds;
+  timeRemaining = playTimeSeconds
   timerDisplay.classList.remove('gameover')
   timerDisplay.style.setProperty('background', 'var(--primary-gradient)')
   cardBlock.style.setProperty('background', 'var(--primary-gradient)')
@@ -162,7 +162,7 @@ const restartGame = () => {
   loadCard(puzzles[0])
   guessElement.focus()
   timerDisplay.textContent = getTimerString(timeRemaining)
-};
+}
 
 
 restartButton.addEventListener('click', restartGame)
@@ -172,7 +172,7 @@ const Game = new RhymusGame()
 // Shuffle cards every time
 
 const startGame = () => {
-  timeRemaining = playTimeSeconds;
+  timeRemaining = playTimeSeconds
   timerDisplay.style.setProperty('background', 'var(--primary-gradient)')
   cardBlock.style.setProperty('background', 'var(--primary-gradient)')
 

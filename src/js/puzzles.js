@@ -357,7 +357,6 @@ var puzzlesArray = [
   hint: 'aspiration, hope',
   answer: 'dream'
 }
-
 ]
 
 module.exports = puzzlesArray

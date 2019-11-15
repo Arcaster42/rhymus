@@ -165,8 +165,6 @@ const restartGame = () => {
   timerDisplay.classList.remove('gameover')
   timerDisplay.style.setProperty('background', 'var(--primary-gradient)')
   cardBlock.style.setProperty('background', 'var(--primary-gradient)')
-  correctElement.textContent = ''
-  incorrectElement.textContent = ''
   guessElement.addEventListener('keydown', assignListeners)
   loadCard(puzzles[0])
   guessElement.focus()

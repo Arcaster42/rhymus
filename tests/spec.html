@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <div id="mocha">
+  <div>
     <p><a href=".">Index</a></p>
   </div>
   <div id="messages"></div>
@@ -42,18 +42,23 @@
       </div>
     </div>
   </section>
+  <div id="mocha">
   <script src="../node_modules/mocha/mocha.js"></script>
   <script src="../node_modules/chai/chai.js"></script>
   <script src="../src/js/puzzles.js"></script>
   <script src="../src/js/game_logic.js"></script>
+</div>
   <script>
 
 
     // Setup Mocha to use the BDD interface
-    mocha.setup('bdd');
+    mocha.setup('bdd')
+    mocha.reporter('html');
   </script>
-  <script src="./webspec.js"></script>
-  <script>mocha.run();</script>
+  <script src="webspec.js"></script>
+  <script>
+    mocha.run();
+    </script>
 </body>
 
 </html>

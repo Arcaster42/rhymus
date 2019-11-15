@@ -1,10 +1,16 @@
 {
   "dependencies": {
     "chai": "^4.2.0",
+    "concurrently": "^5.0.0",
     "mocha": "^6.2.0",
     "mocha-jsdom": "^2.0.0"
   },
   "scripts": {
-    "test": "mocha ./tests/**/*-spec.js"
+    "test": "concurrently \" npm run test-unit\" \" npm run test-browser\"",
+    "test-unit": "mocha ./tests/**/*-spec.js",
+    "test-browser": "mocha-chrome ./tests/spec.html --reporter=Spec"
+  },
+  "devDependencies": {
+    "mocha-chrome": "^2.2.0"
   }
 }

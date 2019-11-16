@@ -2,7 +2,7 @@
 const expect = chai.expect;
 
 describe('Game Function Tests', function(){
-
+   
 
     it('should contain a RhymusGame class', () => {
         expect(typeof RhymusGame).to.equal('function')
@@ -54,16 +54,20 @@ describe('Game Function Tests', function(){
 
 })
 describe('Game logic', function(){
+
+
       // Allows for tests to take up to 10 seconds to complete without triggering an error
       this.timeout(10000)
 
-      it('puzzle order should be random', () => {
+      it('puzzle order should be random', function(){
+        const currentFirstId = puzzlesArray[0].id
         shufflePuzzles(puzzlesArray)
-        expect(puzzlesArray[0].id).to.not.equal(1)
+        expect(puzzlesArray[0].id).to.not.equal(currentFirstId)
     })
 
     it('puzzle order should be reshuffled when startGame runs', ()=> {
         const currentFirstId = puzzlesArray[0].id
+        console.log(currentFirstId)
         startGame()
         expect(puzzlesArray[0].id).to.not.equal(currentFirstId)
     })
@@ -81,10 +85,10 @@ describe('Game logic', function(){
     it('timer should count down', function(done){
         getTimerString(timeRemaining)
         setTimeout(function(){
-           expect(timeRemaining).to.equal(25)
+           expect(timeRemaining).to.equal(27)
            expect(timerDisplay.classList[1]).to.equal('running')
             done()
-        },5000)
+        },3000)
     })
 
     it('should have necessary elements set as constants', () => {

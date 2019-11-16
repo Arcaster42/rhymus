@@ -2,7 +2,7 @@
 const expect = chai.expect;
 
 describe('Game Function Tests', function(){
-    this.timeout(10000)
+
 
     it('should contain a RhymusGame class', () => {
         expect(typeof RhymusGame).to.equal('function')
@@ -51,7 +51,13 @@ describe('Game Function Tests', function(){
     it('should have a shufflePuzzles function', () => {
         expect(typeof shufflePuzzles).to.equal('function')
     })
-    it('puzzle order should be random', () => {
+
+})
+describe('Game logic', function(){
+      // Allows for tests to take up to 10 seconds to complete without triggering an error
+      this.timeout(10000)
+
+      it('puzzle order should be random', () => {
         shufflePuzzles(puzzlesArray)
         expect(puzzlesArray[0].id).to.not.equal(1)
     })
@@ -104,4 +110,4 @@ describe('Game Function Tests', function(){
     it('card number should start at 1', () => {
         expect(cardNumber).to.equal(1)
     })
-})
+})    

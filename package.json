@@ -8,7 +8,7 @@
   "scripts": {
     "test": "concurrently \" npm run test-unit\" \" npm run test-browser\"",
     "test-unit": "mocha ./tests/**/*-spec.js",
-    "test-browser": "mocha-chrome ./tests/spec.html --reporter=Spec"
+    "test-browser": "mocha-chrome ./tests/spec.html --reporter=Spec --ignore-exceptions"
   },
   "devDependencies": {
     "mocha-chrome": "^2.2.0"

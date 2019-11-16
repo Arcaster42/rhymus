@@ -1,8 +1,9 @@
 'use strict'
 const expect = chai.expect;
 
+describe('Game Function Tests', function(){
+    this.timeout(10000)
 
-describe('Game Function Tests', () => {
     it('should contain a RhymusGame class', () => {
         expect(typeof RhymusGame).to.equal('function')
         const Game = new RhymusGame()
@@ -69,6 +70,14 @@ describe('Game Function Tests', () => {
 
     it('timer should start at 30 seconds', () => {
         expect(playTimeSeconds).to.equal(30)
+    })
+
+    it('timer should count down', function(done){
+        getTimerString(timeRemaining)
+        setTimeout(function(){
+           expect(timeRemaining).to.equal(25)
+            done()
+        },5000)
     })
 
     it('should have necessary elements set as constants', () => {

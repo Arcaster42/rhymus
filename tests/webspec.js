@@ -82,6 +82,7 @@ describe('Game logic', function(){
         getTimerString(timeRemaining)
         setTimeout(function(){
            expect(timeRemaining).to.equal(25)
+           expect(timerDisplay.classList[1]).to.equal('running')
             done()
         },5000)
     })

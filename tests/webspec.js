@@ -67,7 +67,6 @@ describe('Game logic', function(){
 
     it('puzzle order should be reshuffled when startGame runs', ()=> {
         const currentFirstId = puzzlesArray[0].id
-        console.log(currentFirstId)
         startGame()
         expect(puzzlesArray[0].id).to.not.equal(currentFirstId)
     })

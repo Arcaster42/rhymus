@@ -1,8 +1,9 @@
 'use strict'
 const expect = chai.expect;
 
+describe('Game Function Tests',()=>{
+   
 
-describe('Game Function Tests', () => {
     it('should contain a RhymusGame class', () => {
         expect(typeof RhymusGame).to.equal('function')
         const Game = new RhymusGame()
@@ -50,35 +51,53 @@ describe('Game Function Tests', () => {
     it('should have a shufflePuzzles function', () => {
         expect(typeof shufflePuzzles).to.equal('function')
     })
-    it('puzzle order should be random', () => {
+
+})
+describe('Game logic', function(){
+
+
+      // Allows for tests to take up to 10 seconds to complete without triggering an error
+      this.timeout(10000)
+
+      it('puzzle order should be random', function(){
+        const currentFirstId = puzzlesArray[0].id
         shufflePuzzles(puzzlesArray)
-        expect(puzzlesArray[0].id).to.not.equal(1)
+        expect(puzzlesArray[0].id).to.not.equal(currentFirstId)
     })
 
-    it('puzzle order should be reshuffled when startGame runs', ()=> {
+    it('puzzle order should be reshuffled when startGame runs', function(){
         const currentFirstId = puzzlesArray[0].id
         startGame()
         expect(puzzlesArray[0].id).to.not.equal(currentFirstId)
     })
 
-    it('puzzle order should stay the same when restartGame runs', ()=> {
+    it('puzzle order should stay the same when restartGame runs', function() {
         const currentFirstId = puzzlesArray[0].id
         restartGame()
         expect(puzzlesArray[0].id).to.equal(currentFirstId)
     })
 
-    it('timer should start at 30 seconds', () => {
+    it('timer should start at 30 seconds', function(){
         expect(playTimeSeconds).to.equal(30)
     })
 
-    it('should have necessary elements set as constants', () => {
+    it('timer should count down', function(done){
+        getTimerString(timeRemaining)
+        setTimeout(function(){
+           expect(timeRemaining).to.equal(27)
+           expect(timerDisplay.classList[1]).to.equal('running')
+            done()
+        },3000)
+    })
+
+    it('should have necessary elements set as constants', function(){
         expect(cardBlock).to.not.be.undefined
         expect(countElement).to.not.be.undefined
         expect(rhymeElement).to.not.be.undefined
         expect(guessElement).to.not.be.undefined
         
     })
-    it('should have the following html elements', () => {
+    it('should have the following html elements', function(){
         expect(timerDisplay).to.not.be.undefined
         expect(startButton).to.not.be.undefined
         expect(restartButton).to.not.be.undefined
@@ -86,13 +105,13 @@ describe('Game Function Tests', () => {
         expect(countElement).to.not.be.undefined
     })
 
-    it('correctGuesses, totalCorrect and totalWrong should be 0 at start', ()=> {
+    it('correctGuesses, totalCorrect and totalWrong should be 0 at start', function(){
         expect(correctGuesses).to.equal(0)
         expect(totalCorrect).to.equal(0)
         expect(totalWrong).to.equal(0)
     })
 
-    it('card number should start at 1', () => {
+    it('card number should start at 1', function(){
         expect(cardNumber).to.equal(1)
     })
-})
+})    

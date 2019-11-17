@@ -1,7 +1,7 @@
 'use strict'
 const expect = chai.expect;
 
-describe('Game Function Tests', function(){
+describe('Game Function Tests',()=>{
    
 
     it('should contain a RhymusGame class', () => {

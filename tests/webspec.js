@@ -65,19 +65,19 @@ describe('Game logic', function(){
         expect(puzzlesArray[0].id).to.not.equal(currentFirstId)
     })
 
-    it('puzzle order should be reshuffled when startGame runs', ()=> {
+    it('puzzle order should be reshuffled when startGame runs', function(){
         const currentFirstId = puzzlesArray[0].id
         startGame()
         expect(puzzlesArray[0].id).to.not.equal(currentFirstId)
     })
 
-    it('puzzle order should stay the same when restartGame runs', ()=> {
+    it('puzzle order should stay the same when restartGame runs', function() {
         const currentFirstId = puzzlesArray[0].id
         restartGame()
         expect(puzzlesArray[0].id).to.equal(currentFirstId)
     })
 
-    it('timer should start at 30 seconds', () => {
+    it('timer should start at 30 seconds', function(){
         expect(playTimeSeconds).to.equal(30)
     })
 
@@ -90,14 +90,14 @@ describe('Game logic', function(){
         },3000)
     })
 
-    it('should have necessary elements set as constants', () => {
+    it('should have necessary elements set as constants', function(){
         expect(cardBlock).to.not.be.undefined
         expect(countElement).to.not.be.undefined
         expect(rhymeElement).to.not.be.undefined
         expect(guessElement).to.not.be.undefined
         
     })
-    it('should have the following html elements', () => {
+    it('should have the following html elements', function(){
         expect(timerDisplay).to.not.be.undefined
         expect(startButton).to.not.be.undefined
         expect(restartButton).to.not.be.undefined
@@ -105,13 +105,13 @@ describe('Game logic', function(){
         expect(countElement).to.not.be.undefined
     })
 
-    it('correctGuesses, totalCorrect and totalWrong should be 0 at start', ()=> {
+    it('correctGuesses, totalCorrect and totalWrong should be 0 at start', function(){
         expect(correctGuesses).to.equal(0)
         expect(totalCorrect).to.equal(0)
         expect(totalWrong).to.equal(0)
     })
 
-    it('card number should start at 1', () => {
+    it('card number should start at 1', function(){
         expect(cardNumber).to.equal(1)
     })
 })    

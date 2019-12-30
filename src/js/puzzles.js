@@ -233,21 +233,21 @@ var puzzlesArray = [
 },
 {
   id: 34,
-  sentence: 'I sink, therefore I am',
+  sentence: 'I sink, therefore I am.',
   word: 'sink',
   hint: 'ponder',
   answer: 'think'
 },
 {
   id: 35,
-  sentence: 'The apple does not fall from the spree',
+  sentence: 'The apple does not fall from the spree.',
   word: 'spree',
   hint: 'plant',
   answer: 'tree'
 },
 {
   id: 36,
-  sentence: 'My favourite snack is potato kips',
+  sentence: 'My favourite snack is potato kips.',
   word: 'kips',
   hint: 'lays',
   answer: 'chips'
@@ -268,7 +268,7 @@ var puzzlesArray = [
 },
 {
   id: 39,
-  sentence: 'Most Valuable Layer',
+  sentence: 'Most Valuable Layer.',
   word: 'layer',
   hint: 'member of a sports team',
   answer: 'player'
@@ -296,7 +296,7 @@ var puzzlesArray = [
 },
 {
   id: 43,
-  sentence: 'It is better to practice with a utensil',
+  sentence: 'It is better to practice with a utensil.',
   word: 'utensil',
   hint: 'erasable',
   answer: 'pencil'
@@ -317,14 +317,14 @@ var puzzlesArray = [
 },
 {
   id: 46,
-  sentence: 'I left my boat at the rock',
+  sentence: 'I left my boat at the rock.',
   word: 'rock',
   hint: 'building on water',
   answer: 'dock'
 },
 {
   id: 47,
-  sentence: 'Everytime it gains, it pours',
+  sentence: 'Everytime it gains, it pours.',
   word: 'gains',
   hint: 'weather',
   answer: 'rains'

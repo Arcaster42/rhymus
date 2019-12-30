@@ -212,7 +212,7 @@ var puzzlesArray = [
 //////////////////////////////////
 {
   id: 31,
-  sentence: 'Plastic water throttle.',
+  sentence: 'A plastic water throttle.',
   word: 'throttle',
   hint: 'contains drinks',
   answer: 'bottle'
@@ -261,14 +261,14 @@ var puzzlesArray = [
 },
 {
   id: 38,
-  sentence: 'Benefit of the clout.',
+  sentence: 'The benefit of the clout.',
   word: 'clout',
   hint: 'uncertainty',
   answer: 'doubt'
 },
 {
   id: 39,
-  sentence: 'Most Valuable Layer.',
+  sentence: 'The Most Valuable Layer.',
   word: 'layer',
   hint: 'member of a sports team',
   answer: 'player'
@@ -303,7 +303,7 @@ var puzzlesArray = [
 },
 {
   id: 44,
-  sentence: 'Pursuit of sappiness.',
+  sentence: 'A pursuit of sappiness.',
   word: 'hadniness',
   hint: 'prosperity',
   answer: 'happiness'

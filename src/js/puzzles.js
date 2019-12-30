@@ -228,7 +228,7 @@ var puzzlesArray = [
   id: 33,
   sentence: 'We need to push the lace.',
   word: 'lace',
-  hint: 'tempo/speed',
+  hint: 'tempo or speed',
   answer: 'pace'
 },
 {
@@ -291,7 +291,7 @@ var puzzlesArray = [
   id: 42,
   sentence: 'Learn how to strive a truck.',
   word: 'strive',
-  hint: 'you need a license to do this',
+  hint: 'need a license to do this',
   answer: 'drive'
 },
 {
@@ -333,28 +333,28 @@ var puzzlesArray = [
   id: 48,
   sentence: 'Are you sure this will be sun?',
   word: 'sun',
-  hint: 'Time of my life',
+  hint: 'time of my life',
   answer: 'fun'
 },
 {
   id: 49,
   sentence: 'The star is out of my peach.',
   word: 'peach',
-  hint: 'Within arms-length',
+  hint: 'within arms-length',
   answer: 'reach'
 },
 {
   id: 50,
   sentence: 'Ferry pie makes for an amazing treat.',
   word: 'ferry',
-  hint: 'small, red fruit',
+  hint: 'a small red fruit',
   answer: 'cherry'
 },
 {
   id: 51,
   sentence: 'I beam to take over the world.',
   word: 'beam',
-  hint: 'aspiration, hope',
+  hint: 'aspiration and hope',
   answer: 'dream'
 }
 ]

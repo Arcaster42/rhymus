@@ -303,7 +303,7 @@ var puzzlesArray = [
 },
 {
   id: 44,
-  sentence: 'A pursuit of sappiness.',
+  sentence: 'Pursuit of sappiness.',
   word: 'hadniness',
   hint: 'prosperity',
   answer: 'happiness'
@@ -333,7 +333,7 @@ var puzzlesArray = [
   id: 48,
   sentence: 'Are you sure this will be sun?',
   word: 'sun',
-  hint: 'time of my life',
+  hint: "time of one's life",
   answer: 'fun'
 },
 {
@@ -347,7 +347,7 @@ var puzzlesArray = [
   id: 50,
   sentence: 'Ferry pie makes for an amazing treat.',
   word: 'ferry',
-  hint: 'a small red fruit',
+  hint: 'small, red fruit',
   answer: 'cherry'
 },
 {

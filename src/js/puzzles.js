@@ -212,7 +212,7 @@ var puzzlesArray = [
 //////////////////////////////////
 {
   id: 31,
-  sentence: 'Plastic water throttle.',
+  sentence: 'A plastic water throttle.',
   word: 'throttle',
   hint: 'contains drinks',
   answer: 'bottle'
@@ -228,26 +228,26 @@ var puzzlesArray = [
   id: 33,
   sentence: 'We need to push the lace.',
   word: 'lace',
-  hint: 'tempo/speed',
+  hint: 'tempo or speed',
   answer: 'pace'
 },
 {
   id: 34,
-  sentence: 'I sink, therefore I am',
+  sentence: 'I sink, therefore I am.',
   word: 'sink',
   hint: 'ponder',
   answer: 'think'
 },
 {
   id: 35,
-  sentence: 'The apple does not fall from the spree',
+  sentence: 'The apple does not fall from the spree.',
   word: 'spree',
   hint: 'plant',
   answer: 'tree'
 },
 {
   id: 36,
-  sentence: 'My favourite snack is potato kips',
+  sentence: 'My favourite snack is potato kips.',
   word: 'kips',
   hint: 'lays',
   answer: 'chips'
@@ -261,14 +261,14 @@ var puzzlesArray = [
 },
 {
   id: 38,
-  sentence: 'Benefit of the clout.',
+  sentence: 'The benefit of the clout.',
   word: 'clout',
   hint: 'uncertainty',
   answer: 'doubt'
 },
 {
   id: 39,
-  sentence: 'Most Valuable Layer',
+  sentence: 'The Most Valuable Layer.',
   word: 'layer',
   hint: 'member of a sports team',
   answer: 'player'
@@ -291,12 +291,12 @@ var puzzlesArray = [
   id: 42,
   sentence: 'Learn how to strive a truck.',
   word: 'strive',
-  hint: 'you need a license to do this',
+  hint: 'need a license to do this',
   answer: 'drive'
 },
 {
   id: 43,
-  sentence: 'It is better to practice with a utensil',
+  sentence: 'It is better to practice with a utensil.',
   word: 'utensil',
   hint: 'erasable',
   answer: 'pencil'
@@ -317,14 +317,14 @@ var puzzlesArray = [
 },
 {
   id: 46,
-  sentence: 'I left my boat at the rock',
+  sentence: 'I left my boat at the rock.',
   word: 'rock',
   hint: 'building on water',
   answer: 'dock'
 },
 {
   id: 47,
-  sentence: 'Everytime it gains, it pours',
+  sentence: 'Everytime it gains, it pours.',
   word: 'gains',
   hint: 'weather',
   answer: 'rains'
@@ -333,14 +333,14 @@ var puzzlesArray = [
   id: 48,
   sentence: 'Are you sure this will be sun?',
   word: 'sun',
-  hint: 'Time of my life',
+  hint: "time of one's life",
   answer: 'fun'
 },
 {
   id: 49,
   sentence: 'The star is out of my peach.',
   word: 'peach',
-  hint: 'Within arms-length',
+  hint: 'within arms-length',
   answer: 'reach'
 },
 {
@@ -354,7 +354,7 @@ var puzzlesArray = [
   id: 51,
   sentence: 'I beam to take over the world.',
   word: 'beam',
-  hint: 'aspiration, hope',
+  hint: 'aspiration and hope',
   answer: 'dream'
 }
 ]

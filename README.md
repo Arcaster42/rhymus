@@ -10,7 +10,11 @@ An open-source rhyming game project designed for new developers and first-time c
 
 ## News
 
-As of October 29th, the project is nearly feature complete. With just a few more additions, **Rhymus will be finalized for the vanilla JavaScript edition**. Once that is set, **React and Vue branches will be opened**. I'd like to open them up some time in mid-November and by the end of November at the latest, so please help get the last pieces in! This has been a great project built entirely by the community, and I am incredibly grateful for everyone putting their time and effort into this. I look forward to see your work in the near future!
+As of January 22nd, the `master-vue` branch is now up and ready for contributions! You can use the existing `master` branch as a model for how the Vue application should be developed. Included in the Vue project are unit tests (using Jest) and Vuex (for state management).
+
+Additional improvements to the vanilla `master` branch are still welcome. **React** will have its own branch set up some time in February.
+
+As a professional Vue developer, I will be particularly involved with contributions and any questions that come about regarding the `master-vue` branch, so feel free to ask for advice and make those PRs!
 
 ## Gameplay
 

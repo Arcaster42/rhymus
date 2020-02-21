@@ -1,9 +1,10 @@
 <template>
-    <ul>
-        <button class="header_button header_button_start">Start</button>
-        <button class="header_button header_button_restart header_button--danger">Restart</button>
-    </ul>
-    
+  <header>
+      <ul>
+          <button class="header_button header_button_start">Start</button>
+          <button class="header_button header_button_restart header_button--danger">Restart</button>
+      </ul>
+  </header>
 </template>
 
 <script>

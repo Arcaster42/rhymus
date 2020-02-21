@@ -3,7 +3,7 @@
         <div class="rhyme_count_container center">
           <div class="rhyme_count" id="rhyme_count"><span></span></div>
         </div>
-        <p class="rhyme" id="rhyme"></p>
+        <p class="rhyme" id="rhyme">{{ userMessage }}</p>
         <p class="rhyme" id="correct"></p>
         <p class="rhyme" id="wrong"></p>
         <CardInfo />
@@ -17,6 +17,15 @@ export default {
     name: 'RhymeCard',
     components: {
         CardInfo
+    },
+    computed: {
+        userMessage: function () {
+            if (this.$store.state.playTimeSeconds === 30) 
+                return 'Press start to play!'
+            else if (this.$store.state.playTimeSeconds === 0) 
+                return 'Game Over!'
+            return null
+        }
     }
 }
 </script>

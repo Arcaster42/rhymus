@@ -2,17 +2,20 @@
   <div id="app">
     <section id="game_canvas">
       <Header />
+      <RhymeCard />
     </section>
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
+import RhymeCard from './components/RhymeCard'
 
 export default {
   name: 'app',
   components: {
-    Header
+    Header,
+    RhymeCard
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <header>
       <ul>
-          <button v-on:click="startGame" class="header_button header_button_start">Start</button>
-          <button v-bind:disabled="isRestartButtonDisabled" class="header_button header_button_restart header_button--danger">Restart</button>
+          <button class="header_button header_button_start">Start</button>
+          <button class="header_button header_button_restart header_button--danger">Restart</button>
       </ul>
   </header>
 </template>
@@ -10,16 +10,6 @@
 <script>
 export default {
     name: 'Header',
-    data: () => {
-      return {
-        isRestartButtonDisabled: true
-      }
-    },
-    methods: {
-      startGame() {
-        this.isRestartButtonDisabled = false
-      }
-    }
 }
 </script>
 

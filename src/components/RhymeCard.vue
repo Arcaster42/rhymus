@@ -17,15 +17,6 @@ export default {
     name: 'RhymeCard',
     components: {
         CardInfo
-    },
-    computed: {
-        userMessage: function () {
-            if (this.$store.state.playTimeSeconds === 30) 
-                return 'Press start to play!'
-            else if (this.$store.state.playTimeSeconds === 0) 
-                return 'Game Over!'
-            return null
-        }
     }
 }
 </script>

@@ -10,7 +10,7 @@
             name="rhyme_guess"
             placeholder="Write your guess here"
             />
-            <div id="timer" class="center">{{ getTimerString }}</div>
+            <div id="timer" class="center"></div>
         </div>
         </div>
     </div>
@@ -18,12 +18,7 @@
 
 <script>
 export default {
-    name: 'CardInfo',
-    computed: {
-        getTimerString: function () {
-            return this.$store.state.playTimeSeconds.toString().padStart(2, '0')
-        }
-    }    
+    name: 'CardInfo',   
 }
 </script>
 

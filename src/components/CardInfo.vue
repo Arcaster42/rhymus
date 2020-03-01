@@ -10,7 +10,7 @@
             name="rhyme_guess"
             placeholder="Write your guess here"
             />
-            <div id="timer" class="center"></div>
+            <div id="timer" class="center" v-bind:style="{ background: 'var(--primary-gradient)'}"></div>
         </div>
         </div>
     </div>

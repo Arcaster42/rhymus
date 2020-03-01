@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <section id="game_canvas">
-      <Header />
+      <Header v-bind:startGame="startGame"/>
       <RhymeCard />
     </section>
   </div>
@@ -22,7 +22,7 @@ export default {
       return {
         puzzlesArray: puzzlesArray,
         playTimeSeconds: 30,
-        timeRemaining: this.playTimeSeconds,
+        timeRemaining: Number,
         cardNumber: 1,
         correctGuesses: 0,
         totalCorrect: 0,
@@ -31,7 +31,13 @@ export default {
     }
   },
   methods: {
-
+    startGame: function () {
+      this.timeRemaining = this.playTimeSeconds
+      alert('clicked')
+    },
+    assignListeners: function (e) {
+      if (e.key === 'Enter') alert('checkAnswer()')
+    }
   }
 }
 </script>

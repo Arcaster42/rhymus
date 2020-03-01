@@ -1,5 +1,5 @@
 <template>
-      <div class="rhyme_card" id="rhyme_card">
+      <div class="rhyme_card" id="rhyme_card" v-bind:style="{ background: 'var(--primary-gradient)' }">
         <div class="rhyme_count_container center">
           <div class="rhyme_count" id="rhyme_count"><span></span></div>
         </div>

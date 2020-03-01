@@ -10,12 +10,28 @@
 <script>
 import Header from './components/Header'
 import RhymeCard from './components/RhymeCard'
-
+import puzzlesArray from '../src/puzzles'
 export default {
   name: 'app',
   components: {
     Header,
     RhymeCard
+  },
+  data: {
+    function () {
+      return {
+        puzzlesArray: puzzlesArray,
+        playTimeSeconds: 30,
+        timeRemaining: this.playTimeSeconds,
+        cardNumber: 1,
+        correctGuesses: 0,
+        totalCorrect: 0,
+        totalWrong: 0
+      }
+    }
+  },
+  methods: {
+
   }
 }
 </script>

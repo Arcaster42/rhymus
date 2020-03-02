@@ -11,7 +11,7 @@
             placeholder="Write your guess here"
             v-on:keydown="assignListeners"
             />
-            <div id="timer" class="center" v-bind:style="isGameStarted"></div>
+            <div id="timer" v-bind:class="timerStyling" v-bind:style="isGameStarted"></div>
         </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
 <script>
 export default {
     name: 'CardInfo', 
-    props: ['isGameStarted', 'assignListeners']  
+    props: ['isGameStarted', 'assignListeners', 'timerStyling'] 
 }
 </script>
 
@@ -100,5 +100,20 @@ export default {
   font-weight: 500;
   font-style: italic;
   font-size: 12px;
+}
+
+#timer {
+  font-size: 2.5rem;
+  text-indent: 2rem;
+  color: #fff;
+  flex-grow: 1;
+}
+
+#timer.running {
+  color: lightgreen;
+}
+
+#timer.gameover {
+  color: var(--danger);
 }
 </style>

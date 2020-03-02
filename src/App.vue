@@ -7,7 +7,8 @@
                  v-bind:assignListeners="(isGameStarted) ? assignListeners : null"
                  v-bind:RhymusGame="RhymusGame"
                  v-bind:puzzlesArray="puzzlesArray"
-                 v-bind:cardNumber="cardNumber"/>
+                 v-bind:cardNumber="cardNumber"
+                 v-bind:timerStyling="timerStyling"/>
     </section>
   </div>
 </template>
@@ -37,7 +38,15 @@ export default {
             RhymusGame: {
               currentCard: undefined,
               rhymeElementText: 'Press start to play!'
-            }
+            },
+            timer: null,
+            timerStyling: {
+              center: true,
+              'running': false
+            },
+            guessValue: '',
+            hintText: '',
+            incorrectGuesses: 0
           }
       },
   methods: {
@@ -48,12 +57,21 @@ export default {
     },
     assignListeners: function (e) {
       if (e.key === 'Enter') alert('checkAnswer()')
+    },
+    loadCard: function (nextCard) {
+      this.RhymusGame.currentCard = nextCard
+    },
+    resetTimer: function () {
+      clearInterval(this.time)
+
     }
   },
   watch: {
     isGameStarted: function () {
       this.stylingCardBackground = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
       this.$el.querySelector('#rhyme_guess').focus()
+      this.loadCard(this.puzzlesArray[0])
+      this.timerStyling.running = (this.isGameStarted) ? true : null
     }
   }
 }

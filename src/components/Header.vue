@@ -15,21 +15,6 @@ export default {
 </script>
 
 <style scoped>
-header #timer {
-  font-size: 2.5rem;
-  text-indent: 2rem;
-  color: #fff;
-  flex-grow: 1;
-}
-
-header #timer.running {
-  color: lightgreen;
-}
-
-header #timer.gameover {
-  color: var(--danger);
-}
-
 ul {
   list-style-type: none;
   margin: 0;

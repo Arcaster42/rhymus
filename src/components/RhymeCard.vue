@@ -3,11 +3,13 @@
         <div class="rhyme_count_container center">
           <div class="rhyme_count" id="rhyme_count"><span>{{ `${cardNumber} of ${puzzlesArray.length}` }}</span></div>
         </div>
-        <p class="rhyme" id="rhyme">{{ (!isGameStarted) ? RhymusGame.rhymeElementText : RhymusGame.currentCard }}</p>
+        <p class="rhyme" id="rhyme">{{ (!isGameStarted) ? RhymusGame.rhymeElementText : RhymusGame.currentCard.sentence }}</p>
         <p class="rhyme" id="correct"></p>
         <p class="rhyme" id="wrong"></p>
         <CardInfo v-bind:isGameStarted="isGameStarted"
-                  v-bind:assignListeners="assignListeners"/>
+                  v-bind:assignListeners="assignListeners"
+                  v-bind:timerStyling="timerStyling"
+                  />
       </div>
 </template>
 
@@ -16,7 +18,7 @@ import CardInfo from './CardInfo.vue'
 
 export default {
     name: 'RhymeCard',
-    props: ['isGameStarted','assignListeners','RhymusGame','cardNumber','puzzlesArray'],
+    props: ['isGameStarted','assignListeners','RhymusGame','cardNumber','puzzlesArray','timerStyling'],
     components: {
         CardInfo
     }

@@ -3,7 +3,8 @@
     <section id="game_canvas">
       <Header v-bind:startGame="startGame" 
               v-bind:isRestartButtonDisabled="isRestartButtonDisabled"/>
-      <RhymeCard v-bind:isGameStarted="stylingCardBackground"/>
+      <RhymeCard v-bind:isGameStarted="stylingCardBackground"
+                 v-bind:assignListeners="(isGameStarted) ? assignListeners : null"/>
     </section>
   </div>
 </template>

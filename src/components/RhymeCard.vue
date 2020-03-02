@@ -6,7 +6,8 @@
         <p class="rhyme" id="rhyme"></p>
         <p class="rhyme" id="correct"></p>
         <p class="rhyme" id="wrong"></p>
-        <CardInfo v-bind:isGameStarted="isGameStarted"/>
+        <CardInfo v-bind:isGameStarted="isGameStarted"
+                  v-bind:assignListeners="assignListeners"/>
       </div>
 </template>
 
@@ -15,7 +16,7 @@ import CardInfo from './CardInfo.vue'
 
 export default {
     name: 'RhymeCard',
-    props: ['isGameStarted'],
+    props: ['isGameStarted','assignListeners'],
     components: {
         CardInfo
     }

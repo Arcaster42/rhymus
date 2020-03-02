@@ -9,6 +9,7 @@
             id="rhyme_guess"
             name="rhyme_guess"
             placeholder="Write your guess here"
+            v-on:keydown="assignListeners"
             />
             <div id="timer" class="center" v-bind:style="isGameStarted"></div>
         </div>
@@ -19,7 +20,7 @@
 <script>
 export default {
     name: 'CardInfo', 
-    props: ['isGameStarted']  
+    props: ['isGameStarted', 'assignListeners']  
 }
 </script>
 

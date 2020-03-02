@@ -46,6 +46,7 @@ export default {
   watch: {
     isGameStarted: function () {
       this.stylingCardBackground = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
+      this.$el.querySelector('#rhyme_guess').focus()
     }
   }
 }

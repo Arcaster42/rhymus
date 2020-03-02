@@ -4,7 +4,10 @@
       <Header v-bind:startGame="startGame" 
               v-bind:isRestartButtonDisabled="isRestartButtonDisabled"/>
       <RhymeCard v-bind:isGameStarted="stylingCardBackground"
-                 v-bind:assignListeners="(isGameStarted) ? assignListeners : null"/>
+                 v-bind:assignListeners="(isGameStarted) ? assignListeners : null"
+                 v-bind:RhymusGame="RhymusGame"
+                 v-bind:puzzlesArray="puzzlesArray"
+                 v-bind:cardNumber="cardNumber"/>
     </section>
   </div>
 </template>
@@ -30,7 +33,11 @@ export default {
             totalWrong: 0,
             isGameStarted: false,
             isRestartButtonDisabled: true,
-            stylingCardBackground: null
+            stylingCardBackground: null,
+            RhymusGame: {
+              currentCard: undefined,
+              rhymeElementText: 'Press start to play!'
+            }
           }
       },
   methods: {

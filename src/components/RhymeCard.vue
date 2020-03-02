@@ -1,9 +1,9 @@
 <template>
       <div class="rhyme_card" id="rhyme_card" v-bind:style="isGameStarted">
         <div class="rhyme_count_container center">
-          <div class="rhyme_count" id="rhyme_count"><span></span></div>
+          <div class="rhyme_count" id="rhyme_count"><span>{{ `${cardNumber} of ${puzzlesArray.length}` }}</span></div>
         </div>
-        <p class="rhyme" id="rhyme"></p>
+        <p class="rhyme" id="rhyme">{{ (!isGameStarted) ? RhymusGame.rhymeElementText : RhymusGame.currentCard }}</p>
         <p class="rhyme" id="correct"></p>
         <p class="rhyme" id="wrong"></p>
         <CardInfo v-bind:isGameStarted="isGameStarted"
@@ -16,7 +16,7 @@ import CardInfo from './CardInfo.vue'
 
 export default {
     name: 'RhymeCard',
-    props: ['isGameStarted','assignListeners'],
+    props: ['isGameStarted','assignListeners','RhymusGame','cardNumber','puzzlesArray'],
     components: {
         CardInfo
     }

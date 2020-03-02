@@ -8,7 +8,10 @@
                  v-bind:RhymusGame="RhymusGame"
                  v-bind:puzzlesArray="puzzlesArray"
                  v-bind:cardNumber="cardNumber"
-                 v-bind:timerStyling="timerStyling"/>
+                 v-bind:timerStyling="timerStyling"
+                 v-bind:guessValue="guessValue"
+                 v-bind:hintText="hintText"
+                 v-bind:wrongText="wrongText"/>
     </section>
   </div>
 </template>
@@ -46,7 +49,8 @@ export default {
             },
             guessValue: '',
             hintText: '',
-            incorrectGuesses: 0
+            incorrectGuesses: Number,
+            wrongText: ''
           }
       },
   methods: {
@@ -60,10 +64,17 @@ export default {
     },
     loadCard: function (nextCard) {
       this.RhymusGame.currentCard = nextCard
+      this.guessValue = ''
+      this.hintText = ''
+      this.wrongText = ''
+      this.incorrectGuesses = 0
     },
     resetTimer: function () {
       clearInterval(this.time)
-
+      this.timer = setInterval(countDown, 1000)
+    },
+    countDown: function () {
+      
     }
   },
   watch: {

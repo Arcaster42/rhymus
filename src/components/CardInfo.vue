@@ -1,8 +1,8 @@
 <template>
     <div class="card_info_outer center">
-        <div id="hint" class="center"></div>
+        <div id="hint" class="center">{{ hintText }}</div>
         <div class="card_info center">
-        <div id="incorrect"></div>
+        <div id="incorrect">{{ wrongText }}</div>
         <div class="card_info_input center">
             <input
             type="text"
@@ -10,6 +10,7 @@
             name="rhyme_guess"
             placeholder="Write your guess here"
             v-on:keydown="assignListeners"
+            v-bind:value="guessValue"
             />
             <div id="timer" v-bind:class="timerStyling" v-bind:style="isGameStarted"></div>
         </div>
@@ -20,7 +21,7 @@
 <script>
 export default {
     name: 'CardInfo', 
-    props: ['isGameStarted', 'assignListeners', 'timerStyling'] 
+    props: ['isGameStarted', 'assignListeners', 'timerStyling','guessValue','hintText','wrongText'] 
 }
 </script>
 

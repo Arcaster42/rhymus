@@ -24,7 +24,7 @@ export default {
     props: ['isGameStarted', 'assignListeners', 'timerStyling','guessValue','hintText','wrongText','timeRemaining'],
     data: function () {
       return {
-        formattedTimeRemaining: String
+        formattedTimeRemaining: ''
       }
     },
     watch: {

@@ -3,7 +3,7 @@
     <section id="game_canvas">
       <Header v-bind:startGame="startGame" 
               v-bind:isRestartButtonDisabled="isRestartButtonDisabled"/>
-      <RhymeCard />
+      <RhymeCard v-bind:isGameStarted="stylingCardBackground"/>
     </section>
   </div>
 </template>
@@ -28,7 +28,8 @@ export default {
             totalCorrect: 0,
             totalWrong: 0,
             isGameStarted: false,
-            isRestartButtonDisabled: true
+            isRestartButtonDisabled: true,
+            stylingCardBackground: null
           }
       },
   methods: {
@@ -39,6 +40,11 @@ export default {
     },
     assignListeners: function (e) {
       if (e.key === 'Enter') alert('checkAnswer()')
+    }
+  },
+  watch: {
+    isGameStarted: function () {
+      this.stylingCardBackground = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
     }
   }
 }

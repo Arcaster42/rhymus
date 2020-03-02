@@ -10,7 +10,7 @@
             name="rhyme_guess"
             placeholder="Write your guess here"
             />
-            <div id="timer" class="center" v-bind:style="{ background: 'var(--primary-gradient)'}"></div>
+            <div id="timer" class="center" v-bind:style="isGameStarted"></div>
         </div>
         </div>
     </div>
@@ -18,7 +18,8 @@
 
 <script>
 export default {
-    name: 'CardInfo',   
+    name: 'CardInfo', 
+    props: ['isGameStarted']  
 }
 </script>
 

@@ -1,12 +1,12 @@
 <template>
-      <div class="rhyme_card" id="rhyme_card" v-bind:style="{ background: 'var(--primary-gradient)' }">
+      <div class="rhyme_card" id="rhyme_card" v-bind:style="isGameStarted">
         <div class="rhyme_count_container center">
           <div class="rhyme_count" id="rhyme_count"><span></span></div>
         </div>
         <p class="rhyme" id="rhyme"></p>
         <p class="rhyme" id="correct"></p>
         <p class="rhyme" id="wrong"></p>
-        <CardInfo />
+        <CardInfo v-bind:isGameStarted="isGameStarted"/>
       </div>
 </template>
 
@@ -15,6 +15,7 @@ import CardInfo from './CardInfo.vue'
 
 export default {
     name: 'RhymeCard',
+    props: ['isGameStarted'],
     components: {
         CardInfo
     }

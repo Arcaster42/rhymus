@@ -17,19 +17,17 @@ export default {
     Header,
     RhymeCard
   },
-  data: {
-    function () {
-      return {
-        puzzlesArray: puzzlesArray,
-        playTimeSeconds: 30,
-        timeRemaining: Number,
-        cardNumber: 1,
-        correctGuesses: 0,
-        totalCorrect: 0,
-        totalWrong: 0
-      }
-    }
-  },
+  data: function () {
+          return {
+            puzzlesArray: puzzlesArray,
+            playTimeSeconds: 30,
+            timeRemaining: Number,
+            cardNumber: 1,
+            correctGuesses: 0,
+            totalCorrect: 0,
+            totalWrong: 0
+          }
+      },
   methods: {
     startGame: function () {
       this.timeRemaining = this.playTimeSeconds

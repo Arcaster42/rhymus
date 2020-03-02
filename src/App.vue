@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <section id="game_canvas">
-      <Header v-bind:startGame="startGame"/>
+      <Header v-bind:startGame="startGame" 
+              v-bind:isRestartButtonDisabled="isRestartButtonDisabled"/>
       <RhymeCard />
     </section>
   </div>
@@ -25,13 +26,16 @@ export default {
             cardNumber: 1,
             correctGuesses: 0,
             totalCorrect: 0,
-            totalWrong: 0
+            totalWrong: 0,
+            isGameStarted: false,
+            isRestartButtonDisabled: true
           }
       },
   methods: {
     startGame: function () {
+      this.isGameStarted = true
       this.timeRemaining = this.playTimeSeconds
-      alert('clicked')
+      this.isRestartButtonDisabled = false
     },
     assignListeners: function (e) {
       if (e.key === 'Enter') alert('checkAnswer()')

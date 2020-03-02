@@ -12,7 +12,7 @@
             v-on:keydown="assignListeners"
             v-bind:value="guessValue"
             />
-            <div id="timer" v-bind:class="timerStyling" v-bind:style="isGameStarted"></div>
+            <div id="timer" v-bind:class="timerStyling" v-bind:style="isGameStarted">{{ formattedTimeRemaining }}</div>
         </div>
         </div>
     </div>
@@ -21,7 +21,17 @@
 <script>
 export default {
     name: 'CardInfo', 
-    props: ['isGameStarted', 'assignListeners', 'timerStyling','guessValue','hintText','wrongText'] 
+    props: ['isGameStarted', 'assignListeners', 'timerStyling','guessValue','hintText','wrongText','timeRemaining'],
+    data: function () {
+      return {
+        formattedTimeRemaining: String
+      }
+    },
+    watch: {
+      timeRemaining: function () {
+          return this.formattedTimeRemaining = this.timeRemaining.toString().padStart(2, '0')
+      }
+    }
 }
 </script>
 
@@ -103,12 +113,12 @@ export default {
   font-size: 12px;
 }
 
-#timer {
+/* #timer {
   font-size: 2.5rem;
   text-indent: 2rem;
   color: #fff;
   flex-grow: 1;
-}
+} */
 
 #timer.running {
   color: lightgreen;

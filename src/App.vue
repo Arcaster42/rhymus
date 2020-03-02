@@ -11,7 +11,8 @@
                  v-bind:timerStyling="timerStyling"
                  v-bind:guessValue="guessValue"
                  v-bind:hintText="hintText"
-                 v-bind:wrongText="wrongText"/>
+                 v-bind:wrongText="wrongText"
+                 v-bind:timeRemaining="timeRemaining"/>
     </section>
   </div>
 </template>
@@ -30,7 +31,7 @@ export default {
           return {
             puzzlesArray: puzzlesArray,
             playTimeSeconds: 30,
-            timeRemaining: Number,
+            timeRemaining: null,
             cardNumber: 1,
             correctGuesses: 0,
             totalCorrect: 0,
@@ -68,14 +69,15 @@ export default {
       this.hintText = ''
       this.wrongText = ''
       this.incorrectGuesses = 0
+      this.resetTimer()
     },
     resetTimer: function () {
       clearInterval(this.time)
-      this.timer = setInterval(countDown, 1000)
+      this.timer = setInterval(this.countDown, 1000)
     },
     countDown: function () {
-      
-    }
+      this.timeRemaining === 0 ? console.log('gameOver()') : this.timeRemaining--
+    },
   },
   watch: {
     isGameStarted: function () {

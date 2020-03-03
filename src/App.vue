@@ -61,7 +61,7 @@ export default {
       this.isRestartButtonDisabled = false
     },
     assignListeners: function (e) {
-      if (e.key === 'Enter') alert('checkAnswer()')
+      if (e.key === 'Enter') this.checkAnswer()
     },
     loadCard: function (nextCard) {
       this.RhymusGame.currentCard = nextCard
@@ -78,6 +78,26 @@ export default {
     countDown: function () {
       this.timeRemaining === 0 ? console.log('gameOver()') : this.timeRemaining--
     },
+    shufflePuzzles: function (arr) {
+      let ctr = arr.length
+      let index
+      while(ctr > 0) {
+          index = Math.floor(Math.random() * ctr)
+          ctr --,
+          this.puzzlesArray = [arr[index], arr[ctr]] = [arr[ctr], arr[index]]
+      }
+    },
+    checkAnswer: function () {
+      // if (guessElement.value === Game.currentCard.answer) {
+      //     correctAnswer()
+      //     totalCorrect++
+      //     } else if (guessElement.value === '' || undefined) {
+      //     alert('Please enter a guess!')
+      //     } else {
+      //     incorrectAnswer()
+      //     totalWrong++
+      // }
+    }
   },
   watch: {
     isGameStarted: function () {
@@ -85,6 +105,7 @@ export default {
       this.$el.querySelector('#rhyme_guess').focus()
       this.loadCard(this.puzzlesArray[0])
       this.timerStyling.running = (this.isGameStarted) ? true : null
+      this.shufflePuzzles(puzzlesArray)
     }
   }
 }

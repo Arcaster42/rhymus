@@ -103,17 +103,13 @@ export default {
       return array
     },
     checkAnswer: function () {
-      console.log(this.guessValue)
-      console.log(this.RhymusGame.currentCard.answer)
       if (this.guessValue === this.RhymusGame.currentCard.answer) {
-          console.log('correctAnswer()')
           this.isCorrect = true
           this.totalCorrect++
           this.correctAnswer()
           } else if (this.guessValue === '' || undefined) {
           alert('Please enter a guess!')
           } else {
-          console.log('incorrectAnswer()')
           this.isCorrect = false
           this.totalWrong++
           this.incorrectAnswer()

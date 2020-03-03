@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <section id="game_canvas">
+      <input />
       <Header v-bind:startGame="startGame" 
               v-bind:isRestartButtonDisabled="isRestartButtonDisabled"/>
       <RhymeCard v-bind:isGameStarted="stylingCardBackground"
@@ -78,14 +79,16 @@ export default {
     countDown: function () {
       this.timeRemaining === 0 ? console.log('gameOver()') : this.timeRemaining--
     },
-    shufflePuzzles: function (arr) {
-      let ctr = arr.length
+    shufflePuzzles: function (arr1) {
+      let ctr = arr1.length
       let index
+      let array
       while(ctr > 0) {
           index = Math.floor(Math.random() * ctr)
           ctr --,
-          this.puzzlesArray = [arr[index], arr[ctr]] = [arr[ctr], arr[index]]
+          array = [arr1[index], arr1[ctr]] = [arr1[ctr], arr1[index]]
       }
+      return array
     },
     checkAnswer: function () {
       // if (guessElement.value === Game.currentCard.answer) {

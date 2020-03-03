@@ -13,6 +13,7 @@
                   v-bind:hintText="hintText"
                   v-bind:wrongText="wrongText"
                   v-bind:timeRemaining="timeRemaining"
+                  v-on="$listeners"
                   />
       </div>
 </template>

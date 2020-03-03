@@ -11,6 +11,7 @@
             placeholder="Write your guess here"
             v-on:keydown="assignListeners"
             v-bind:value="guessValue"
+            v-on:input="updateGuessValue($event)"
             />
             <div id="timer" v-bind:class="timerStyling" v-bind:style="isGameStarted">{{ formattedTimeRemaining }}</div>
         </div>
@@ -30,6 +31,11 @@ export default {
     watch: {
       timeRemaining: function () {
           return this.formattedTimeRemaining = this.timeRemaining.toString().padStart(2, '0')
+      }
+    },
+    methods: {
+      updateGuessValue(e) {
+        this.$emit('input', e.target.value)
       }
     }
 }

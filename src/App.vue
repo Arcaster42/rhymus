@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <section id="game_canvas">
-      <input />
       <Header v-bind:startGame="startGame" 
               v-bind:isRestartButtonDisabled="isRestartButtonDisabled"/>
       <RhymeCard v-bind:isGameStarted="stylingCardBackground"
@@ -13,7 +12,8 @@
                  v-bind:guessValue="guessValue"
                  v-bind:hintText="hintText"
                  v-bind:wrongText="wrongText"
-                 v-bind:timeRemaining="timeRemaining"/>
+                 v-bind:timeRemaining="timeRemaining"
+                 v-on:input="guessValueUpdate"/>
     </section>
   </div>
 </template>
@@ -22,11 +22,13 @@
 import Header from './components/Header'
 import RhymeCard from './components/RhymeCard'
 import puzzlesArray from '../src/puzzles'
+import Hello from './components/HelloWorld'
 export default {
   name: 'app',
   components: {
     Header,
-    RhymeCard
+    RhymeCard,
+    Hello
   },
   data: function () {
           return {
@@ -100,6 +102,9 @@ export default {
       //     incorrectAnswer()
       //     totalWrong++
       // }
+    },
+    guessValueUpdate: function (val) {
+      this.guessValue = val
     }
   },
   watch: {

@@ -1,6 +1,6 @@
 <template>
     <div class="card_info_outer center">
-        <div id="hint" class="center">{{ hintText }}</div>
+        <div id="hint" class="center" v-bind:style="stylingObject.hint">{{ hintText }}</div>
         <div class="card_info center">
         <div id="incorrect">{{ wrongText }}</div>
         <div class="card_info_input center">

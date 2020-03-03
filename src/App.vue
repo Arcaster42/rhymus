@@ -45,7 +45,8 @@ export default {
             stylingObject: {
               guessElement: null,
               cardBlock: null,
-              timerDisplay: null
+              timerDisplay: null,
+              hint: {}
             },
             RhymusGame: {
               currentCard: undefined,
@@ -61,7 +62,7 @@ export default {
             },
             guessValue: '',
             hintText: '',
-            incorrectGuesses: Number,
+            incorrectGuesses: 0,
             wrongText: '',
             isCorrect: null
           }
@@ -113,15 +114,17 @@ export default {
           alert('Please enter a guess!')
           } else {
           console.log('incorrectAnswer()')
+          this.isCorrect = false
           this.totalWrong++
+          this.incorrectAnswer()
       }
     },
     guessValueUpdate: function (val) {
       this.guessValue = val
     },
     correctAnswer: function () {
-      this.classNameObject.cardBlock.correct = this.isCorrect ? true : false
-      this.classNameObject.guessElement.correct = this.isCorrect ? true : false
+      this.classNameObject.cardBlock.correct = this.isCorrect ? true : null
+      this.classNameObject.guessElement.correct = this.isCorrect ? true : null
       this.cardNumber++
       this.correctGuesses++
       setTimeout(() => {
@@ -134,6 +137,29 @@ export default {
               console.log('gameOver()')
           }
       }, 800)
+    },
+    incorrectAnswer: function () {
+      this.classNameObject.cardBlock.incorrect = this.isCorrect ? null : true
+      this.classNameObject.guessElement.incorrect = this.isCorrect ? null : true
+      this.incorrectGuesses++
+      this.guessValue = ''
+
+      setTimeout(() => {
+          this.classNameObject.cardBlock.incorrect = false
+          this.classNameObject.guessElement.incorrect = false
+      }, 500)
+      this.wrongText = `incorrect guesses: ${this.incorrectGuesses}`
+      //if there are more than 4 incorrect guesses on a single card the player loses
+      if (this.incorrectGuesses > 1 && this.incorrectGuesses < 4) {
+          this.stylingObject.hint.display = 'flex'
+          this.hintText = 'Hint: '
+          //hint.textContent = 'Hint: ' + capitalizeFirstLetter()
+      } else {
+          console.log('gameOver()')
+      }
+    },
+    capitalizeFirstLetter: function () {
+      //return Game.currentCard.hint.charAt(0).toUpperCase() + Game.currentCard.hint.slice(1).toLowerCase()
     }
   },
   watch: {

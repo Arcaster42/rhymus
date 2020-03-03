@@ -1,5 +1,5 @@
 <template>
-      <div class="rhyme_card" id="rhyme_card" v-bind:style="stylingCardBackground">
+      <div class="rhyme_card" id="rhyme_card" v-bind:style="stylingObject.cardBlock">
         <div class="rhyme_count_container center">
           <div class="rhyme_count" id="rhyme_count"><span>{{ (isGameStarted) ? `${cardNumber} of ${puzzlesArray.length}` : null }}</span></div>
         </div>
@@ -7,7 +7,7 @@
         <p class="rhyme" id="correct"></p>
         <p class="rhyme" id="wrong"></p>
         <CardInfo v-bind:isGameStarted="isGameStarted"
-                  v-bind:stylingCardBackground="stylingCardBackground"
+                  v-bind:stylingObject="stylingObject"
                   v-bind:assignListeners="assignListeners"
                   v-bind:timerStyling="timerStyling"
                   v-bind:guessValue="guessValue"
@@ -24,7 +24,7 @@ import CardInfo from './CardInfo.vue'
 
 export default {
     name: 'RhymeCard',
-    props: ['isGameStarted','assignListeners','RhymusGame','cardNumber','puzzlesArray','timerStyling','guessValue','hintText','wrongText','timeRemaining','stylingCardBackground'],
+    props: ['isGameStarted','assignListeners','RhymusGame','cardNumber','puzzlesArray','timerStyling','guessValue','hintText','wrongText','timeRemaining','stylingObject'],
     components: {
         CardInfo
     }

@@ -13,7 +13,7 @@
             v-bind:value="guessValue"
             v-on:input="updateGuessValue($event)"
             />
-            <div id="timer" v-bind:class="timerStyling" v-bind:style="stylingCardBackground">{{ formattedTimeRemaining }}</div>
+            <div id="timer" v-bind:class="timerStyling" v-bind:style="stylingObject.timerDisplay">{{ formattedTimeRemaining }}</div>
         </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
 <script>
 export default {
     name: 'CardInfo', 
-    props: ['isGameStarted', 'assignListeners', 'timerStyling','guessValue','hintText','wrongText','timeRemaining','stylingCardBackground'],
+    props: ['isGameStarted', 'assignListeners', 'timerStyling','guessValue','hintText','wrongText','timeRemaining','stylingObject'],
     data: function () {
       return {
         formattedTimeRemaining: ''

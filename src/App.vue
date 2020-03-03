@@ -3,7 +3,7 @@
     <section id="game_canvas">
       <Header v-bind:startGame="startGame" 
               v-bind:isRestartButtonDisabled="isRestartButtonDisabled"/>
-      <RhymeCard v-bind:stylingCardBackground="stylingCardBackground"
+      <RhymeCard v-bind:stylingObject="stylingObject"
                  v-bind:isGameStarted="isGameStarted"
                  v-bind:assignListeners="assignListeners"
                  v-bind:RhymusGame="RhymusGame"
@@ -42,7 +42,11 @@ export default {
             totalWrong: 0,
             isGameStarted: false,
             isRestartButtonDisabled: true,
-            stylingCardBackground: null,
+            stylingObject: {
+              guessElement: null,
+              cardBlock: null,
+              timerDisplay: null
+            },
             RhymusGame: {
               currentCard: undefined,
               rhymeElementText: 'Press start to play!'
@@ -55,7 +59,8 @@ export default {
             guessValue: '',
             hintText: '',
             incorrectGuesses: Number,
-            wrongText: ''
+            wrongText: '',
+            isCorrect: null
           }
       },
   methods: {
@@ -96,6 +101,7 @@ export default {
     checkAnswer: function () {
       if (this.guessValue === this.RhymusGame.currentCard.answer) {
           console.log('correctAnswer()')
+          this.isCorrect = true
           this.totalCorrect++
           } else if (this.guessValue === '' || undefined) {
           alert('Please enter a guess!')
@@ -108,8 +114,9 @@ export default {
       this.guessValue = val
     },
     correctAnswer: function () {
-      cardBlock.className += ' correct'
-      guessElement.className += 'correct'
+     // this.isCorrect ? this.stylingCardBackground.correct = true : null
+      //cardBlock.className += ' correct'
+      //guessElement.className += 'correct'
       this.cardNumber++
       this.correctGuesses++
       setTimeout(() => {
@@ -126,7 +133,8 @@ export default {
   },
   watch: {
     isGameStarted: function () {
-      this.stylingCardBackground = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
+      this.stylingObject.timerDisplay = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
+      this.stylingObject.cardBlock = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
       this.$el.querySelector('#rhyme_guess').focus()
       this.loadCard(this.puzzlesArray[0])
       this.timerStyling.running = (this.isGameStarted) ? true : null

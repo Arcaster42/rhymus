@@ -1,7 +1,7 @@
 <template>
       <div class="rhyme_card" id="rhyme_card" v-bind:style="isGameStarted">
         <div class="rhyme_count_container center">
-          <div class="rhyme_count" id="rhyme_count"><span>{{ `${cardNumber} of ${puzzlesArray.length}` }}</span></div>
+          <div class="rhyme_count" id="rhyme_count"><span>{{ (isGameStarted) ? `${cardNumber} of ${puzzlesArray.length}` : null }}</span></div>
         </div>
         <p class="rhyme" id="rhyme">{{ (!isGameStarted) ? RhymusGame.rhymeElementText : RhymusGame.currentCard.sentence }}</p>
         <p class="rhyme" id="correct"></p>

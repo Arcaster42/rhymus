@@ -93,15 +93,15 @@ export default {
       return array
     },
     checkAnswer: function () {
-      // if (guessElement.value === Game.currentCard.answer) {
-      //     correctAnswer()
-      //     totalCorrect++
-      //     } else if (guessElement.value === '' || undefined) {
-      //     alert('Please enter a guess!')
-      //     } else {
-      //     incorrectAnswer()
-      //     totalWrong++
-      // }
+      if (this.guessValue === this.RhymusGame.currentCard.answer) {
+          console.log('correctAnswer()')
+          this.totalCorrect++
+          } else if (this.guessValue === '' || undefined) {
+          alert('Please enter a guess!')
+          } else {
+          console.log('incorrectAnswer()')
+          this.totalWrong++
+      }
     },
     guessValueUpdate: function (val) {
       this.guessValue = val

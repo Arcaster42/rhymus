@@ -12,6 +12,7 @@
             v-on="{ keydown: isGameStarted ? assignListeners : false }"
             v-bind:value="guessValue"
             v-on:input="updateGuessValue($event)"
+            v-bind:class="classNameObject.guessElement"
             />
             <div id="timer" v-bind:class="classNameObject.timerDisplay" v-bind:style="stylingObject.timerDisplay">{{ formattedTimeRemaining }}</div>
         </div>

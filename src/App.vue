@@ -53,8 +53,8 @@ export default {
             },
             timer: null,
             classNameObject: {
-              guessElement: null,
-              cardBlock: null,
+              guessElement: {},
+              cardBlock: {},
               timerDisplay: {
                 center: true
               }
@@ -102,10 +102,13 @@ export default {
       return array
     },
     checkAnswer: function () {
+      console.log(this.guessValue)
+      console.log(this.RhymusGame.currentCard.answer)
       if (this.guessValue === this.RhymusGame.currentCard.answer) {
           console.log('correctAnswer()')
           this.isCorrect = true
           this.totalCorrect++
+          this.correctAnswer()
           } else if (this.guessValue === '' || undefined) {
           alert('Please enter a guess!')
           } else {
@@ -117,16 +120,15 @@ export default {
       this.guessValue = val
     },
     correctAnswer: function () {
-     // this.isCorrect ? this.stylingCardBackground.correct = true : null
-      //cardBlock.className += ' correct'
-      //guessElement.className += 'correct'
+      this.classNameObject.cardBlock.correct = this.isCorrect ? true : false
+      this.classNameObject.guessElement.correct = this.isCorrect ? true : false
       this.cardNumber++
       this.correctGuesses++
       setTimeout(() => {
-          cardBlock.className = 'rhyme_card'
-          guessElement.className = ''
+          this.classNameObject.cardBlock.correct = false
+          this.classNameObject.guessElement.correct = false
           if (this.cardNumber < this.puzzlesArray.length) {
-              loadCard(this.puzzlesArray[this.cardNumber])
+              this.loadCard(this.puzzlesArray[this.cardNumber])
           }
           else {
               console.log('gameOver()')

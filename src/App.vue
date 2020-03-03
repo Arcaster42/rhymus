@@ -9,7 +9,7 @@
                  v-bind:RhymusGame="RhymusGame"
                  v-bind:puzzlesArray="puzzlesArray"
                  v-bind:cardNumber="cardNumber"
-                 v-bind:timerStyling="timerStyling"
+                 v-bind:classNameObject="classNameObject"
                  v-bind:guessValue="guessValue"
                  v-bind:hintText="hintText"
                  v-bind:wrongText="wrongText"
@@ -52,9 +52,12 @@ export default {
               rhymeElementText: 'Press start to play!'
             },
             timer: null,
-            timerStyling: {
-              center: true,
-              'running': false
+            classNameObject: {
+              guessElement: null,
+              cardBlock: null,
+              timerDisplay: {
+                center: true
+              }
             },
             guessValue: '',
             hintText: '',
@@ -137,7 +140,7 @@ export default {
       this.stylingObject.cardBlock = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
       this.$el.querySelector('#rhyme_guess').focus()
       this.loadCard(this.puzzlesArray[0])
-      this.timerStyling.running = (this.isGameStarted) ? true : null
+      this.classNameObject.timerDisplay.running = (this.isGameStarted) ? true : null
       this.shufflePuzzles(puzzlesArray)
     }
   }

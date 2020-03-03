@@ -9,7 +9,7 @@
         <CardInfo v-bind:isGameStarted="isGameStarted"
                   v-bind:stylingObject="stylingObject"
                   v-bind:assignListeners="assignListeners"
-                  v-bind:timerStyling="timerStyling"
+                  v-bind:classNameObject="classNameObject"
                   v-bind:guessValue="guessValue"
                   v-bind:hintText="hintText"
                   v-bind:wrongText="wrongText"
@@ -24,7 +24,7 @@ import CardInfo from './CardInfo.vue'
 
 export default {
     name: 'RhymeCard',
-    props: ['isGameStarted','assignListeners','RhymusGame','cardNumber','puzzlesArray','timerStyling','guessValue','hintText','wrongText','timeRemaining','stylingObject'],
+    props: ['isGameStarted','assignListeners','RhymusGame','cardNumber','puzzlesArray','classNameObject','guessValue','hintText','wrongText','timeRemaining','stylingObject'],
     components: {
         CardInfo
     }

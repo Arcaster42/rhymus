@@ -3,8 +3,9 @@
     <section id="game_canvas">
       <Header v-bind:startGame="startGame" 
               v-bind:isRestartButtonDisabled="isRestartButtonDisabled"/>
-      <RhymeCard v-bind:isGameStarted="stylingCardBackground"
-                 v-bind:assignListeners="(isGameStarted) ? assignListeners : null"
+      <RhymeCard v-bind:stylingCardBackground="stylingCardBackground"
+                 v-bind:isGameStarted="isGameStarted"
+                 v-bind:assignListeners="assignListeners"
                  v-bind:RhymusGame="RhymusGame"
                  v-bind:puzzlesArray="puzzlesArray"
                  v-bind:cardNumber="cardNumber"
@@ -105,6 +106,22 @@ export default {
     },
     guessValueUpdate: function (val) {
       this.guessValue = val
+    },
+    correctAnswer: function () {
+      cardBlock.className += ' correct'
+      guessElement.className += 'correct'
+      this.cardNumber++
+      this.correctGuesses++
+      setTimeout(() => {
+          cardBlock.className = 'rhyme_card'
+          guessElement.className = ''
+          if (this.cardNumber < this.puzzlesArray.length) {
+              loadCard(this.puzzlesArray[this.cardNumber])
+          }
+          else {
+              console.log('gameOver()')
+          }
+      }, 800)
     }
   },
   watch: {

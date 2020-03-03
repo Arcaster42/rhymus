@@ -9,11 +9,11 @@
             id="rhyme_guess"
             name="rhyme_guess"
             placeholder="Write your guess here"
-            v-on:keydown="assignListeners"
+            v-on="{ keydown: isGameStarted ? assignListeners : false }"
             v-bind:value="guessValue"
             v-on:input="updateGuessValue($event)"
             />
-            <div id="timer" v-bind:class="timerStyling" v-bind:style="isGameStarted">{{ formattedTimeRemaining }}</div>
+            <div id="timer" v-bind:class="timerStyling" v-bind:style="stylingCardBackground">{{ formattedTimeRemaining }}</div>
         </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
 <script>
 export default {
     name: 'CardInfo', 
-    props: ['isGameStarted', 'assignListeners', 'timerStyling','guessValue','hintText','wrongText','timeRemaining'],
+    props: ['isGameStarted', 'assignListeners', 'timerStyling','guessValue','hintText','wrongText','timeRemaining','stylingCardBackground'],
     data: function () {
       return {
         formattedTimeRemaining: ''

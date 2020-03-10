@@ -26,13 +26,11 @@
 import Header from './components/Header'
 import RhymeCard from './components/RhymeCard'
 import puzzlesArray from '../src/puzzles'
-import Hello from './components/HelloWorld'
 export default {
   name: 'app',
   components: {
     Header,
     RhymeCard,
-    Hello
   },
   data() {
           return {

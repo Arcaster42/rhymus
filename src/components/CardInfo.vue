@@ -25,7 +25,7 @@ export default {
     name: 'CardInfo', 
     props: ['isGameStarted', 'assignListeners', 'classNameObject','guessValue','hintText','wrongText','timeRemaining','stylingObject'],
     computed: {
-      formatTimer: function () {
+      formatTimer() {
          return (this.timeRemaining === null) ? null : this.timeRemaining.toString().padStart(2, '0')
       }
     },

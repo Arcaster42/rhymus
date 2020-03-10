@@ -34,7 +34,7 @@ export default {
     RhymeCard,
     Hello
   },
-  data: function () {
+  data() {
           return {
             puzzlesArray: puzzlesArray,
             playTimeSeconds: 30,
@@ -72,7 +72,7 @@ export default {
           }
       },
   methods: {
-    startGame: function (e) {      
+    startGame(e) {      
       this.isGameStarted = true
       this.timeRemaining = this.playTimeSeconds
       this.isRestartButtonDisabled = false
@@ -93,10 +93,10 @@ export default {
         this.totalWrong = 0
       }
     },
-    assignListeners: function (e) {
+    assignListeners(e) {
       if ((e.key === 'Enter') && this.isGameStarted) this.checkAnswer()
     },
-    loadCard: function (nextCard) {
+    loadCard(nextCard) {
       this.RhymusGame.currentCard = nextCard
       this.guessValue = ''
       this.hintText = ''
@@ -104,14 +104,14 @@ export default {
       this.incorrectGuesses = 0
       this.resetTimer()
     },
-    resetTimer: function () {
+    resetTimer() {
       clearInterval(this.timer)
       this.timer = setInterval(this.countDown, 1000)
     },
-    countDown: function () {
+    countDown() {
       this.timeRemaining === 0 ? this.gameOver() : this.timeRemaining--
     },
-    shufflePuzzles: function (arr1) {
+    shufflePuzzles(arr1) {
       let ctr = arr1.length
       let index
       let array
@@ -122,7 +122,7 @@ export default {
       }
       return array
     },
-    checkAnswer: function () {
+    checkAnswer() {
       if (this.guessValue === this.RhymusGame.currentCard.answer) {
           this.isCorrect = true
           this.totalCorrect++
@@ -135,10 +135,10 @@ export default {
           this.incorrectAnswer()
       }
     },
-    guessValueUpdate: function (val) {
+    guessValueUpdate(val) {
       this.guessValue = val
     },
-    correctAnswer: function () {
+    correctAnswer() {
       this.classNameObject.cardBlock.correct = this.isCorrect ? true : null
       this.classNameObject.guessElement.correct = this.isCorrect ? true : null
       this.cardNumber++
@@ -154,7 +154,7 @@ export default {
           }
       }, 800)
     },
-    incorrectAnswer: function () {
+    incorrectAnswer() {
       this.classNameObject.cardBlock.incorrect = this.isCorrect ? null : true
       this.classNameObject.guessElement.incorrect = this.isCorrect ? null : true
       this.incorrectGuesses++
@@ -173,7 +173,7 @@ export default {
           this.gameOver()
       }
     },
-    gameOver: function () {
+    gameOver() {
         // Accounts for array starting at 0
       if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArray.length || this.incorrectGuesses >= 4) {
           this.isFirstGame = (this.isFirstGame) ? false : this.isFirstGame
@@ -188,7 +188,7 @@ export default {
     }
   },
   computed: {
-    capitalizeFirstLetter: function () {
+    capitalizeFirstLetter() {
       return this.RhymusGame.currentCard.hint.charAt(0).toUpperCase() + this.RhymusGame.currentCard.hint.slice(1).toLowerCase()
     }
   }

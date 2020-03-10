@@ -14,7 +14,10 @@
                  v-bind:hintText="hintText"
                  v-bind:wrongText="wrongText"
                  v-bind:timeRemaining="timeRemaining"
-                 v-on:input="guessValueUpdate"/>
+                 v-on:input="guessValueUpdate"
+                 v-bind:totalWrong="totalWrong"
+                 v-bind:totalCorrect="totalCorrect"
+                 v-bind:isFirstGame="isFirstGame" />
     </section>
   </div>
 </template>
@@ -64,7 +67,8 @@ export default {
             hintText: '',
             incorrectGuesses: 0,
             wrongText: '',
-            isCorrect: null
+            isCorrect: null,
+            isFirstGame: true
           }
       },
   methods: {
@@ -85,11 +89,11 @@ export default {
       this.resetTimer()
     },
     resetTimer: function () {
-      clearInterval(this.time)
+      clearInterval(this.timer)
       this.timer = setInterval(this.countDown, 1000)
     },
     countDown: function () {
-      this.timeRemaining === 0 ? console.log('gameOver()') : this.timeRemaining--
+      this.timeRemaining === 0 ? this.gameOver() : this.timeRemaining--
     },
     shufflePuzzles: function (arr1) {
       let ctr = arr1.length
@@ -130,7 +134,7 @@ export default {
               this.loadCard(this.puzzlesArray[this.cardNumber])
           }
           else {
-              console.log('gameOver()')
+              this.gameOver()
           }
       }, 800)
     },
@@ -150,29 +154,20 @@ export default {
           this.stylingObject.hint.display = 'flex'
           this.hintText = 'Hint: ' + this.capitalizeFirstLetter
       } else {
-          console.log('gameOver()')
+          this.gameOver()
       }
     },
     gameOver: function () {
         // Accounts for array starting at 0
       if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArray.length || this.incorrectGuesses >= 4) {
-          timerDisplay.textContent = getTimerString(timeRemaining)
-          timerDisplay.classList.remove('running')
-          timerDisplay.classList.add('gameover')
-          rhymeElement.textContent = 'Game Over!'
-          correctElement.textContent = 'Correct guesses: ' + totalCorrect
-          incorrectElement.textContent = 'Incorrect guesses: ' + totalWrong
-          timerDisplay.style.setProperty('background', 'var(--danger)')
-          cardBlock.style.setProperty('background', 'var(--danger)')
-          hint.style.display = 'none'
-          guessElement.removeEventListener("keydown", assignListeners)
-          cardNumber = 1
-          correctGuesses = 0
-          setTimeout(() => {
-              cardBlock.className = 'rhyme_card'
-              countElement.className = 'rhyme_count'
-              guessElement.className = ''
-          }, 3000)
+          this.isFirstGame = (this.isFirstGame) ? false : this.isFirstGame
+          this.isGameStarted = false
+          this.classNameObject.timerDisplay.running = false
+          this.classNameObject.timerDisplay.gameover = true
+          this.RhymusGame.rhymeElementText = 'Game Over!'
+          this.stylingObject.timerDisplay.background = 'var(--danger)'
+          this.stylingObject.cardBlock.background = 'var(--danger)'
+          this.stylingObject.hint.display = 'none'
       }
     }
   },
@@ -182,13 +177,23 @@ export default {
     }
   },
   watch: {
-    isGameStarted: function () {
-      this.stylingObject.timerDisplay = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
-      this.stylingObject.cardBlock = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
-      this.$el.querySelector('#rhyme_guess').focus()
-      this.loadCard(this.puzzlesArray[0])
-      this.classNameObject.timerDisplay.running = (this.isGameStarted) ? true : null
-      this.shufflePuzzles(puzzlesArray)
+    isGameStarted: function (newVal, oldVal) {
+      if (newVal) {
+        this.stylingObject.timerDisplay = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
+        this.stylingObject.cardBlock = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
+        this.$el.querySelector('#rhyme_guess').focus()
+        this.loadCard(this.puzzlesArray[0])
+        this.classNameObject.timerDisplay.running = (this.isGameStarted) ? true : null
+        this.shufflePuzzles(puzzlesArray)
+        if (!this.isFirstGame) {
+          this.cardNumber = 1
+          this.correctGuesses = 0
+          this.incorrectGuesses = 0
+          this.totalCorrect = 0
+          this.totalWrong = 0
+          this.guessValue = ''
+        }
+      }
     }
   }
 }

@@ -131,7 +131,7 @@ export default {
   color: lightgreen;
 }
 
-#timer.gameover {
+/* #timer.gameover {
   color: var(--danger);
-}
+} */
 </style>

@@ -72,10 +72,26 @@ export default {
           }
       },
   methods: {
-    startGame: function () {
+    startGame: function (e) {      
       this.isGameStarted = true
       this.timeRemaining = this.playTimeSeconds
       this.isRestartButtonDisabled = false
+
+      this.stylingObject.timerDisplay = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
+      this.stylingObject.cardBlock = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
+      this.$el.querySelector('#rhyme_guess').focus()
+      this.loadCard(this.puzzlesArray[0])
+      this.classNameObject.timerDisplay.running = (this.isGameStarted) ? true : null
+      if (e.target.classList.contains('header_button_start')) {
+        this.shufflePuzzles(this.puzzlesArray)
+      }
+      if (!this.isFirstGame) {
+        this.cardNumber = 1
+        this.correctGuesses = 0
+        this.incorrectGuesses = 0
+        this.totalCorrect = 0
+        this.totalWrong = 0
+      }
     },
     assignListeners: function (e) {
       if ((e.key === 'Enter') && this.isGameStarted) this.checkAnswer()
@@ -174,26 +190,6 @@ export default {
   computed: {
     capitalizeFirstLetter: function () {
       return this.RhymusGame.currentCard.hint.charAt(0).toUpperCase() + this.RhymusGame.currentCard.hint.slice(1).toLowerCase()
-    }
-  },
-  watch: {
-    isGameStarted: function (newVal) {
-      if (newVal) {
-        this.stylingObject.timerDisplay = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
-        this.stylingObject.cardBlock = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
-        this.$el.querySelector('#rhyme_guess').focus()
-        this.loadCard(this.puzzlesArray[0])
-        this.classNameObject.timerDisplay.running = (this.isGameStarted) ? true : null
-        this.shufflePuzzles(puzzlesArray)
-        if (!this.isFirstGame) {
-          this.cardNumber = 1
-          this.correctGuesses = 0
-          this.incorrectGuesses = 0
-          this.totalCorrect = 0
-          this.totalWrong = 0
-          this.guessValue = ''
-        }
-      }
     }
   }
 }

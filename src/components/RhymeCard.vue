@@ -1,7 +1,10 @@
 <template>
       <div v-bind:class="classNameObject.cardBlock" class="rhyme_card" id="rhyme_card" v-bind:style="stylingObject.cardBlock">
         <div class="rhyme_count_container center">
-          <div class="rhyme_count" id="rhyme_count"><span>{{ (isGameStarted || !isFirstGame) ? `${cardNumber} of ${puzzlesArray.length}` : null }}</span></div>
+          <div class="rhyme_count" id="rhyme_count">
+            <span v-if="!isGameStarted && isFirstGame"></span>
+              {{ (isGameStarted || !isFirstGame) ? `${cardNumber} of ${puzzlesArray.length}` : null }}
+            </div>
         </div>
         <p class="rhyme" id="rhyme">{{ (!isGameStarted) ? RhymusGame.rhymeElementText : RhymusGame.currentCard.sentence }}</p>
         <p class="rhyme" id="correct">{{ (!isFirstGame) ? `Correct guesses: ${totalCorrect}` : null }}</p>

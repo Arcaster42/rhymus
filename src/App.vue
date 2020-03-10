@@ -148,14 +148,37 @@ export default {
       //if there are more than 4 incorrect guesses on a single card the player loses
       if (this.incorrectGuesses > 1 && this.incorrectGuesses < 4) {
           this.stylingObject.hint.display = 'flex'
-          this.hintText = 'Hint: '
-          //hint.textContent = 'Hint: ' + capitalizeFirstLetter()
+          this.hintText = 'Hint: ' + this.capitalizeFirstLetter
       } else {
           console.log('gameOver()')
       }
     },
+    gameOver: function () {
+        // Accounts for array starting at 0
+      if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArray.length || this.incorrectGuesses >= 4) {
+          timerDisplay.textContent = getTimerString(timeRemaining)
+          timerDisplay.classList.remove('running')
+          timerDisplay.classList.add('gameover')
+          rhymeElement.textContent = 'Game Over!'
+          correctElement.textContent = 'Correct guesses: ' + totalCorrect
+          incorrectElement.textContent = 'Incorrect guesses: ' + totalWrong
+          timerDisplay.style.setProperty('background', 'var(--danger)')
+          cardBlock.style.setProperty('background', 'var(--danger)')
+          hint.style.display = 'none'
+          guessElement.removeEventListener("keydown", assignListeners)
+          cardNumber = 1
+          correctGuesses = 0
+          setTimeout(() => {
+              cardBlock.className = 'rhyme_card'
+              countElement.className = 'rhyme_count'
+              guessElement.className = ''
+          }, 3000)
+      }
+    }
+  },
+  computed: {
     capitalizeFirstLetter: function () {
-      //return Game.currentCard.hint.charAt(0).toUpperCase() + Game.currentCard.hint.slice(1).toLowerCase()
+      return this.RhymusGame.currentCard.hint.charAt(0).toUpperCase() + this.RhymusGame.currentCard.hint.slice(1).toLowerCase()
     }
   },
   watch: {

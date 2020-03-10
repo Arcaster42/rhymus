@@ -14,7 +14,7 @@
             v-on:input="updateGuessValue($event)"
             v-bind:class="classNameObject.guessElement"
             />
-            <div id="timer" v-bind:class="classNameObject.timerDisplay" v-bind:style="stylingObject.timerDisplay">{{ formattedTimeRemaining }}</div>
+            <div id="timer" v-bind:class="classNameObject.timerDisplay" v-bind:style="stylingObject.timerDisplay">{{ formatTimer }}</div>
         </div>
         </div>
     </div>
@@ -24,14 +24,9 @@
 export default {
     name: 'CardInfo', 
     props: ['isGameStarted', 'assignListeners', 'classNameObject','guessValue','hintText','wrongText','timeRemaining','stylingObject'],
-    data: function () {
-      return {
-        formattedTimeRemaining: ''
-      }
-    },
-    watch: {
-      timeRemaining: function () {
-          return this.formattedTimeRemaining = this.timeRemaining.toString().padStart(2, '0')
+    computed: {
+      formatTimer: function () {
+         return (this.timeRemaining === null) ? null : this.timeRemaining.toString().padStart(2, '0')
       }
     },
     methods: {

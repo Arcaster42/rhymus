@@ -9,7 +9,7 @@
             id="rhyme_guess"
             name="rhyme_guess"
             placeholder="Write your guess here"
-            v-on="{ keydown: isGameStarted ? assignListeners : false }"
+            v-on:keydown="assignListeners"
             v-bind:value="guessValue"
             v-on:input="updateGuessValue($event)"
             v-bind:class="classNameObject.guessElement"

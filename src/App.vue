@@ -78,7 +78,7 @@ export default {
       this.isRestartButtonDisabled = false
     },
     assignListeners: function (e) {
-      if (e.key === 'Enter') this.checkAnswer()
+      if ((e.key === 'Enter') && this.isGameStarted) this.checkAnswer()
     },
     loadCard: function (nextCard) {
       this.RhymusGame.currentCard = nextCard

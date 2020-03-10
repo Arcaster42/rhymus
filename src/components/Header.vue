@@ -2,7 +2,9 @@
   <header>
       <ul>
           <button class="header_button header_button_start" v-on:click="startGame">Start</button>
-          <button class="header_button header_button_restart header_button--danger" v-bind:disabled="isRestartButtonDisabled">Restart</button>
+          <button class="header_button header_button_restart header_button--danger" 
+                  v-bind:disabled="isRestartButtonDisabled"
+                  v-on:click="startGame">Restart</button>
       </ul>
   </header>
 </template>

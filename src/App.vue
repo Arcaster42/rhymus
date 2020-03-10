@@ -177,7 +177,7 @@ export default {
     }
   },
   watch: {
-    isGameStarted: function (newVal, oldVal) {
+    isGameStarted: function (newVal) {
       if (newVal) {
         this.stylingObject.timerDisplay = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
         this.stylingObject.cardBlock = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null

@@ -1,6 +1,6 @@
 <template>
     <div class="card_info_outer center">
-        <div id="hint" class="center" v-bind:style="stylingObject.hint">{{ hintText }}</div>
+        <div id="hint" class="center" :style="stylingObject.hint">{{ hintText }}</div>
         <div class="card_info center">
         <div id="incorrect">{{ wrongText }}</div>
         <div class="card_info_input center">
@@ -9,12 +9,12 @@
             id="rhyme_guess"
             name="rhyme_guess"
             placeholder="Write your guess here"
-            v-on:keydown="assignListeners"
-            v-bind:value="guessValue"
-            v-on:input="updateGuessValue($event)"
-            v-bind:class="classNameObject.guessElement"
+            @keydown="assignListeners"
+            :value="guessValue"
+            @input="updateGuessValue($event)"
+            :class="classNameObject.guessElement"
             />
-            <div id="timer" v-bind:class="classNameObject.timerDisplay" v-bind:style="stylingObject.timerDisplay">{{ formatTimer }}</div>
+            <div id="timer" :class="classNameObject.timerDisplay" :style="stylingObject.timerDisplay">{{ formatTimer }}</div>
         </div>
         </div>
     </div>

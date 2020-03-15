@@ -1,4 +1,4 @@
-let puzzlesArray = [
+const puzzlesArray = [
     {
       id: 1,
       sentence: 'I have to walk my log.',

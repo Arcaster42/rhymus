@@ -173,7 +173,7 @@ export default {
     },
     gameOver() {
         // Accounts for array starting at 0
-      if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArray.length || this.incorrectGuesses >= 4) {
+      if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArray.length || this.incorrectGuesses > 3) {
           this.isFirstGame = (this.isFirstGame) ? false : this.isFirstGame
           this.isGameStarted = false
           this.classNameObject.timerDisplay.running = false

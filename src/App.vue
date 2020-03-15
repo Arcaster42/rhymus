@@ -1,23 +1,23 @@
 <template>
   <div id="app">
     <section id="game_canvas">
-      <Header v-bind:startGame="startGame" 
-              v-bind:isRestartButtonDisabled="isRestartButtonDisabled"/>
-      <RhymeCard v-bind:stylingObject="stylingObject"
-                 v-bind:isGameStarted="isGameStarted"
-                 v-bind:assignListeners="assignListeners"
-                 v-bind:RhymusGame="RhymusGame"
-                 v-bind:puzzlesArray="puzzlesArray"
-                 v-bind:cardNumber="cardNumber"
-                 v-bind:classNameObject="classNameObject"
-                 v-bind:guessValue="guessValue"
-                 v-bind:hintText="hintText"
-                 v-bind:wrongText="wrongText"
-                 v-bind:timeRemaining="timeRemaining"
-                 v-on:input="guessValueUpdate"
-                 v-bind:totalWrong="totalWrong"
-                 v-bind:totalCorrect="totalCorrect"
-                 v-bind:isFirstGame="isFirstGame" />
+      <Header :startGame="startGame" 
+              :isRestartButtonDisabled="isRestartButtonDisabled"/>
+      <RhymeCard :stylingObject="stylingObject"
+                 :isGameStarted="isGameStarted"
+                 :assignListeners="assignListeners"
+                 :RhymusGame="RhymusGame"
+                 :puzzlesArray="puzzlesArray"
+                 :cardNumber="cardNumber"
+                 :classNameObject="classNameObject"
+                 :guessValue="guessValue"
+                 :hintText="hintText"
+                 :wrongText="wrongText"
+                 :timeRemaining="timeRemaining"
+                 @input="guessValueUpdate"
+                 :totalWrong="totalWrong"
+                 :totalCorrect="totalCorrect"
+                 :isFirstGame="isFirstGame" />
     </section>
   </div>
 </template>

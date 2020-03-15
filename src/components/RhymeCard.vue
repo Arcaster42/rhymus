@@ -1,5 +1,5 @@
 <template>
-      <div v-bind:class="classNameObject.cardBlock" class="rhyme_card" id="rhyme_card" v-bind:style="stylingObject.cardBlock">
+      <div :class="classNameObject.cardBlock" class="rhyme_card" id="rhyme_card" :style="stylingObject.cardBlock">
         <div class="rhyme_count_container center">
           <div class="rhyme_count" id="rhyme_count">
             <span v-if="!isGameStarted && isFirstGame"></span>
@@ -9,14 +9,14 @@
         <p class="rhyme" id="rhyme">{{ (!isGameStarted) ? RhymusGame.rhymeElementText : RhymusGame.currentCard.sentence }}</p>
         <p class="rhyme" id="correct">{{ (!isFirstGame) ? `Correct guesses: ${totalCorrect}` : null }}</p>
         <p class="rhyme" id="wrong">{{ (!isFirstGame) ? `Incorrect guesses: ${totalWrong}` : null }}</p>
-        <CardInfo v-bind:isGameStarted="isGameStarted"
-                  v-bind:stylingObject="stylingObject"
-                  v-bind:assignListeners="assignListeners"
-                  v-bind:classNameObject="classNameObject"
-                  v-bind:guessValue="guessValue"
-                  v-bind:hintText="hintText"
-                  v-bind:wrongText="wrongText"
-                  v-bind:timeRemaining="timeRemaining"
+        <CardInfo :isGameStarted="isGameStarted"
+                  :stylingObject="stylingObject"
+                  :assignListeners="assignListeners"
+                  :classNameObject="classNameObject"
+                  :guessValue="guessValue"
+                  :hintText="hintText"
+                  :wrongText="wrongText"
+                  :timeRemaining="timeRemaining"
                   v-on="$listeners"
                   />
       </div>

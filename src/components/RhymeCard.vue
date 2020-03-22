@@ -3,7 +3,7 @@
         <div class="rhyme_count_container center">
           <div class="rhyme_count" id="rhyme_count">
             <span v-if="!isGameStarted && isFirstGame"></span>
-              {{ (isGameStarted || !isFirstGame) ? `${cardNumber} of ${puzzlesArray.length}` : null }}
+              {{ (isGameStarted || !isFirstGame) ? `${cardNumber} of ${puzzlesArrayCount}` : null }}
             </div>
         </div>
         <p class="rhyme" id="rhyme">{{ (!isGameStarted) ? RhymusGame.rhymeElementText : RhymusGame.currentCard.sentence }}</p>
@@ -24,12 +24,17 @@
 
 <script lang="ts">
 import CardInfo from './CardInfo.vue'
-
+import { mapGetters } from 'vuex'
 export default {
     name: 'RhymeCard',
-    props: ['isGameStarted','assignListeners','RhymusGame','cardNumber','puzzlesArray','classNameObject','guessValue','hintText','wrongText','timeRemaining','stylingObject', 'totalCorrect', 'totalWrong', 'isFirstGame'],
+    props: ['isGameStarted','assignListeners','RhymusGame','cardNumber','classNameObject','guessValue','hintText','wrongText','timeRemaining','stylingObject', 'totalCorrect', 'totalWrong', 'isFirstGame'],
     components: {
         CardInfo
+    },
+    computed: {
+      ...mapGetters([
+        'puzzlesArrayCount'
+      ])
     }
 }
 </script>

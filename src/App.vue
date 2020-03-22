@@ -7,7 +7,6 @@
                  :isGameStarted="isGameStarted"
                  :assignListeners="assignListeners"
                  :RhymusGame="RhymusGame"
-                 :puzzlesArray="puzzlesArray"
                  :cardNumber="cardNumber"
                  :classNameObject="classNameObject"
                  :guessValue="guessValue"
@@ -25,7 +24,7 @@
 <script>
 import Header from './components/Header'
 import RhymeCard from './components/RhymeCard'
-import puzzlesArray from '../src/puzzles'
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'app',
   components: {
@@ -34,7 +33,6 @@ export default {
   },
   data() {
           return {
-            puzzlesArray: puzzlesArray,
             playTimeSeconds: 30,
             timeRemaining: null,
             cardNumber: 1,
@@ -144,7 +142,7 @@ export default {
       setTimeout(() => {
           this.classNameObject.cardBlock.correct = false
           this.classNameObject.guessElement.correct = false
-          if (this.cardNumber < this.puzzlesArray.length) {
+          if (this.cardNumber < this.puzzlesArrayCount) {
               this.loadCard(this.puzzlesArray[this.cardNumber])
           }
           else {
@@ -173,7 +171,7 @@ export default {
     },
     gameOver() {
         // Accounts for array starting at 0
-      if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArray.length || this.incorrectGuesses > 3) {
+      if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArrayCount || this.incorrectGuesses > 3) {
           this.isFirstGame = (this.isFirstGame) ? false : this.isFirstGame
           this.isGameStarted = false
           this.classNameObject.timerDisplay.running = false
@@ -188,7 +186,13 @@ export default {
   computed: {
     capitalizeFirstLetter() {
       return this.RhymusGame.currentCard.hint.charAt(0).toUpperCase() + this.RhymusGame.currentCard.hint.slice(1).toLowerCase()
-    }
+    },
+    ...mapState([
+      'puzzlesArray'
+    ]),
+    ...mapGetters([
+      'puzzlesArrayCount'
+    ])
   }
 }
 </script>

@@ -24,14 +24,17 @@
 
 <script lang="ts">
 import CardInfo from './CardInfo.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 export default {
     name: 'RhymeCard',
-    props: ['isGameStarted','assignListeners','RhymusGame','cardNumber','classNameObject','guessValue','hintText','wrongText','timeRemaining','stylingObject', 'totalCorrect', 'totalWrong', 'isFirstGame'],
+    props: ['isGameStarted','assignListeners','RhymusGame','classNameObject','guessValue','hintText','wrongText','timeRemaining','stylingObject', 'totalCorrect', 'totalWrong', 'isFirstGame'],
     components: {
         CardInfo
     },
     computed: {
+      ...mapState([
+        'cardNumber'
+      ]),
       ...mapGetters([
         'puzzlesArrayCount'
       ])

@@ -5,12 +5,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    puzzlesArray: puzzlesArray
+    puzzlesArray: puzzlesArray,
+    cardNumber: 1
   },
   getters: {
     puzzlesArrayCount: state => state.puzzlesArray.length
   },
   mutations: {
+    incrementCardNumber: state => state.cardNumber++
   },
   actions: {
   },

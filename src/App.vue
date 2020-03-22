@@ -7,7 +7,6 @@
                  :isGameStarted="isGameStarted"
                  :assignListeners="assignListeners"
                  :RhymusGame="RhymusGame"
-                 :cardNumber="cardNumber"
                  :classNameObject="classNameObject"
                  :guessValue="guessValue"
                  :hintText="hintText"
@@ -24,7 +23,7 @@
 <script>
 import Header from './components/Header'
 import RhymeCard from './components/RhymeCard'
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'app',
   components: {
@@ -35,7 +34,6 @@ export default {
           return {
             playTimeSeconds: 30,
             timeRemaining: null,
-            cardNumber: 1,
             correctGuesses: 0,
             totalCorrect: 0,
             totalWrong: 0,
@@ -137,7 +135,7 @@ export default {
     correctAnswer() {
       this.classNameObject.cardBlock.correct = this.isCorrect ? true : null
       this.classNameObject.guessElement.correct = this.isCorrect ? true : null
-      this.cardNumber++
+      this.$store.commit('incrementCardNumber')
       this.correctGuesses++
       setTimeout(() => {
           this.classNameObject.cardBlock.correct = false
@@ -188,10 +186,13 @@ export default {
       return this.RhymusGame.currentCard.hint.charAt(0).toUpperCase() + this.RhymusGame.currentCard.hint.slice(1).toLowerCase()
     },
     ...mapState([
-      'puzzlesArray'
+      'puzzlesArray', 'cardNumber'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
+    ]),
+    ...mapMutations([
+      'incrementCardNumber'
     ])
   }
 }

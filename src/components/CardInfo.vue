@@ -5,14 +5,14 @@
         <div id="incorrect">{{ wrongText }}</div>
         <div class="card_info_input center">
             <input
-            type="text"
-            id="rhyme_guess"
-            name="rhyme_guess"
-            placeholder="Write your guess here"
-            @keydown="assignListeners"
-            :value="guessValue"
-            @input="updateGuessValue($event)"
-            :class="classNameObject.guessElement"
+              type="text"
+              id="rhyme_guess"
+              name="rhyme_guess"
+              placeholder="Write your guess here"
+              @keydown="assignListeners"
+              :value="guessValue"
+              @input="updateGuessValue($event)"
+              :class="classNameObject.guessElement"
             />
             <div id="timer" :class="classNameObject.timerDisplay" :style="stylingObject.timerDisplay">{{ formatTimer }}</div>
         </div>

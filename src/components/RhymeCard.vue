@@ -13,7 +13,7 @@
       </div>
 </template>
 
-<script lang="ts">
+<script>
 import CardInfo from './CardInfo.vue'
 import { mapGetters, mapState } from 'vuex'
 export default {

@@ -22,16 +22,16 @@ export default {
         'isFirstGame'
       ]),
       ...mapMutations([
-      'isGameStartedBoolean', 
-      'setTimeRemaining', 
-      'isRestartButtonDisabledBoolean',
-      'updateStylingObject',
-      'updateClassNameObject',
-      'initializeCardNumber', 
-      'initializeCorrectGuesses',
-      'initializeIncorrectGuesses',
-      'initializeTotalCorrect',
-      'initializeTotalWrong'
+        'isGameStartedBoolean', 
+        'setTimeRemaining', 
+        'isRestartButtonDisabledBoolean',
+        'updateStylingObject',
+        'updateClassNameObject',
+        'initializeCardNumber', 
+        'initializeCorrectGuesses',
+        'initializeIncorrectGuesses',
+        'initializeTotalCorrect',
+        'initializeTotalWrong'
       ])
     },
     methods: {

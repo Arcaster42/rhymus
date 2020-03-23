@@ -21,7 +21,6 @@ export default {
   data() {
           return {
             playTimeSeconds: 30,
-            correctGuesses: 0,
             timer: null,
             isCorrect: null,
           }
@@ -46,7 +45,7 @@ export default {
       }
       if (!this.isFirstGame) {
         this.$store.commit('initializeCardNumber')
-        this.correctGuesses = 0
+        this.$store.commit('initializeCorrectGuesses')
         this.$store.commit('initializeIncorrectGuesses')
         this.$store.commit('initializeTotalCorrect')
         this.$store.commit('initializeTotalWrong')
@@ -105,7 +104,7 @@ export default {
                                                     classNameKey: 'correct', 
                                                     classNameValue: (this.isCorrect) ? true : null })
       this.$store.commit('incrementCardNumber')
-      this.correctGuesses++
+      this.$store.commit('incrementCorrectGuesses')
       setTimeout(() => {
           this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', 
                                                         classNameKey: 'correct', 
@@ -188,7 +187,8 @@ export default {
       'stylingObject',
       'classNameObject',
       'RhymusGame',
-      'incorrectGuesses'
+      'incorrectGuesses',
+      'correctGuesses'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
@@ -215,7 +215,9 @@ export default {
       'updateClassNameObject',
       'updateRhymusGame',
       'initializeIncorrectGuesses',
-      'incrementIncorrectGuesses'
+      'incrementIncorrectGuesses',
+      'initializeCorrectGuesses',
+      'incrementCorrectGuesses'
     ])
   }
 }

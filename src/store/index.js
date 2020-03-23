@@ -34,6 +34,7 @@ export default new Vuex.Store({
       rhymeElementText: 'Press start to play!'
     },
     incorrectGuesses: 0,
+    correctGuesses: 0
   },
   getters: {
     puzzlesArrayCount: state => state.puzzlesArray.length
@@ -60,7 +61,9 @@ export default new Vuex.Store({
     updateClassNameObject: (state, payload) => state.classNameObject[payload.elementType][payload.classNameKey] = payload.classNameValue,
     updateRhymusGame: (state, payload) => state.RhymusGame[payload.property] = payload.value,
     initializeIncorrectGuesses: state => state.incorrectGuesses = 0,
-    incrementIncorrectGuesses: state => state.incorrectGuesses++
+    incrementIncorrectGuesses: state => state.incorrectGuesses++,
+    initializeCorrectGuesses: state => state.correctGuesses = 0,
+    incrementCorrectGuesses: state => state.correctGuesses++
   },
   actions: {
   },

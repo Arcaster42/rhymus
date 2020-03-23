@@ -101,10 +101,8 @@ export default {
       this.$store.commit('incrementCardNumber')
       this.$store.commit('incrementCorrectGuesses')
       setTimeout(() => {
-          this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', classNameKey: 'correct', 
-                                                        classNameValue: false })
-          this.$store.commit('updateClassNameObject', { elementType: 'guessElement', classNameKey: 'correct', 
-                                                        classNameValue: false })                                             
+          this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', classNameKey: 'correct', classNameValue: false })
+          this.$store.commit('updateClassNameObject', { elementType: 'guessElement', classNameKey: 'correct', classNameValue: false })                                             
           if (this.cardNumber < this.puzzlesArrayCount) {
               this.loadCard(this.puzzlesArray[this.cardNumber])
           }
@@ -122,16 +120,13 @@ export default {
       this.$store.commit('initializeGuessValue')
 
       setTimeout(() => {
-          this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', classNameKey: 'incorrect',
-                                                        classNameValue: false }) 
-          this.$store.commit('updateClassNameObject', { elementType: 'guessElement', classNameKey: 'incorrect',
-                                                        classNameValue: false })
+          this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', classNameKey: 'incorrect', classNameValue: false }) 
+          this.$store.commit('updateClassNameObject', { elementType: 'guessElement', classNameKey: 'incorrect', classNameValue: false })
       }, 500)
       this.$store.commit('updateWrongText', { incorrectGuesses: this.incorrectGuesses })
       //if there are more than 4 incorrect guesses on a single card the player loses
       if (this.incorrectGuesses > 1 && this.incorrectGuesses < 4) {
-          this.$store.commit('updateStylingObject', { elementType: 'hint', 
-                                                      css: { display: 'flex' }})
+          this.$store.commit('updateStylingObject', { elementType: 'hint', css: { display: 'flex' }})
           this.$store.commit('updateHintText', { capitalizeFirstLetter: this.capitalizeFirstLetter })
       } else {
           this.gameOver()
@@ -142,10 +137,8 @@ export default {
       if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArrayCount || this.incorrectGuesses > 3) {
           this.$store.commit('isFirstGameBoolean')
           this.$store.commit('isGameStartedBoolean', { boolean: false })
-          this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'running',
-                                                        classNameValue: false })
-          this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'gameover',
-                                                        classNameValue: true })
+          this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'running', classNameValue: false })
+          this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'gameover', classNameValue: true })
           this.$store.commit('updateRhymusGame', { property: 'rhymeElementText', value: 'Game Over!' })                                              
           this.$store.commit('updateStylingObject', { elementType: 'timerDisplay', css: { background: 'var(--danger)' }})
           this.$store.commit('updateStylingObject', { elementType: 'cardBlock', css: { background: 'var(--danger)' }})

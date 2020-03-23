@@ -33,6 +33,7 @@ export default new Vuex.Store({
       currentCard: undefined,
       rhymeElementText: 'Press start to play!'
     },
+    incorrectGuesses: 0,
   },
   getters: {
     puzzlesArrayCount: state => state.puzzlesArray.length
@@ -57,7 +58,9 @@ export default new Vuex.Store({
     isRestartButtonDisabledBoolean: (state, payload) => state.isRestartButtonDisabled = payload.boolean,
     updateStylingObject: (state, payload) => state.stylingObject[payload.elementType] = payload.css,
     updateClassNameObject: (state, payload) => state.classNameObject[payload.elementType][payload.classNameKey] = payload.classNameValue,
-    updateRhymusGame: (state, payload) => state.RhymusGame[payload.property] = payload.value
+    updateRhymusGame: (state, payload) => state.RhymusGame[payload.property] = payload.value,
+    initializeIncorrectGuesses: state => state.incorrectGuesses = 0,
+    incrementIncorrectGuesses: state => state.incorrectGuesses++
   },
   actions: {
   },

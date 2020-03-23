@@ -22,7 +22,6 @@ export default {
           return {
             playTimeSeconds: 30,
             correctGuesses: 0,
-            incorrectGuesses: 0,
             timer: null,
             isCorrect: null,
           }
@@ -48,7 +47,7 @@ export default {
       if (!this.isFirstGame) {
         this.$store.commit('initializeCardNumber')
         this.correctGuesses = 0
-        this.incorrectGuesses = 0
+        this.$store.commit('initializeIncorrectGuesses')
         this.$store.commit('initializeTotalCorrect')
         this.$store.commit('initializeTotalWrong')
       }
@@ -61,7 +60,7 @@ export default {
       this.$store.commit('initializeGuessValue')
       this.$store.commit('initializeHintText')
       this.$store.commit('initializeWrongText')
-      this.incorrectGuesses = 0
+      this.$store.commit('initializeIncorrectGuesses')
       this.resetTimer()
     },
     resetTimer() {
@@ -129,7 +128,7 @@ export default {
       this.$store.commit('updateClassNameObject', { elementType: 'guessElement', 
                                                     classNameKey: 'incorrect',
                                                     classNameValue: this.isCorrect ? null : true }) 
-      this.incorrectGuesses++
+      this.$store.commit('incrementIncorrectGuesses')
       this.$store.commit('initializeGuessValue')
 
       setTimeout(() => {
@@ -188,7 +187,8 @@ export default {
       'isRestartButtonDisabled',
       'stylingObject',
       'classNameObject',
-      'RhymusGame'
+      'RhymusGame',
+      'incorrectGuesses'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
@@ -213,7 +213,9 @@ export default {
       'isRestartButtonDisabledBoolean',
       'updateStylingObject',
       'updateClassNameObject',
-      'updateRhymusGame'
+      'updateRhymusGame',
+      'initializeIncorrectGuesses',
+      'incrementIncorrectGuesses'
     ])
   }
 }

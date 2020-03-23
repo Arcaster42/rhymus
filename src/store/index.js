@@ -21,6 +21,13 @@ export default new Vuex.Store({
       cardBlock: null,
       timerDisplay: null,
       hint: {}
+    },
+    classNameObject: {
+      guessElement: {},
+      cardBlock: {},
+      timerDisplay: {
+        center: true
+      }
     }
   },
   getters: {
@@ -44,9 +51,8 @@ export default new Vuex.Store({
     initializeWrongText: state => state.wrongText = '',
     updateWrongText: (state, payload) => state.wrongText = `incorrect guesses: ${payload.incorrectGuesses}`,
     isRestartButtonDisabledBoolean: (state, payload) => state.isRestartButtonDisabled = payload.boolean,
-    updateStylingObject: (state, payload) => {
-        state.stylingObject[payload.elementType] = payload.css
-    }
+    updateStylingObject: (state, payload) => state.stylingObject[payload.elementType] = payload.css,
+    updateClassNameObject: (state, payload) => state.classNameObject[payload.elementType][payload.classNameKey] = payload.classNameValue
   },
   actions: {
   },

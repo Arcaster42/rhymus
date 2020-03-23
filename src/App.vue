@@ -4,7 +4,6 @@
       <Header :startGame="startGame" />
       <RhymeCard :assignListeners="assignListeners"
                  :RhymusGame="RhymusGame"
-                 :classNameObject="classNameObject"
                  @input="guessValueUpdate" />
     </section>
   </div>
@@ -29,13 +28,6 @@ export default {
               rhymeElementText: 'Press start to play!'
             },
             timer: null,
-            classNameObject: {
-              guessElement: {},
-              cardBlock: {},
-              timerDisplay: {
-                center: true
-              }
-            },
             incorrectGuesses: 0,
             isCorrect: null,
           }
@@ -51,7 +43,10 @@ export default {
                                                   css: (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null })
       this.$el.querySelector('#rhyme_guess').focus()
       this.loadCard(this.puzzlesArray[0])
-      this.classNameObject.timerDisplay.running = (this.isGameStarted) ? true : null
+      this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay',
+                                                    classNameKey: 'running',
+                                                    classNameValue: (this.isGameStarted) ? true : null
+                                                  })
       if (e.target.classList.contains('header_button_start')) {
         this.shufflePuzzles(this.puzzlesArray)
       }
@@ -109,13 +104,21 @@ export default {
       this.$store.commit('updateGuessValue', { val: val })
     },
     correctAnswer() {
-      this.classNameObject.cardBlock.correct = this.isCorrect ? true : null
-      this.classNameObject.guessElement.correct = this.isCorrect ? true : null
+      this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', 
+                                                    classNameKey: 'correct', 
+                                                    classNameValue: (this.isCorrect) ? true : null })
+      this.$store.commit('updateClassNameObject', { elementType: 'guessElement', 
+                                                    classNameKey: 'correct', 
+                                                    classNameValue: (this.isCorrect) ? true : null })
       this.$store.commit('incrementCardNumber')
       this.correctGuesses++
       setTimeout(() => {
-          this.classNameObject.cardBlock.correct = false
-          this.classNameObject.guessElement.correct = false
+          this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', 
+                                                        classNameKey: 'correct', 
+                                                        classNameValue: false })
+          this.$store.commit('updateClassNameObject', { elementType: 'guessElement', 
+                                                        classNameKey: 'correct', 
+                                                        classNameValue: false })                                             
           if (this.cardNumber < this.puzzlesArrayCount) {
               this.loadCard(this.puzzlesArray[this.cardNumber])
           }
@@ -125,14 +128,22 @@ export default {
       }, 800)
     },
     incorrectAnswer() {
-      this.classNameObject.cardBlock.incorrect = this.isCorrect ? null : true
-      this.classNameObject.guessElement.incorrect = this.isCorrect ? null : true
+      this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', 
+                                                    classNameKey: 'incorrect',
+                                                    classNameValue: this.isCorrect ? null : true }) 
+      this.$store.commit('updateClassNameObject', { elementType: 'guessElement', 
+                                                    classNameKey: 'incorrect',
+                                                    classNameValue: this.isCorrect ? null : true }) 
       this.incorrectGuesses++
       this.$store.commit('initializeGuessValue')
 
       setTimeout(() => {
-          this.classNameObject.cardBlock.incorrect = false
-          this.classNameObject.guessElement.incorrect = false
+          this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', 
+                                                        classNameKey: 'incorrect',
+                                                        classNameValue: false }) 
+          this.$store.commit('updateClassNameObject', { elementType: 'guessElement', 
+                                                        classNameKey: 'incorrect',
+                                                        classNameValue: false })
       }, 500)
       this.$store.commit('updateWrongText', { incorrectGuesses: this.incorrectGuesses })
       //if there are more than 4 incorrect guesses on a single card the player loses
@@ -149,8 +160,12 @@ export default {
       if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArrayCount || this.incorrectGuesses > 3) {
           this.$store.commit('isFirstGameBoolean')
           this.$store.commit('isGameStartedBoolean', { boolean: false })
-          this.classNameObject.timerDisplay.running = false
-          this.classNameObject.timerDisplay.gameover = true
+          this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay', 
+                                                        classNameKey: 'running',
+                                                        classNameValue: false })
+          this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay', 
+                                                        classNameKey: 'gameover',
+                                                        classNameValue: true })
           this.RhymusGame.rhymeElementText = 'Game Over!'
           this.$store.commit('updateStylingObject', { elementType: 'timerDisplay',
                                                       css: { background: 'var(--danger)' }})
@@ -176,7 +191,8 @@ export default {
       'hintText',
       'wrongText',
       'isRestartButtonDisabled',
-      'stylingObject'
+      'stylingObject',
+      'classNameObject'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
@@ -199,7 +215,8 @@ export default {
       'initializeWrongText',
       'updateWrongText',
       'isRestartButtonDisabledBoolean',
-      'updateStylingObject'
+      'updateStylingObject',
+      'updateClassNameObject'
     ])
   }
 }

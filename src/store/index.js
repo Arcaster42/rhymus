@@ -153,7 +153,5 @@ export default new Vuex.Store({
           context.commit('updateStylingObject', { elementType: 'hint', css: { display: 'none' }})
       }
     },
-  },
-  modules: {
   }
 })

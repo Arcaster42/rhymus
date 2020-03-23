@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <section id="game_canvas">
-      <Header :startGame="startGame" 
-              :isRestartButtonDisabled="isRestartButtonDisabled"/>
+      <Header :startGame="startGame" />
       <RhymeCard :stylingObject="stylingObject"
                  :assignListeners="assignListeners"
                  :RhymusGame="RhymusGame"
@@ -26,7 +25,6 @@ export default {
           return {
             playTimeSeconds: 30,
             correctGuesses: 0,
-            isRestartButtonDisabled: true,
             stylingObject: {
               guessElement: null,
               cardBlock: null,
@@ -53,7 +51,7 @@ export default {
     startGame(e) {      
       this.$store.commit('isGameStartedBoolean', { boolean: true })
       this.$store.commit('setTimeRemaining', { time: this.playTimeSeconds })
-      this.isRestartButtonDisabled = false
+      this.$store.commit('isRestartButtonDisabledBoolean', { boolean: false })
 
       this.stylingObject.timerDisplay = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
       this.stylingObject.cardBlock = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
@@ -178,7 +176,8 @@ export default {
       'totalCorrect', 
       'isFirstGame',
       'hintText',
-      'wrongText'
+      'wrongText',
+      'isRestartButtonDisabled'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
@@ -199,7 +198,8 @@ export default {
       'initializeHintText',
       'updateHintText',
       'initializeWrongText',
-      'updateWrongText'
+      'updateWrongText',
+      'isRestartButtonDisabledBoolean'
     ])
   }
 }

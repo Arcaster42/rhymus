@@ -10,9 +10,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     name: 'Header',
-    props: ['startGame', 'isRestartButtonDisabled']
+    props: ['startGame'],
+    computed: {
+      ...mapState([
+        'isRestartButtonDisabled'
+      ])
+    }
 }
 </script>
 

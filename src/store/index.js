@@ -14,7 +14,8 @@ export default new Vuex.Store({
     totalWrong: 0,
     isFirstGame: true,
     hintText: '',
-    wrongText: ''
+    wrongText: '',
+    isRestartButtonDisabled: true
   },
   getters: {
     puzzlesArrayCount: state => state.puzzlesArray.length
@@ -35,7 +36,8 @@ export default new Vuex.Store({
     initializeHintText: state => state.hintText = '',
     updateHintText: (state, payload) => state.hintText = `Hint: ${payload.capitalizeFirstLetter}`,
     initializeWrongText: state => state.wrongText = '',
-    updateWrongText: (state, payload) => state.wrongText = `incorrect guesses: ${payload.incorrectGuesses}`
+    updateWrongText: (state, payload) => state.wrongText = `incorrect guesses: ${payload.incorrectGuesses}`,
+    isRestartButtonDisabledBoolean: (state, payload) => state.isRestartButtonDisabled = payload.boolean
   },
   actions: {
   },

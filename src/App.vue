@@ -9,8 +9,7 @@
                  :classNameObject="classNameObject"
                  :hintText="hintText"
                  :wrongText="wrongText"
-                 @input="guessValueUpdate"
-                 :isFirstGame="isFirstGame" />
+                 @input="guessValueUpdate" />
     </section>
   </div>
 </template>
@@ -52,7 +51,6 @@ export default {
             incorrectGuesses: 0,
             wrongText: '',
             isCorrect: null,
-            isFirstGame: true
           }
       },
   methods: {
@@ -160,7 +158,7 @@ export default {
     gameOver() {
         // Accounts for array starting at 0
       if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArrayCount || this.incorrectGuesses > 3) {
-          this.isFirstGame = (this.isFirstGame) ? false : this.isFirstGame
+          this.$store.commit('isFirstGameBoolean')
           this.$store.commit('isGameStartedBoolean', { boolean: false })
           this.classNameObject.timerDisplay.running = false
           this.classNameObject.timerDisplay.gameover = true
@@ -176,7 +174,7 @@ export default {
       return this.RhymusGame.currentCard.hint.charAt(0).toUpperCase() + this.RhymusGame.currentCard.hint.slice(1).toLowerCase()
     },
     ...mapState([
-      'puzzlesArray', 'cardNumber', 'isGameStarted', 'timeRemaining', 'guessValue', 'totalCorrect'
+      'puzzlesArray', 'cardNumber', 'isGameStarted', 'timeRemaining', 'guessValue', 'totalCorrect', 'isFirstGame'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
@@ -192,7 +190,8 @@ export default {
       'initializeTotalCorrect',
       'incerementTotalCorrect',
       'initializeTotalWrong',
-      'incerementTotalWrong'
+      'incerementTotalWrong',
+      'isFirstGameBoolean'
     ])
   }
 }

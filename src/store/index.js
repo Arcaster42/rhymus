@@ -11,7 +11,8 @@ export default new Vuex.Store({
     timeRemaining: null,
     guessValue: '',
     totalCorrect: 0,
-    totalWrong: 0
+    totalWrong: 0,
+    isFirstGame: true
   },
   getters: {
     puzzlesArrayCount: state => state.puzzlesArray.length
@@ -27,7 +28,8 @@ export default new Vuex.Store({
     initializeTotalCorrect: state => state.totalCorrect = 0,
     incerementTotalCorrect: state => state.totalCorrect++,
     initializeTotalWrong: state => state.totalWrong = 0,
-    incerementTotalWrong: state => state.totalWrong++
+    incerementTotalWrong: state => state.totalWrong++,
+    isFirstGameBoolean: state => state.isFirstGame = (state.isFirstGame) ? false : state.isFirstGame
   },
   actions: {
   },

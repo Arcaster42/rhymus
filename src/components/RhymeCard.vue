@@ -20,7 +20,7 @@ import CardInfo from './CardInfo.vue'
 import { mapGetters, mapState } from 'vuex'
 export default {
     name: 'RhymeCard',
-    props: ['assignListeners','RhymusGame'],
+    props: ['assignListeners'],
     components: {
         CardInfo
     },
@@ -32,7 +32,8 @@ export default {
         'totalWrong', 
         'isFirstGame', 
         'stylingObject',
-        'classNameObject'
+        'classNameObject',
+        'RhymusGame'
       ]),
       ...mapGetters([
         'puzzlesArrayCount'

@@ -3,7 +3,6 @@
     <section id="game_canvas">
       <Header :startGame="startGame" />
       <RhymeCard :assignListeners="assignListeners"
-                 :RhymusGame="RhymusGame"
                  @input="guessValueUpdate" />
     </section>
   </div>
@@ -23,12 +22,8 @@ export default {
           return {
             playTimeSeconds: 30,
             correctGuesses: 0,
-            RhymusGame: {
-              currentCard: undefined,
-              rhymeElementText: 'Press start to play!'
-            },
-            timer: null,
             incorrectGuesses: 0,
+            timer: null,
             isCorrect: null,
           }
       },
@@ -62,7 +57,7 @@ export default {
       if ((e.key === 'Enter') && this.isGameStarted) this.checkAnswer()
     },
     loadCard(nextCard) {
-      this.RhymusGame.currentCard = nextCard
+      this.$store.commit('updateRhymusGame', { property: 'currentCard', value: nextCard })
       this.$store.commit('initializeGuessValue')
       this.$store.commit('initializeHintText')
       this.$store.commit('initializeWrongText')
@@ -166,7 +161,7 @@ export default {
           this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay', 
                                                         classNameKey: 'gameover',
                                                         classNameValue: true })
-          this.RhymusGame.rhymeElementText = 'Game Over!'
+          this.$store.commit('updateRhymusGame', { property: 'rhymeElementText', value: 'Game Over!' })                                              
           this.$store.commit('updateStylingObject', { elementType: 'timerDisplay',
                                                       css: { background: 'var(--danger)' }})
           this.$store.commit('updateStylingObject', { elementType: 'cardBlock', 
@@ -192,7 +187,8 @@ export default {
       'wrongText',
       'isRestartButtonDisabled',
       'stylingObject',
-      'classNameObject'
+      'classNameObject',
+      'RhymusGame'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
@@ -216,7 +212,8 @@ export default {
       'updateWrongText',
       'isRestartButtonDisabledBoolean',
       'updateStylingObject',
-      'updateClassNameObject'
+      'updateClassNameObject',
+      'updateRhymusGame'
     ])
   }
 }

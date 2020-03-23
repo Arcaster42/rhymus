@@ -6,16 +6,21 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     puzzlesArray: puzzlesArray,
-    cardNumber: 1,
-    isGameStarted: false,
     timeRemaining: null,
-    guessValue: '',
+    playTimeSeconds: 30,
+    cardNumber: 1,
     totalCorrect: 0,
     totalWrong: 0,
+    incorrectGuesses: 0,
+    correctGuesses: 0,
+    isGameStarted: false,
+    isCorrect: null,
     isFirstGame: true,
+    isRestartButtonDisabled: true,
     hintText: '',
     wrongText: '',
-    isRestartButtonDisabled: true,
+    guessValue: '',
+    timer: null,
     stylingObject: {
       guessElement: null,
       cardBlock: null,
@@ -32,12 +37,7 @@ export default new Vuex.Store({
     RhymusGame: {
       currentCard: undefined,
       rhymeElementText: 'Press start to play!'
-    },
-    incorrectGuesses: 0,
-    correctGuesses: 0,
-    isCorrect: null,
-    timer: null,
-    playTimeSeconds: 30
+    }
   },
   getters: {
     puzzlesArrayCount: state => {

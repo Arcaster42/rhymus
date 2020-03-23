@@ -39,35 +39,89 @@ export default new Vuex.Store({
     timer: null
   },
   getters: {
-    puzzlesArrayCount: state => state.puzzlesArray.length
+    puzzlesArrayCount: state => {
+      return state.puzzlesArray.length
+    }
   },
   mutations: {
-    incrementCardNumber: state => state.cardNumber++,
-    isGameStartedBoolean: (state, payload) => state.isGameStarted = payload.boolean,
-    initializeCardNumber: state => state.cardNumber = 1,
-    setTimeRemaining: (state, payload) => state.timeRemaining = payload.time,
-    decrementTimeRemaining: state => state.timeRemaining--,
-    initializeGuessValue: state => state.guessValue = '',
-    updateGuessValue: (state, payload) => state.guessValue = payload.val,
-    initializeTotalCorrect: state => state.totalCorrect = 0,
-    incrementTotalCorrect: state => state.totalCorrect++,
-    initializeTotalWrong: state => state.totalWrong = 0,
-    incrementTotalWrong: state => state.totalWrong++,
-    isFirstGameBoolean: state => state.isFirstGame = (state.isFirstGame) ? false : state.isFirstGame,
-    initializeHintText: state => state.hintText = '',
-    updateHintText: (state, payload) => state.hintText = `Hint: ${payload.capitalizeFirstLetter}`,
-    initializeWrongText: state => state.wrongText = '',
-    updateWrongText: (state, payload) => state.wrongText = `incorrect guesses: ${payload.incorrectGuesses}`,
-    isRestartButtonDisabledBoolean: (state, payload) => state.isRestartButtonDisabled = payload.boolean,
-    updateStylingObject: (state, payload) => state.stylingObject[payload.elementType] = payload.css,
-    updateClassNameObject: (state, payload) => state.classNameObject[payload.elementType][payload.classNameKey] = payload.classNameValue,
-    updateRhymusGame: (state, payload) => state.RhymusGame[payload.property] = payload.value,
-    initializeIncorrectGuesses: state => state.incorrectGuesses = 0,
-    incrementIncorrectGuesses: state => state.incorrectGuesses++,
-    initializeCorrectGuesses: state => state.correctGuesses = 0,
-    incrementCorrectGuesses: state => state.correctGuesses++,
-    isCorrectBoolean: (state, payload) => state.isCorrect = payload.boolean,
-    updateTimer: (state, payload) => state.timer = payload.event
+    incrementCardNumber: state => { 
+      return state.cardNumber++ 
+    },
+    isGameStartedBoolean: (state, payload) => {
+      return state.isGameStarted = payload.boolean 
+    },
+    initializeCardNumber: state => { 
+      return state.cardNumber = 1
+    },
+    setTimeRemaining: (state, payload) => {  
+      return state.timeRemaining = payload.time
+    },
+    decrementTimeRemaining: state => {
+      return state.timeRemaining--
+    },
+    initializeGuessValue: state => {
+      return state.guessValue = ''
+    },
+    updateGuessValue: (state, payload) => {
+      return state.guessValue = payload.val
+    },
+    initializeTotalCorrect: state => {
+      return state.totalCorrect = 0
+    },
+    incrementTotalCorrect: state => {
+      return state.totalCorrect++
+    },
+    initializeTotalWrong: state => {
+      return state.totalWrong = 0
+    },
+    incrementTotalWrong: state => {
+      return state.totalWrong++
+    },
+    isFirstGameBoolean: state => { 
+      return state.isFirstGame = (state.isFirstGame) ? false : state.isFirstGame
+    },
+    initializeHintText: state => {
+      return state.hintText = ''
+    },
+    updateHintText: (state, payload) => {
+      return state.hintText = `Hint: ${payload.capitalizeFirstLetter}`
+    },
+    initializeWrongText: state => {
+      return state.wrongText = ''
+    },
+    updateWrongText: (state, payload) => {
+      return state.wrongText = `incorrect guesses: ${payload.incorrectGuesses}`
+    },
+    isRestartButtonDisabledBoolean: (state, payload) => {
+      return state.isRestartButtonDisabled = payload.boolean
+    },
+    updateStylingObject: (state, payload) => {
+      return state.stylingObject[payload.elementType] = payload.css
+    },
+    updateClassNameObject: (state, payload) => {
+      return state.classNameObject[payload.elementType][payload.classNameKey] = payload.classNameValue
+    },
+    updateRhymusGame: (state, payload) => { 
+      return state.RhymusGame[payload.property] = payload.value
+    },
+    initializeIncorrectGuesses: state => {
+      return state.incorrectGuesses = 0
+    },
+    incrementIncorrectGuesses: state => {
+      return state.incorrectGuesses++
+    },
+    initializeCorrectGuesses: state => {
+      return state.correctGuesses = 0
+    },
+    incrementCorrectGuesses: state => {
+      return state.correctGuesses++
+    },
+    isCorrectBoolean: (state, payload) => {
+      return state.isCorrect = payload.boolean
+    },
+    updateTimer: (state, payload) => {
+      return state.timer = payload.event
+    }
   },
   actions: {
   },

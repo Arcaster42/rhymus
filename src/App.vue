@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <section id="game_canvas">
-      <Header :startGame="startGame" />
+      <Header />
       <RhymeCard :assignListeners="assignListeners"
                  @input="guessValueUpdate" />
     </section>
@@ -11,71 +11,16 @@
 <script>
 import Header from './components/Header'
 import RhymeCard from './components/RhymeCard'
-import { mapState, mapGetters, mapMutations } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
   name: 'app',
   components: {
     Header,
     RhymeCard,
   },
-  data() {
-          return {
-            playTimeSeconds: 30,
-          }
-      },
   methods: {
-    startGame(e) {      
-      this.$store.commit('isGameStartedBoolean', { boolean: true })
-      this.$store.commit('setTimeRemaining', { time: this.playTimeSeconds })
-      this.$store.commit('isRestartButtonDisabledBoolean', { boolean: false })
-      this.$store.commit('updateStylingObject', { elementType: 'timerDisplay', 
-                                                  css: (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null })
-      this.$store.commit('updateStylingObject', { elementType: 'cardBlock', 
-                                                  css: (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null })
-      this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'running',
-                                                    classNameValue: (this.isGameStarted) ? true : null })
-      this.$el.querySelector('#rhyme_guess').focus()
-      this.loadCard(this.puzzlesArray[0])
-
-      if (e.target.classList.contains('header_button_start')) {
-        this.shufflePuzzles(this.puzzlesArray)
-      }
-      if (!this.isFirstGame) {
-        this.$store.commit('initializeCardNumber')
-        this.$store.commit('initializeCorrectGuesses')
-        this.$store.commit('initializeIncorrectGuesses')
-        this.$store.commit('initializeTotalCorrect')
-        this.$store.commit('initializeTotalWrong')
-      }
-    },
     assignListeners(e) {
       if ((e.key === 'Enter') && this.isGameStarted) this.checkAnswer()
-    },
-    loadCard(nextCard) {
-      this.$store.commit('updateRhymusGame', { property: 'currentCard', value: nextCard })
-      this.$store.commit('initializeGuessValue')
-      this.$store.commit('initializeHintText')
-      this.$store.commit('initializeWrongText')
-      this.$store.commit('initializeIncorrectGuesses')
-      this.resetTimer()
-    },
-    resetTimer() {
-      clearInterval(this.timer)
-      this.$store.commit('updateTimer', { event: setInterval(this.countDown, 1000)})
-    },
-    countDown() {
-      this.timeRemaining === 0 ? this.gameOver() : this.$store.commit('decrementTimeRemaining')
-    },
-    shufflePuzzles(arr1) {
-      let ctr = arr1.length
-      let index
-      let array
-      while(ctr > 0) {
-          index = Math.floor(Math.random() * ctr)
-          ctr --,
-          array = [arr1[index], arr1[ctr]] = [arr1[ctr], arr1[index]]
-      }
-      return array
     },
     checkAnswer() {
       if (this.guessValue === this.RhymusGame.currentCard.answer) {
@@ -104,10 +49,10 @@ export default {
           this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', classNameKey: 'correct', classNameValue: false })
           this.$store.commit('updateClassNameObject', { elementType: 'guessElement', classNameKey: 'correct', classNameValue: false })                                             
           if (this.cardNumber < this.puzzlesArrayCount) {
-              this.loadCard(this.puzzlesArray[this.cardNumber])
+              this.$store.dispatch('loadCard', this.puzzlesArray[this.cardNumber])
           }
           else {
-              this.gameOver()
+              this.$store.dispatch('gameOver')
           }
       }, 800)
     },
@@ -129,22 +74,13 @@ export default {
           this.$store.commit('updateStylingObject', { elementType: 'hint', css: { display: 'flex' }})
           this.$store.commit('updateHintText', { capitalizeFirstLetter: this.capitalizeFirstLetter })
       } else {
-          this.gameOver()
+          this.$store.dispatch('gameOver')
       }
     },
-    gameOver() {
-        // Accounts for array starting at 0
-      if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArrayCount || this.incorrectGuesses > 3) {
-          this.$store.commit('isFirstGameBoolean')
-          this.$store.commit('isGameStartedBoolean', { boolean: false })
-          this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'running', classNameValue: false })
-          this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'gameover', classNameValue: true })
-          this.$store.commit('updateRhymusGame', { property: 'rhymeElementText', value: 'Game Over!' })                                              
-          this.$store.commit('updateStylingObject', { elementType: 'timerDisplay', css: { background: 'var(--danger)' }})
-          this.$store.commit('updateStylingObject', { elementType: 'cardBlock', css: { background: 'var(--danger)' }})
-          this.$store.commit('updateStylingObject', { elementType: 'hint', css: { display: 'none' }})
-      }
-    }
+    ...mapActions([
+      'loadCard',
+      'gameOver'
+    ])
   },
   computed: {
     capitalizeFirstLetter() {
@@ -174,28 +110,20 @@ export default {
     ]),
     ...mapMutations([
       'incrementCardNumber', 
-      'isGameStartedBoolean', 
-      'initializeCardNumber', 
-      'setTimeRemaining', 
       'decrementTimeRemaining', 
       'initializeGuessValue', 
       'updateGuessValue',
-      'initializeTotalCorrect',
       'incrementTotalCorrect',
-      'initializeTotalWrong',
       'incrementTotalWrong',
       'isFirstGameBoolean',
       'initializeHintText',
       'updateHintText',
       'initializeWrongText',
       'updateWrongText',
-      'isRestartButtonDisabledBoolean',
       'updateStylingObject',
       'updateClassNameObject',
       'updateRhymusGame',
-      'initializeIncorrectGuesses',
       'incrementIncorrectGuesses',
-      'initializeCorrectGuesses',
       'incrementCorrectGuesses',
       'updateTimer'
     ])

@@ -36,7 +36,8 @@ export default new Vuex.Store({
     incorrectGuesses: 0,
     correctGuesses: 0,
     isCorrect: null,
-    timer: null
+    timer: null,
+    playTimeSeconds: 30
   },
   getters: {
     puzzlesArrayCount: state => {
@@ -124,6 +125,35 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    loadCard({ commit }, nextCard) {
+      commit('updateRhymusGame', { property: 'currentCard', value: nextCard })
+      commit('initializeGuessValue')
+      commit('initializeHintText')
+      commit('initializeWrongText')
+      commit('initializeIncorrectGuesses')
+      this.dispatch('resetTimer')
+    },
+    resetTimer(context) {
+      clearInterval(context.state.timer)
+      context.commit('updateTimer', { event: setInterval( () => context.dispatch('countDown'), 1000) })
+    },
+    countDown(context) {
+      context.state.timeRemaining === 0 ? context.dispatch('gameOver') : context.commit('decrementTimeRemaining')
+    },
+    gameOver(context) { 
+      // Accounts for array starting at 0
+    if (context.state.timeRemaining === 0 || context.state.correctGuesses + 1 === context.getters.puzzlesArrayCount || context.state.incorrectGuesses > 3) {
+        context.commit('isFirstGameBoolean')
+        context.commit('isGameStartedBoolean', { boolean: false })
+        context.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'running', classNameValue: false })
+        context.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'gameover', classNameValue: true })
+        context.commit('updateRhymusGame', { property: 'rhymeElementText', value: 'Game Over!' })                                              
+        context.commit('updateStylingObject', { elementType: 'timerDisplay', css: { background: 'var(--danger)' }})
+        context.commit('updateStylingObject', { elementType: 'cardBlock', css: { background: 'var(--danger)' }})
+        context.commit('updateStylingObject', { elementType: 'hint', css: { display: 'none' }})
+    }
+  }
+
   },
   modules: {
   }

@@ -35,12 +35,18 @@ export default {
         'hintText', 
         'wrongText', 
         'stylingObject', 
-        'classNameObject'
+        'classNameObject',
+        'isGameStarted'
       ])
     },
     methods: {
       updateGuessValue(e) {
         this.$emit('input', e.target.value)
+      }
+    },
+    watch: {
+      isGameStarted(val) {
+        (val) ? this.$el.querySelector('#rhyme_guess').focus() : null
       }
     }
 }

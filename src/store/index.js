@@ -142,18 +142,17 @@ export default new Vuex.Store({
     },
     gameOver(context) { 
       // Accounts for array starting at 0
-    if (context.state.timeRemaining === 0 || context.state.correctGuesses + 1 === context.getters.puzzlesArrayCount || context.state.incorrectGuesses > 3) {
-        context.commit('isFirstGameBoolean')
-        context.commit('isGameStartedBoolean', { boolean: false })
-        context.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'running', classNameValue: false })
-        context.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'gameover', classNameValue: true })
-        context.commit('updateRhymusGame', { property: 'rhymeElementText', value: 'Game Over!' })                                              
-        context.commit('updateStylingObject', { elementType: 'timerDisplay', css: { background: 'var(--danger)' }})
-        context.commit('updateStylingObject', { elementType: 'cardBlock', css: { background: 'var(--danger)' }})
-        context.commit('updateStylingObject', { elementType: 'hint', css: { display: 'none' }})
-    }
-  }
-
+      if (context.state.timeRemaining === 0 || context.state.correctGuesses + 1 === context.getters.puzzlesArrayCount || context.state.incorrectGuesses > 3) {
+          context.commit('isFirstGameBoolean')
+          context.commit('isGameStartedBoolean', { boolean: false })
+          context.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'running', classNameValue: false })
+          context.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'gameover', classNameValue: true })
+          context.commit('updateRhymusGame', { property: 'rhymeElementText', value: 'Game Over!' })                                              
+          context.commit('updateStylingObject', { elementType: 'timerDisplay', css: { background: 'var(--danger)' }})
+          context.commit('updateStylingObject', { elementType: 'cardBlock', css: { background: 'var(--danger)' }})
+          context.commit('updateStylingObject', { elementType: 'hint', css: { display: 'none' }})
+      }
+    },
   },
   modules: {
   }

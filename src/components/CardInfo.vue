@@ -21,13 +21,15 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 export default {
     name: 'CardInfo', 
-    props: ['assignListeners'],
     computed: {
       formatTimer() {
-         return (this.timeRemaining === null) ? null : this.timeRemaining.toString().padStart(2, '0')
+        return (this.timeRemaining === null) ? null : this.timeRemaining.toString().padStart(2, '0')
+      },
+      capitalizeFirstLetter() {
+        return this.RhymusGame.currentCard.hint.charAt(0).toUpperCase() + this.RhymusGame.currentCard.hint.slice(1).toLowerCase()
       },
       ...mapState([
         'timeRemaining', 
@@ -36,13 +38,89 @@ export default {
         'wrongText', 
         'stylingObject', 
         'classNameObject',
-        'isGameStarted'
+        'isGameStarted',
+        'cardNumber',
+        'RhymusGame',
+        'isCorrect',
+        'incorrectGuesses',
+        'puzzlesArray'
+      ]),
+      ...mapGetters([
+        'puzzlesArrayCount'
+      ]),
+      ...mapMutations([
+        'isCorrectBoolean',
+        'incrementTotalCorrect',
+        'incrementTotalWrong',
+        'updateClassNameObject',
+        'incrementCardNumber',
+        'incrementCorrectGuesses',
+        'incrementIncorrectGuesses',
+        'initializeGuessValue',
+        'updateWrongText',
+        'updateStylingObject',
+        'updateHintText'
       ])
     },
     methods: {
       updateGuessValue(e) {
         this.$emit('input', e.target.value)
-      }
+      },
+      assignListeners(e) {
+        if ((e.key === 'Enter') && this.isGameStarted) this.checkAnswer()
+      },
+      checkAnswer() {
+        if (this.guessValue === this.RhymusGame.currentCard.answer) {
+            this.$store.commit('isCorrectBoolean', { boolean: true })
+            this.$store.commit('incrementTotalCorrect')
+            this.correctAnswer()
+            } else if (this.guessValue === '' || undefined) {
+            alert('Please enter a guess!')
+            } else {
+            this.$store.commit('isCorrectBoolean', { boolean: false })
+            this.$store.commit('incrementTotalWrong')
+            this.incorrectAnswer()
+        }
+      },
+      correctAnswer() {
+        this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', classNameKey: 'correct', 
+                                                      classNameValue: (this.isCorrect) ? true : null })
+        this.$store.commit('updateClassNameObject', { elementType: 'guessElement', classNameKey: 'correct', 
+                                                      classNameValue: (this.isCorrect) ? true : null })
+        this.$store.commit('incrementCardNumber')
+        this.$store.commit('incrementCorrectGuesses')
+        setTimeout(() => {
+            this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', classNameKey: 'correct', classNameValue: false })
+            this.$store.commit('updateClassNameObject', { elementType: 'guessElement', classNameKey: 'correct', classNameValue: false })                                             
+            if (this.cardNumber < this.puzzlesArrayCount) {
+                this.$store.dispatch('loadCard', this.puzzlesArray[this.cardNumber])
+            }
+            else {
+                this.$store.dispatch('gameOver')
+            }
+        }, 800)
+      },
+      incorrectAnswer() {
+        this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', classNameKey: 'incorrect',
+                                                      classNameValue: this.isCorrect ? null : true }) 
+        this.$store.commit('updateClassNameObject', { elementType: 'guessElement', classNameKey: 'incorrect',
+                                                      classNameValue: this.isCorrect ? null : true }) 
+        this.$store.commit('incrementIncorrectGuesses')
+        this.$store.commit('initializeGuessValue')
+
+        setTimeout(() => {
+            this.$store.commit('updateClassNameObject', { elementType: 'cardBlock', classNameKey: 'incorrect', classNameValue: false }) 
+            this.$store.commit('updateClassNameObject', { elementType: 'guessElement', classNameKey: 'incorrect', classNameValue: false })
+        }, 500)
+        this.$store.commit('updateWrongText', { incorrectGuesses: this.incorrectGuesses })
+        //if there are more than 4 incorrect guesses on a single card the player loses
+        if (this.incorrectGuesses > 1 && this.incorrectGuesses < 4) {
+            this.$store.commit('updateStylingObject', { elementType: 'hint', css: { display: 'flex' }})
+            this.$store.commit('updateHintText', { capitalizeFirstLetter: this.capitalizeFirstLetter })
+        } else {
+            this.$store.dispatch('gameOver')
+        }
+      },
     },
     watch: {
       isGameStarted(val) {

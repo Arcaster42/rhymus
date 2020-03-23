@@ -101,13 +101,13 @@ export default {
     checkAnswer() {
       if (this.guessValue === this.RhymusGame.currentCard.answer) {
           this.isCorrect = true
-          this.$store.commit('incerementTotalCorrect')
+          this.$store.commit('incrementTotalCorrect')
           this.correctAnswer()
           } else if (this.guessValue === '' || undefined) {
           alert('Please enter a guess!')
           } else {
           this.isCorrect = false
-          this.$store.commit('incerementTotalWrong')
+          this.$store.commit('incrementTotalWrong')
           this.incorrectAnswer()
       }
     },
@@ -191,9 +191,9 @@ export default {
       'initializeGuessValue', 
       'updateGuessValue',
       'initializeTotalCorrect',
-      'incerementTotalCorrect',
+      'incrementTotalCorrect',
       'initializeTotalWrong',
-      'incerementTotalWrong',
+      'incrementTotalWrong',
       'isFirstGameBoolean',
       'initializeHintText',
       'updateHintText',

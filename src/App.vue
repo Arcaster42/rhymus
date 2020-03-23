@@ -7,7 +7,6 @@
                  :assignListeners="assignListeners"
                  :RhymusGame="RhymusGame"
                  :classNameObject="classNameObject"
-                 :wrongText="wrongText"
                  @input="guessValueUpdate" />
     </section>
   </div>
@@ -47,7 +46,6 @@ export default {
               }
             },
             incorrectGuesses: 0,
-            wrongText: '',
             isCorrect: null,
           }
       },
@@ -80,7 +78,7 @@ export default {
       this.RhymusGame.currentCard = nextCard
       this.$store.commit('initializeGuessValue')
       this.$store.commit('initializeHintText')
-      this.wrongText = ''
+      this.$store.commit('initializeWrongText')
       this.incorrectGuesses = 0
       this.resetTimer()
     },
@@ -144,7 +142,7 @@ export default {
           this.classNameObject.cardBlock.incorrect = false
           this.classNameObject.guessElement.incorrect = false
       }, 500)
-      this.wrongText = `incorrect guesses: ${this.incorrectGuesses}`
+      this.$store.commit('updateWrongText', { incorrectGuesses: this.incorrectGuesses })
       //if there are more than 4 incorrect guesses on a single card the player loses
       if (this.incorrectGuesses > 1 && this.incorrectGuesses < 4) {
           this.stylingObject.hint.display = 'flex'
@@ -179,7 +177,8 @@ export default {
       'guessValue', 
       'totalCorrect', 
       'isFirstGame',
-      'hintText'
+      'hintText',
+      'wrongText'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
@@ -198,7 +197,9 @@ export default {
       'incerementTotalWrong',
       'isFirstGameBoolean',
       'initializeHintText',
-      'updateHintText'
+      'updateHintText',
+      'initializeWrongText',
+      'updateWrongText'
     ])
   }
 }

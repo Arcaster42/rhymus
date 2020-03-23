@@ -125,13 +125,13 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    loadCard({ commit }, nextCard) {
-      commit('updateRhymusGame', { property: 'currentCard', value: nextCard })
-      commit('initializeGuessValue')
-      commit('initializeHintText')
-      commit('initializeWrongText')
-      commit('initializeIncorrectGuesses')
-      this.dispatch('resetTimer')
+    loadCard(context, nextCard) {
+      context.commit('updateRhymusGame', { property: 'currentCard', value: nextCard })
+      context.commit('initializeGuessValue')
+      context.commit('initializeHintText')
+      context.commit('initializeWrongText')
+      context.commit('initializeIncorrectGuesses')
+      context.dispatch('resetTimer')
     },
     resetTimer(context) {
       clearInterval(context.state.timer)

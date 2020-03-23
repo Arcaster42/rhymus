@@ -2,7 +2,7 @@
   <div id="app">
     <section id="game_canvas">
       <Header />
-      <RhymeCard @input="guessValueUpdate" />
+      <RhymeCard />
     </section>
   </div>
 </template>
@@ -16,11 +16,6 @@ export default {
   components: {
     Header,
     RhymeCard,
-  },
-  methods: {
-    guessValueUpdate(val) {
-      this.$store.commit('updateGuessValue', { val: val })
-    }
   },
   computed: {
     ...mapMutations([

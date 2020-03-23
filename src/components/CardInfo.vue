@@ -64,7 +64,7 @@ export default {
     },
     methods: {
       updateGuessValue(e) {
-        this.$emit('input', e.target.value)
+        this.$store.commit('updateGuessValue', { val: e.target.value })
       },
       assignListeners(e) {
         if ((e.key === 'Enter') && this.isGameStarted) this.checkAnswer()

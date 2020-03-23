@@ -9,7 +9,7 @@
         <p class="rhyme" id="rhyme">{{ (!isGameStarted) ? RhymusGame.rhymeElementText : RhymusGame.currentCard.sentence }}</p>
         <p class="rhyme" id="correct">{{ (!isFirstGame) ? `Correct guesses: ${totalCorrect}` : null }}</p>
         <p class="rhyme" id="wrong">{{ (!isFirstGame) ? `Incorrect guesses: ${totalWrong}` : null }}</p>
-        <CardInfo v-on="$listeners"/>
+        <CardInfo />
       </div>
 </template>
 

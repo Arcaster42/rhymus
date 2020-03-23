@@ -12,7 +12,8 @@ export default new Vuex.Store({
     guessValue: '',
     totalCorrect: 0,
     totalWrong: 0,
-    isFirstGame: true
+    isFirstGame: true,
+    hintText: '',
   },
   getters: {
     puzzlesArrayCount: state => state.puzzlesArray.length
@@ -29,7 +30,9 @@ export default new Vuex.Store({
     incerementTotalCorrect: state => state.totalCorrect++,
     initializeTotalWrong: state => state.totalWrong = 0,
     incerementTotalWrong: state => state.totalWrong++,
-    isFirstGameBoolean: state => state.isFirstGame = (state.isFirstGame) ? false : state.isFirstGame
+    isFirstGameBoolean: state => state.isFirstGame = (state.isFirstGame) ? false : state.isFirstGame,
+    initializeHintText: state => state.hintText = '',
+    updateHintText: (state, payload) => state.hintText = 'Hint: ' + payload.capitalizeFirstLetter
   },
   actions: {
   },

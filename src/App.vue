@@ -7,7 +7,6 @@
                  :assignListeners="assignListeners"
                  :RhymusGame="RhymusGame"
                  :classNameObject="classNameObject"
-                 :hintText="hintText"
                  :wrongText="wrongText"
                  @input="guessValueUpdate" />
     </section>
@@ -47,7 +46,6 @@ export default {
                 center: true
               }
             },
-            hintText: '',
             incorrectGuesses: 0,
             wrongText: '',
             isCorrect: null,
@@ -81,7 +79,7 @@ export default {
     loadCard(nextCard) {
       this.RhymusGame.currentCard = nextCard
       this.$store.commit('initializeGuessValue')
-      this.hintText = ''
+      this.$store.commit('initializeHintText')
       this.wrongText = ''
       this.incorrectGuesses = 0
       this.resetTimer()
@@ -150,7 +148,7 @@ export default {
       //if there are more than 4 incorrect guesses on a single card the player loses
       if (this.incorrectGuesses > 1 && this.incorrectGuesses < 4) {
           this.stylingObject.hint.display = 'flex'
-          this.hintText = 'Hint: ' + this.capitalizeFirstLetter
+          this.$store.commit('updateHintText', { capitalizeFirstLetter: this.capitalizeFirstLetter })
       } else {
           this.gameOver()
       }
@@ -174,7 +172,14 @@ export default {
       return this.RhymusGame.currentCard.hint.charAt(0).toUpperCase() + this.RhymusGame.currentCard.hint.slice(1).toLowerCase()
     },
     ...mapState([
-      'puzzlesArray', 'cardNumber', 'isGameStarted', 'timeRemaining', 'guessValue', 'totalCorrect', 'isFirstGame'
+      'puzzlesArray', 
+      'cardNumber', 
+      'isGameStarted', 
+      'timeRemaining', 
+      'guessValue', 
+      'totalCorrect', 
+      'isFirstGame',
+      'hintText'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
@@ -191,7 +196,9 @@ export default {
       'incerementTotalCorrect',
       'initializeTotalWrong',
       'incerementTotalWrong',
-      'isFirstGameBoolean'
+      'isFirstGameBoolean',
+      'initializeHintText',
+      'updateHintText'
     ])
   }
 }

@@ -12,7 +12,6 @@
         <CardInfo :stylingObject="stylingObject"
                   :assignListeners="assignListeners"
                   :classNameObject="classNameObject"
-                  :hintText="hintText"
                   :wrongText="wrongText"
                   v-on="$listeners"
                   />
@@ -24,7 +23,7 @@ import CardInfo from './CardInfo.vue'
 import { mapGetters, mapState } from 'vuex'
 export default {
     name: 'RhymeCard',
-    props: ['assignListeners','RhymusGame','classNameObject','hintText','wrongText','stylingObject'],
+    props: ['assignListeners','RhymusGame','classNameObject','wrongText','stylingObject'],
     components: {
         CardInfo
     },

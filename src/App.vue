@@ -21,7 +21,6 @@ export default {
   data() {
           return {
             playTimeSeconds: 30,
-            timer: null,
           }
       },
   methods: {
@@ -63,7 +62,7 @@ export default {
     },
     resetTimer() {
       clearInterval(this.timer)
-      this.timer = setInterval(this.countDown, 1000)
+      this.$store.commit('updateTimer', { event: setInterval(this.countDown, 1000)})
     },
     countDown() {
       this.timeRemaining === 0 ? this.gameOver() : this.$store.commit('decrementTimeRemaining')
@@ -188,7 +187,8 @@ export default {
       'RhymusGame',
       'incorrectGuesses',
       'correctGuesses',
-      'isCorrect'
+      'isCorrect',
+      'timer'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
@@ -217,7 +217,8 @@ export default {
       'initializeIncorrectGuesses',
       'incrementIncorrectGuesses',
       'initializeCorrectGuesses',
-      'incrementCorrectGuesses'
+      'incrementCorrectGuesses',
+      'updateTimer'
     ])
   }
 }

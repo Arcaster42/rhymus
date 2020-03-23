@@ -35,7 +35,8 @@ export default new Vuex.Store({
     },
     incorrectGuesses: 0,
     correctGuesses: 0,
-    isCorrect: null
+    isCorrect: null,
+    timer: null
   },
   getters: {
     puzzlesArrayCount: state => state.puzzlesArray.length
@@ -65,7 +66,8 @@ export default new Vuex.Store({
     incrementIncorrectGuesses: state => state.incorrectGuesses++,
     initializeCorrectGuesses: state => state.correctGuesses = 0,
     incrementCorrectGuesses: state => state.correctGuesses++,
-    isCorrectBoolean: (state, payload) => state.isCorrect = payload.boolean
+    isCorrectBoolean: (state, payload) => state.isCorrect = payload.boolean,
+    updateTimer: (state, payload) => state.timer = payload.event
   },
   actions: {
   },

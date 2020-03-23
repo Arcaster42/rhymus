@@ -24,13 +24,13 @@
 import { mapState } from 'vuex'
 export default {
     name: 'CardInfo', 
-    props: ['assignListeners', 'classNameObject','guessValue','hintText','wrongText','stylingObject'],
+    props: ['assignListeners', 'classNameObject','hintText','wrongText','stylingObject'],
     computed: {
       formatTimer() {
          return (this.timeRemaining === null) ? null : this.timeRemaining.toString().padStart(2, '0')
       },
       ...mapState([
-        'timeRemaining'
+        'timeRemaining', 'guessValue'
       ])
     },
     methods: {

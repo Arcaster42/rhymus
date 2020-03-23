@@ -7,12 +7,9 @@
                  :assignListeners="assignListeners"
                  :RhymusGame="RhymusGame"
                  :classNameObject="classNameObject"
-                 :guessValue="guessValue"
                  :hintText="hintText"
                  :wrongText="wrongText"
                  @input="guessValueUpdate"
-                 :totalWrong="totalWrong"
-                 :totalCorrect="totalCorrect"
                  :isFirstGame="isFirstGame" />
     </section>
   </div>
@@ -32,8 +29,6 @@ export default {
           return {
             playTimeSeconds: 30,
             correctGuesses: 0,
-            totalCorrect: 0,
-            totalWrong: 0,
             isRestartButtonDisabled: true,
             stylingObject: {
               guessElement: null,
@@ -53,7 +48,6 @@ export default {
                 center: true
               }
             },
-            guessValue: '',
             hintText: '',
             incorrectGuesses: 0,
             wrongText: '',
@@ -79,8 +73,8 @@ export default {
         this.$store.commit('initializeCardNumber')
         this.correctGuesses = 0
         this.incorrectGuesses = 0
-        this.totalCorrect = 0
-        this.totalWrong = 0
+        this.$store.commit('initializeTotalCorrect')
+        this.$store.commit('initializeTotalWrong')
       }
     },
     assignListeners(e) {
@@ -88,7 +82,7 @@ export default {
     },
     loadCard(nextCard) {
       this.RhymusGame.currentCard = nextCard
-      this.guessValue = ''
+      this.$store.commit('initializeGuessValue')
       this.hintText = ''
       this.wrongText = ''
       this.incorrectGuesses = 0
@@ -115,18 +109,18 @@ export default {
     checkAnswer() {
       if (this.guessValue === this.RhymusGame.currentCard.answer) {
           this.isCorrect = true
-          this.totalCorrect++
+          this.$store.commit('incerementTotalCorrect')
           this.correctAnswer()
           } else if (this.guessValue === '' || undefined) {
           alert('Please enter a guess!')
           } else {
           this.isCorrect = false
-          this.totalWrong++
+          this.$store.commit('incerementTotalWrong')
           this.incorrectAnswer()
       }
     },
     guessValueUpdate(val) {
-      this.guessValue = val
+      this.$store.commit('updateGuessValue', { val: val })
     },
     correctAnswer() {
       this.classNameObject.cardBlock.correct = this.isCorrect ? true : null
@@ -148,7 +142,7 @@ export default {
       this.classNameObject.cardBlock.incorrect = this.isCorrect ? null : true
       this.classNameObject.guessElement.incorrect = this.isCorrect ? null : true
       this.incorrectGuesses++
-      this.guessValue = ''
+      this.$store.commit('initializeGuessValue')
 
       setTimeout(() => {
           this.classNameObject.cardBlock.incorrect = false
@@ -182,13 +176,23 @@ export default {
       return this.RhymusGame.currentCard.hint.charAt(0).toUpperCase() + this.RhymusGame.currentCard.hint.slice(1).toLowerCase()
     },
     ...mapState([
-      'puzzlesArray', 'cardNumber', 'isGameStarted', 'timeRemaining'
+      'puzzlesArray', 'cardNumber', 'isGameStarted', 'timeRemaining', 'guessValue', 'totalCorrect'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
     ]),
     ...mapMutations([
-      'incrementCardNumber', 'isGameStartedBoolean', 'initializeCardNumber', 'setTimeRemaining', 'decrementTimeRemaining'
+      'incrementCardNumber', 
+      'isGameStartedBoolean', 
+      'initializeCardNumber', 
+      'setTimeRemaining', 
+      'decrementTimeRemaining', 
+      'initializeGuessValue', 
+      'updateGuessValue',
+      'initializeTotalCorrect',
+      'incerementTotalCorrect',
+      'initializeTotalWrong',
+      'incerementTotalWrong'
     ])
   }
 }

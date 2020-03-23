@@ -12,7 +12,6 @@
         <CardInfo :stylingObject="stylingObject"
                   :assignListeners="assignListeners"
                   :classNameObject="classNameObject"
-                  :guessValue="guessValue"
                   :hintText="hintText"
                   :wrongText="wrongText"
                   v-on="$listeners"
@@ -25,13 +24,13 @@ import CardInfo from './CardInfo.vue'
 import { mapGetters, mapState } from 'vuex'
 export default {
     name: 'RhymeCard',
-    props: ['assignListeners','RhymusGame','classNameObject','guessValue','hintText','wrongText','stylingObject', 'totalCorrect', 'totalWrong', 'isFirstGame'],
+    props: ['assignListeners','RhymusGame','classNameObject','hintText','wrongText','stylingObject','isFirstGame'],
     components: {
         CardInfo
     },
     computed: {
       ...mapState([
-        'cardNumber', 'isGameStarted'
+        'cardNumber', 'isGameStarted', 'totalCorrect', 'totalWrong'
       ]),
       ...mapGetters([
         'puzzlesArrayCount'

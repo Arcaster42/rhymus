@@ -2,8 +2,7 @@
   <div id="app">
     <section id="game_canvas">
       <Header :startGame="startGame" />
-      <RhymeCard :stylingObject="stylingObject"
-                 :assignListeners="assignListeners"
+      <RhymeCard :assignListeners="assignListeners"
                  :RhymusGame="RhymusGame"
                  :classNameObject="classNameObject"
                  @input="guessValueUpdate" />
@@ -25,12 +24,6 @@ export default {
           return {
             playTimeSeconds: 30,
             correctGuesses: 0,
-            stylingObject: {
-              guessElement: null,
-              cardBlock: null,
-              timerDisplay: null,
-              hint: {}
-            },
             RhymusGame: {
               currentCard: undefined,
               rhymeElementText: 'Press start to play!'
@@ -52,9 +45,10 @@ export default {
       this.$store.commit('isGameStartedBoolean', { boolean: true })
       this.$store.commit('setTimeRemaining', { time: this.playTimeSeconds })
       this.$store.commit('isRestartButtonDisabledBoolean', { boolean: false })
-
-      this.stylingObject.timerDisplay = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
-      this.stylingObject.cardBlock = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
+      this.$store.commit('updateStylingObject', { elementType: 'timerDisplay', 
+                                                  css: (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null })
+      this.$store.commit('updateStylingObject', { elementType: 'cardBlock', 
+                                                  css: (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null })
       this.$el.querySelector('#rhyme_guess').focus()
       this.loadCard(this.puzzlesArray[0])
       this.classNameObject.timerDisplay.running = (this.isGameStarted) ? true : null
@@ -143,7 +137,8 @@ export default {
       this.$store.commit('updateWrongText', { incorrectGuesses: this.incorrectGuesses })
       //if there are more than 4 incorrect guesses on a single card the player loses
       if (this.incorrectGuesses > 1 && this.incorrectGuesses < 4) {
-          this.stylingObject.hint.display = 'flex'
+          this.$store.commit('updateStylingObject', { elementType: 'hint', 
+                                                      css: { display: 'flex' }})
           this.$store.commit('updateHintText', { capitalizeFirstLetter: this.capitalizeFirstLetter })
       } else {
           this.gameOver()
@@ -157,9 +152,12 @@ export default {
           this.classNameObject.timerDisplay.running = false
           this.classNameObject.timerDisplay.gameover = true
           this.RhymusGame.rhymeElementText = 'Game Over!'
-          this.stylingObject.timerDisplay.background = 'var(--danger)'
-          this.stylingObject.cardBlock.background = 'var(--danger)'
-          this.stylingObject.hint.display = 'none'
+          this.$store.commit('updateStylingObject', { elementType: 'timerDisplay',
+                                                      css: { background: 'var(--danger)' }})
+          this.$store.commit('updateStylingObject', { elementType: 'cardBlock', 
+                                                      css: { background: 'var(--danger)' }})
+          this.$store.commit('updateStylingObject', { elementType: 'hint', 
+                                                      css: { display: 'none' }})
       }
     }
   },
@@ -177,7 +175,8 @@ export default {
       'isFirstGame',
       'hintText',
       'wrongText',
-      'isRestartButtonDisabled'
+      'isRestartButtonDisabled',
+      'stylingObject'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
@@ -199,7 +198,8 @@ export default {
       'updateHintText',
       'initializeWrongText',
       'updateWrongText',
-      'isRestartButtonDisabledBoolean'
+      'isRestartButtonDisabledBoolean',
+      'updateStylingObject'
     ])
   }
 }

@@ -4,14 +4,12 @@
       <Header :startGame="startGame" 
               :isRestartButtonDisabled="isRestartButtonDisabled"/>
       <RhymeCard :stylingObject="stylingObject"
-                 :isGameStarted="isGameStarted"
                  :assignListeners="assignListeners"
                  :RhymusGame="RhymusGame"
                  :classNameObject="classNameObject"
                  :guessValue="guessValue"
                  :hintText="hintText"
                  :wrongText="wrongText"
-                 :timeRemaining="timeRemaining"
                  @input="guessValueUpdate"
                  :totalWrong="totalWrong"
                  :totalCorrect="totalCorrect"
@@ -33,11 +31,9 @@ export default {
   data() {
           return {
             playTimeSeconds: 30,
-            timeRemaining: null,
             correctGuesses: 0,
             totalCorrect: 0,
             totalWrong: 0,
-            isGameStarted: false,
             isRestartButtonDisabled: true,
             stylingObject: {
               guessElement: null,
@@ -67,8 +63,8 @@ export default {
       },
   methods: {
     startGame(e) {      
-      this.isGameStarted = true
-      this.timeRemaining = this.playTimeSeconds
+      this.$store.commit('isGameStartedBoolean', { boolean: true })
+      this.$store.commit('setTimeRemaining', { time: this.playTimeSeconds })
       this.isRestartButtonDisabled = false
 
       this.stylingObject.timerDisplay = (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null
@@ -80,7 +76,7 @@ export default {
         this.shufflePuzzles(this.puzzlesArray)
       }
       if (!this.isFirstGame) {
-        this.cardNumber = 1
+        this.$store.commit('initializeCardNumber')
         this.correctGuesses = 0
         this.incorrectGuesses = 0
         this.totalCorrect = 0
@@ -103,7 +99,7 @@ export default {
       this.timer = setInterval(this.countDown, 1000)
     },
     countDown() {
-      this.timeRemaining === 0 ? this.gameOver() : this.timeRemaining--
+      this.timeRemaining === 0 ? this.gameOver() : this.$store.commit('decrementTimeRemaining')
     },
     shufflePuzzles(arr1) {
       let ctr = arr1.length
@@ -171,7 +167,7 @@ export default {
         // Accounts for array starting at 0
       if (this.timeRemaining === 0 || this.correctGuesses + 1 === this.puzzlesArrayCount || this.incorrectGuesses > 3) {
           this.isFirstGame = (this.isFirstGame) ? false : this.isFirstGame
-          this.isGameStarted = false
+          this.$store.commit('isGameStartedBoolean', { boolean: false })
           this.classNameObject.timerDisplay.running = false
           this.classNameObject.timerDisplay.gameover = true
           this.RhymusGame.rhymeElementText = 'Game Over!'
@@ -186,13 +182,13 @@ export default {
       return this.RhymusGame.currentCard.hint.charAt(0).toUpperCase() + this.RhymusGame.currentCard.hint.slice(1).toLowerCase()
     },
     ...mapState([
-      'puzzlesArray', 'cardNumber'
+      'puzzlesArray', 'cardNumber', 'isGameStarted', 'timeRemaining'
     ]),
     ...mapGetters([
       'puzzlesArrayCount'
     ]),
     ...mapMutations([
-      'incrementCardNumber'
+      'incrementCardNumber', 'isGameStartedBoolean', 'initializeCardNumber', 'setTimeRemaining', 'decrementTimeRemaining'
     ])
   }
 }

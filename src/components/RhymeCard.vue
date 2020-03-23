@@ -9,14 +9,12 @@
         <p class="rhyme" id="rhyme">{{ (!isGameStarted) ? RhymusGame.rhymeElementText : RhymusGame.currentCard.sentence }}</p>
         <p class="rhyme" id="correct">{{ (!isFirstGame) ? `Correct guesses: ${totalCorrect}` : null }}</p>
         <p class="rhyme" id="wrong">{{ (!isFirstGame) ? `Incorrect guesses: ${totalWrong}` : null }}</p>
-        <CardInfo :isGameStarted="isGameStarted"
-                  :stylingObject="stylingObject"
+        <CardInfo :stylingObject="stylingObject"
                   :assignListeners="assignListeners"
                   :classNameObject="classNameObject"
                   :guessValue="guessValue"
                   :hintText="hintText"
                   :wrongText="wrongText"
-                  :timeRemaining="timeRemaining"
                   v-on="$listeners"
                   />
       </div>
@@ -27,13 +25,13 @@ import CardInfo from './CardInfo.vue'
 import { mapGetters, mapState } from 'vuex'
 export default {
     name: 'RhymeCard',
-    props: ['isGameStarted','assignListeners','RhymusGame','classNameObject','guessValue','hintText','wrongText','timeRemaining','stylingObject', 'totalCorrect', 'totalWrong', 'isFirstGame'],
+    props: ['assignListeners','RhymusGame','classNameObject','guessValue','hintText','wrongText','stylingObject', 'totalCorrect', 'totalWrong', 'isFirstGame'],
     components: {
         CardInfo
     },
     computed: {
       ...mapState([
-        'cardNumber'
+        'cardNumber', 'isGameStarted'
       ]),
       ...mapGetters([
         'puzzlesArrayCount'

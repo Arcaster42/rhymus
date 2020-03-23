@@ -21,13 +21,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     name: 'CardInfo', 
-    props: ['isGameStarted', 'assignListeners', 'classNameObject','guessValue','hintText','wrongText','timeRemaining','stylingObject'],
+    props: ['assignListeners', 'classNameObject','guessValue','hintText','wrongText','stylingObject'],
     computed: {
       formatTimer() {
          return (this.timeRemaining === null) ? null : this.timeRemaining.toString().padStart(2, '0')
-      }
+      },
+      ...mapState([
+        'timeRemaining'
+      ])
     },
     methods: {
       updateGuessValue(e) {

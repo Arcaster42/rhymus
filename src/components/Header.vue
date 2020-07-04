@@ -1,18 +1,77 @@
 <template>
   <header>
       <ul>
-          <button class="header_button header_button_start" v-on:click="startGame($event)">Start</button>
+          <button class="header_button header_button_start" @click="startGame($event)">Start</button>
           <button class="header_button header_button_restart header_button--danger" 
-                  v-bind:disabled="isRestartButtonDisabled"
-                  v-on:click="startGame($event)">Restart</button>
+                  :disabled="isRestartButtonDisabled"
+                  @click="startGame($event)">Restart</button>
       </ul>
   </header>
 </template>
 
 <script>
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
     name: 'Header',
-    props: ['startGame', 'isRestartButtonDisabled']
+    computed: {
+      ...mapState([
+        'isRestartButtonDisabled',
+        'playTimeSeconds',
+        'isGameStarted',
+        'puzzlesArray',
+        'isFirstGame'
+      ]),
+      ...mapMutations([
+        'isGameStartedBoolean', 
+        'setTimeRemaining', 
+        'isRestartButtonDisabledBoolean',
+        'updateStylingObject',
+        'updateClassNameObject',
+        'initializeCardNumber', 
+        'initializeCorrectGuesses',
+        'initializeIncorrectGuesses',
+        'initializeTotalCorrect',
+        'initializeTotalWrong'
+      ])
+    },
+    methods: {
+      startGame(e) {      
+      this.$store.commit('isGameStartedBoolean', { boolean: true })
+      this.$store.commit('setTimeRemaining', { time: this.playTimeSeconds })
+      this.$store.commit('isRestartButtonDisabledBoolean', { boolean: false })
+      this.$store.commit('updateStylingObject', { elementType: 'timerDisplay', 
+                                                  css: (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null })
+      this.$store.commit('updateStylingObject', { elementType: 'cardBlock', 
+                                                  css: (this.isGameStarted) ? { background: 'var(--primary-gradient)' } : null })
+      this.$store.commit('updateClassNameObject', { elementType: 'timerDisplay', classNameKey: 'running',
+                                                    classNameValue: (this.isGameStarted) ? true : null })
+      this.$store.dispatch('loadCard', this.puzzlesArray[0])
+      if (e.target.classList.contains('header_button_start')) {
+        this.shufflePuzzles(this.puzzlesArray)
+      }
+      if (!this.isFirstGame) {
+        this.$store.commit('initializeCardNumber')
+        this.$store.commit('initializeCorrectGuesses')
+        this.$store.commit('initializeIncorrectGuesses')
+        this.$store.commit('initializeTotalCorrect')
+        this.$store.commit('initializeTotalWrong')
+      }
+    },
+    shufflePuzzles(arr1) {
+      let ctr = arr1.length
+      let index
+      let array
+      while(ctr > 0) {
+          index = Math.floor(Math.random() * ctr)
+          ctr --,
+          array = [arr1[index], arr1[ctr]] = [arr1[ctr], arr1[index]]
+      }
+      return array
+    },
+    ...mapActions([
+      'loadCard',
+    ])
+  }
 }
 </script>
 

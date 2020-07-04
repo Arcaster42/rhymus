@@ -1,35 +1,40 @@
 <template>
-      <div v-bind:class="classNameObject.cardBlock" class="rhyme_card" id="rhyme_card" v-bind:style="stylingObject.cardBlock">
+      <div :class="classNameObject.cardBlock" class="rhyme_card" id="rhyme_card" :style="stylingObject.cardBlock">
         <div class="rhyme_count_container center">
           <div class="rhyme_count" id="rhyme_count">
             <span v-if="!isGameStarted && isFirstGame"></span>
-              {{ (isGameStarted || !isFirstGame) ? `${cardNumber} of ${puzzlesArray.length}` : null }}
+              {{ (isGameStarted || !isFirstGame) ? `${cardNumber} of ${puzzlesArrayCount}` : null }}
             </div>
         </div>
         <p class="rhyme" id="rhyme">{{ (!isGameStarted) ? RhymusGame.rhymeElementText : RhymusGame.currentCard.sentence }}</p>
         <p class="rhyme" id="correct">{{ (!isFirstGame) ? `Correct guesses: ${totalCorrect}` : null }}</p>
         <p class="rhyme" id="wrong">{{ (!isFirstGame) ? `Incorrect guesses: ${totalWrong}` : null }}</p>
-        <CardInfo v-bind:isGameStarted="isGameStarted"
-                  v-bind:stylingObject="stylingObject"
-                  v-bind:assignListeners="assignListeners"
-                  v-bind:classNameObject="classNameObject"
-                  v-bind:guessValue="guessValue"
-                  v-bind:hintText="hintText"
-                  v-bind:wrongText="wrongText"
-                  v-bind:timeRemaining="timeRemaining"
-                  v-on="$listeners"
-                  />
+        <CardInfo />
       </div>
 </template>
 
-<script lang="ts">
+<script>
 import CardInfo from './CardInfo.vue'
-
+import { mapGetters, mapState } from 'vuex'
 export default {
     name: 'RhymeCard',
-    props: ['isGameStarted','assignListeners','RhymusGame','cardNumber','puzzlesArray','classNameObject','guessValue','hintText','wrongText','timeRemaining','stylingObject', 'totalCorrect', 'totalWrong', 'isFirstGame'],
     components: {
         CardInfo
+    },
+    computed: {
+      ...mapState([
+        'cardNumber', 
+        'isGameStarted', 
+        'totalCorrect', 
+        'totalWrong', 
+        'isFirstGame', 
+        'stylingObject',
+        'classNameObject',
+        'RhymusGame'
+      ]),
+      ...mapGetters([
+        'puzzlesArrayCount'
+      ])
     }
 }
 </script>
